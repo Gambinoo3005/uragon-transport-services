@@ -3,7 +3,6 @@ import { Footer } from "@/components/footer"
 import { BookingCTABanner } from "@/components/booking-cta-banner"
 import { StickyBookButton } from "@/components/sticky-book-button"
 import { FleetHero } from "@/components/fleet-hero"
-import { VehicleFilters } from "@/components/vehicle-filters"
 import { VehicleGrid } from "@/components/vehicle-grid"
 import {
   Breadcrumb,
@@ -40,7 +39,6 @@ export default function FleetPage() {
           </Breadcrumb>
         </div>
         <FleetHero />
-        <VehicleFilters />
         <VehicleGrid />
         <BookingCTABanner />
       </main>

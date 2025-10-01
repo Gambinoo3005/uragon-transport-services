@@ -17,6 +17,7 @@ interface Vehicle {
   transmission: string
   fuel: string
   pricePerDay: string
+  pricePer12hr?: string
   rating: number
   reviews: number
   description: string
@@ -30,6 +31,12 @@ interface Vehicle {
     doors: number
     aircon: string
   }
+  type?: string
+  brand?: string
+  model?: string
+  year?: string
+  colors?: string[]
+  popular?: boolean
 }
 
 interface VehicleDetailProps {
@@ -39,6 +46,7 @@ interface VehicleDetailProps {
 export function VehicleDetail({ vehicle }: VehicleDetailProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isGalleryOpen, setIsGalleryOpen] = useState(false)
+  const [pricingMode, setPricingMode] = useState<'24hr' | '12hr'>('24hr')
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % vehicle.images.length)
@@ -105,8 +113,20 @@ export function VehicleDetail({ vehicle }: VehicleDetailProps) {
           <div className="space-y-6">
             <div>
               <div className="flex items-center justify-between mb-2">
-                <h1 className="text-3xl font-bold text-foreground">{vehicle.name}</h1>
-                <Badge variant="secondary">{vehicle.category}</Badge>
+                <div>
+                  <h1 className="text-3xl font-bold text-foreground">{vehicle.name}</h1>
+                  {vehicle.brand && vehicle.model && vehicle.year && (
+                    <div className="text-sm text-muted-foreground mt-1">
+                      {vehicle.brand} {vehicle.model} • {vehicle.year}
+                    </div>
+                  )}
+                </div>
+                <div className="flex flex-col items-end space-y-2">
+                  <Badge variant="secondary">{vehicle.category}</Badge>
+                  {vehicle.popular && (
+                    <Badge className="bg-primary text-primary-foreground">Popular Choice</Badge>
+                  )}
+                </div>
               </div>
               <div className="flex items-center space-x-4 mb-4">
                 <div className="flex items-center space-x-1">
@@ -115,6 +135,18 @@ export function VehicleDetail({ vehicle }: VehicleDetailProps) {
                   <span className="text-muted-foreground">({vehicle.reviews} reviews)</span>
                 </div>
               </div>
+              {vehicle.colors && vehicle.colors.length > 0 && (
+                <div className="mb-4">
+                  <div className="text-sm font-medium text-foreground mb-2">Available Colors:</div>
+                  <div className="flex flex-wrap gap-2">
+                    {vehicle.colors.map((color, index) => (
+                      <Badge key={index} variant="outline" className="text-xs">
+                        {color}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              )}
               <p className="text-muted-foreground leading-relaxed">{vehicle.description}</p>
             </div>
 
@@ -139,12 +171,39 @@ export function VehicleDetail({ vehicle }: VehicleDetailProps) {
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <div className="text-3xl font-bold text-primary">{vehicle.pricePerDay}</div>
-                    <div className="text-muted-foreground">per day</div>
+                    <div className="text-3xl font-bold text-primary">
+                      {pricingMode === '24hr' ? vehicle.pricePerDay : (vehicle.pricePer12hr || 'Contact us')}
+                    </div>
+                    <div className="text-muted-foreground">
+                      {pricingMode === '24hr' ? 'per 24 hours' : 'per 12 hours'}
+                    </div>
+                    {vehicle.type && <div className="text-sm text-muted-foreground mt-1">{vehicle.type}</div>}
                   </div>
                   <div className="text-right">
                     <div className="text-sm text-muted-foreground">Weekly Rate</div>
                     <div className="font-semibold">Contact for pricing</div>
+                  </div>
+                </div>
+                
+                {/* Pricing Toggle */}
+                <div className="flex items-center justify-center mb-4">
+                  <div className="flex bg-muted rounded-lg p-1">
+                    <Button
+                      variant={pricingMode === '24hr' ? 'default' : 'ghost'}
+                      size="sm"
+                      onClick={() => setPricingMode('24hr')}
+                      className="h-8 px-4"
+                    >
+                      24hrs
+                    </Button>
+                    <Button
+                      variant={pricingMode === '12hr' ? 'default' : 'ghost'}
+                      size="sm"
+                      onClick={() => setPricingMode('12hr')}
+                      className="h-8 px-4"
+                    >
+                      12hrs
+                    </Button>
                   </div>
                 </div>
                 <div className="space-y-3">
@@ -273,7 +332,12 @@ export function VehicleDetail({ vehicle }: VehicleDetailProps) {
                     </thead>
                     <tbody className="space-y-2">
                       <tr className="border-b">
-                        <td className="py-2">1 Day</td>
+                        <td className="py-2">12 Hours</td>
+                        <td className="text-right py-2">{vehicle.pricePer12hr || 'Contact us'}</td>
+                        <td className="text-right py-2 font-medium">{vehicle.pricePer12hr || 'Contact us'}</td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="py-2">24 Hours</td>
                         <td className="text-right py-2">{vehicle.pricePerDay}</td>
                         <td className="text-right py-2 font-medium">{vehicle.pricePerDay}</td>
                       </tr>

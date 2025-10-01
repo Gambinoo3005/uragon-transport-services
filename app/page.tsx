@@ -4,12 +4,13 @@ import { BookingCTABanner } from "@/components/booking-cta-banner"
 import { StickyBookButton } from "@/components/sticky-book-button"
 import { Hero } from "@/components/hero"
 import { QuickBookingForm } from "@/components/quick-booking-form"
-import { TopVehicles } from "@/components/top-vehicles"
-import { PopularServices } from "@/components/popular-services"
-import { TrustSignals } from "@/components/trust-signals"
-import { TestimonialsSection } from "@/components/testimonials-section"
-import { FAQSection } from "@/components/faq-section"
-import { HeroStats } from "@/components/hero-stats"
+import { KeyUSPs } from "@/components/key-usps"
+import { FleetHighlights } from "@/components/fleet-highlights"
+import { RatesTeaser } from "@/components/rates-teaser"
+import { HowItWorks } from "@/components/how-it-works"
+import { ServiceAreas } from "@/components/service-areas"
+import { SocialProof } from "@/components/social-proof"
+import { FAQsPreview } from "@/components/faqs-preview"
 
 export default function HomePage() {
   return (
@@ -18,12 +19,13 @@ export default function HomePage() {
       <main>
         <Hero />
         <QuickBookingForm />
-        <HeroStats />
-        <TopVehicles />
-        <PopularServices />
-        <TrustSignals />
-        <TestimonialsSection />
-        <FAQSection />
+        <KeyUSPs />
+        <FleetHighlights />
+        <RatesTeaser />
+        <HowItWorks />
+        <ServiceAreas />
+        <SocialProof />
+        <FAQsPreview />
         <BookingCTABanner />
       </main>
       <Footer />

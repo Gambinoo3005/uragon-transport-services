@@ -1,31 +1,17 @@
 const teamMembers = [
   {
-    name: "Juan Uragon",
-    role: "Founder & CEO",
-    image: "/team-juan-uragon.jpg",
+    name: "Mia Angela Ramos",
+    role: "Co-Founder & CEO",
+    image: "/placeholder-user.jpg",
     description:
-      "Juan founded Uragon Tours with a vision to provide reliable car rentals in Bicol. A local expert with 15+ years in tourism.",
+      "Mia co-founded Uragon Transport Services with a vision to provide reliable and affordable car rental services in the Bicol region. Her leadership and passion for customer satisfaction drive our commitment to excellence.",
   },
   {
-    name: "Maria Uragon",
-    role: "Operations Manager",
-    image: "/team-maria-uragon.jpg",
+    name: "Jerome Brofas Sombra",
+    role: "Co-Founder & Operations Director",
+    image: "/placeholder-user.jpg",
     description:
-      "Maria ensures smooth operations and exceptional customer service. She handles bookings and customer relations.",
-  },
-  {
-    name: "Carlos Santos",
-    role: "Fleet Manager",
-    image: "/team-carlos-santos.jpg",
-    description:
-      "Carlos maintains our fleet to the highest standards. His expertise ensures every vehicle is safe and reliable.",
-  },
-  {
-    name: "Ana Reyes",
-    role: "Customer Service Lead",
-    image: "/team-ana-reyes.jpg",
-    description:
-      "Ana leads our customer service team, ensuring every traveler has an exceptional experience with Uragon Tours.",
+      "Jerome brings his expertise in business operations and operational efficiency to Uragon Transport Services. He ensures that every client receives exceptional service and that our fleet operates at the highest standards.",
   },
 ]
 
@@ -35,23 +21,23 @@ export function AboutTeam() {
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">Meet Our Team</h2>
-            <p className="text-xl text-muted-foreground text-pretty">The passionate people behind Uragon Tours</p>
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">Meet Our Founders</h2>
+            <p className="text-xl text-muted-foreground text-pretty">The passionate people behind Uragon Transport Services</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
             {teamMembers.map((member, index) => (
               <div key={index} className="text-center">
-                <div className="mb-6">
+                <div className="mb-8">
                   <img
                     src={member.image || "/placeholder.svg"}
                     alt={member.name}
-                    className="w-32 h-32 rounded-full mx-auto object-cover shadow-lg"
+                    className="w-40 h-40 rounded-full mx-auto object-cover shadow-xl border-4 border-background"
                   />
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-2">{member.name}</h3>
-                <div className="text-primary font-medium mb-4">{member.role}</div>
-                <p className="text-muted-foreground text-sm text-pretty">{member.description}</p>
+                <h3 className="text-2xl font-semibold text-foreground mb-3">{member.name}</h3>
+                <div className="text-primary font-medium mb-6 text-lg">{member.role}</div>
+                <p className="text-muted-foreground text-base text-pretty leading-relaxed max-w-sm mx-auto">{member.description}</p>
               </div>
             ))}
           </div>

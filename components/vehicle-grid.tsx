@@ -1,303 +1,219 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Users, Settings, Fuel, Star, Shield } from "lucide-react"
+import { Users, Settings, Fuel, Shield, ChevronLeft, ChevronRight } from "lucide-react"
 import Link from "next/link"
+import { useState } from "react"
+import { getAllVehicles } from "@/lib/vehicles"
 
-const vehicles = [
-  {
-    id: "toyota-wigo-at-2025",
-    name: "Toyota Wigo AT 2025",
-    category: "Hatchback",
-    image: "/toyota-vios-sedan-car-rental.jpg",
-    seats: 5,
-    transmission: "Automatic",
-    fuel: "Gasoline",
-    pricePerDay: "₱2,000",
-    rating: 4.8,
-    reviews: 45,
-    features: ["Fuel Efficient", "Compact Design", "Easy Parking", "Air Conditioning"],
-    inclusions: ["Comprehensive Insurance", "24/7 Road Assistance", "Unlimited Mileage"],
-    popular: false,
-    colors: ["Silver"],
-  },
-  {
-    id: "toyota-wigo-mt-2019",
-    name: "Toyota Wigo MT 2019",
-    category: "Hatchback",
-    image: "/toyota-vios-sedan-car-rental.jpg",
-    seats: 5,
-    transmission: "Manual",
-    fuel: "Gasoline",
-    pricePerDay: "₱1,800",
-    rating: 4.7,
-    reviews: 38,
-    features: ["Fuel Efficient", "Compact Design", "Easy Parking", "Air Conditioning"],
-    inclusions: ["Comprehensive Insurance", "24/7 Road Assistance", "Unlimited Mileage"],
-    popular: false,
-    colors: ["Orange"],
-  },
-  {
-    id: "toyota-vios-at-2025",
-    name: "Toyota Vios AT 2025",
-    category: "Sedan",
-    image: "/toyota-vios-sedan-car-rental.jpg",
-    seats: 5,
-    transmission: "Automatic",
-    fuel: "Gasoline",
-    pricePerDay: "₱2,500",
-    rating: 4.9,
-    reviews: 124,
-    features: ["Air Conditioning", "Modern Interior", "Safety Features", "Bluetooth"],
-    inclusions: ["Comprehensive Insurance", "24/7 Road Assistance", "Unlimited Mileage"],
-    popular: true,
-    colors: ["Blackish Red", "Super Red", "Blue"],
-  },
-  {
-    id: "toyota-vios-at-2026",
-    name: "Toyota Vios AT 2026",
-    category: "Sedan",
-    image: "/toyota-vios-sedan-car-rental.jpg",
-    seats: 5,
-    transmission: "Automatic",
-    fuel: "Gasoline",
-    pricePerDay: "₱2,600",
-    rating: 4.9,
-    reviews: 67,
-    features: ["Air Conditioning", "Modern Interior", "Safety Features", "Bluetooth"],
-    inclusions: ["Comprehensive Insurance", "24/7 Road Assistance", "Unlimited Mileage"],
-    popular: true,
-    colors: ["Silver"],
-  },
-  {
-    id: "toyota-avanza-at-2023",
-    name: "Toyota Avanza AT 2023",
-    category: "MPV",
-    image: "/toyota-innova-mpv-car-rental.jpg",
-    seats: 7,
-    transmission: "Automatic",
-    fuel: "Gasoline",
-    pricePerDay: "₱3,000",
-    rating: 4.8,
-    reviews: 89,
-    features: ["Spacious Interior", "Air Conditioning", "USB Charging", "Luggage Space"],
-    inclusions: ["Comprehensive Insurance", "24/7 Road Assistance", "Unlimited Mileage"],
-    popular: false,
-    colors: ["Silver"],
-  },
-  {
-    id: "toyota-avanza-mt-2024",
-    name: "Toyota Avanza MT 2024",
-    category: "MPV",
-    image: "/toyota-innova-mpv-car-rental.jpg",
-    seats: 7,
-    transmission: "Manual",
-    fuel: "Gasoline",
-    pricePerDay: "₱2,800",
-    rating: 4.7,
-    reviews: 56,
-    features: ["Spacious Interior", "Air Conditioning", "USB Charging", "Luggage Space"],
-    inclusions: ["Comprehensive Insurance", "24/7 Road Assistance", "Unlimited Mileage"],
-    popular: false,
-    colors: ["Black"],
-  },
-  {
-    id: "toyota-innova-at-2024",
-    name: "Toyota Innova AT 2024",
-    category: "MPV",
-    image: "/toyota-innova-mpv-car-rental.jpg",
-    seats: 8,
-    transmission: "Automatic",
-    fuel: "Diesel",
-    pricePerDay: "₱3,500",
-    rating: 4.9,
-    reviews: 156,
-    features: ["Spacious Interior", "Air Conditioning", "USB Charging", "Luggage Space"],
-    inclusions: ["Comprehensive Insurance", "24/7 Road Assistance", "Unlimited Mileage"],
-    popular: true,
-    colors: ["White"],
-  },
-  {
-    id: "toyota-rush-at-2025",
-    name: "Toyota Rush AT 2025",
-    category: "SUV",
-    image: "/toyota-fortuner-suv-car-rental.jpg",
-    seats: 7,
-    transmission: "Automatic",
-    fuel: "Gasoline",
-    pricePerDay: "₱4,000",
-    rating: 4.8,
-    reviews: 73,
-    features: ["4WD Capability", "Premium Interior", "Safety Features", "Hill Assist"],
-    inclusions: ["Comprehensive Insurance", "24/7 Road Assistance", "Unlimited Mileage"],
-    popular: false,
-    colors: ["White"],
-  },
-  {
-    id: "mitsubishi-xpander-at-2024",
-    name: "Mitsubishi Xpander AT 2024",
-    category: "MPV",
-    image: "/mitsubishi-montero-suv-car-rental.jpg",
-    seats: 7,
-    transmission: "Automatic",
-    fuel: "Gasoline",
-    pricePerDay: "₱3,200",
-    rating: 4.7,
-    reviews: 92,
-    features: ["Spacious Interior", "Modern Design", "Safety Features", "Air Conditioning"],
-    inclusions: ["Comprehensive Insurance", "24/7 Road Assistance", "Unlimited Mileage"],
-    popular: false,
-    colors: ["White"],
-  },
-  {
-    id: "nissan-navara-4x4-at-2025",
-    name: "Nissan Navara 4x4 AT 2025",
-    category: "Pickup",
-    image: "/toyota-fortuner-suv-car-rental.jpg",
-    seats: 5,
-    transmission: "Automatic",
-    fuel: "Diesel",
-    pricePerDay: "₱4,500",
-    rating: 4.9,
-    reviews: 45,
-    features: ["4WD Capability", "Cargo Space", "Towing Capacity", "Premium Interior"],
-    inclusions: ["Comprehensive Insurance", "24/7 Road Assistance", "Unlimited Mileage"],
-    popular: true,
-    colors: ["Gray"],
-  },
-  {
-    id: "mitsubishi-mirage-g4-at-2024",
-    name: "Mitsubishi Mirage G4 AT 2024",
-    category: "Sedan",
-    image: "/honda-city-sedan-car-rental.jpg",
-    seats: 5,
-    transmission: "Automatic",
-    fuel: "Gasoline",
-    pricePerDay: "₱2,200",
-    rating: 4.6,
-    reviews: 34,
-    features: ["Fuel Efficient", "Compact Design", "Air Conditioning", "Modern Interior"],
-    inclusions: ["Comprehensive Insurance", "24/7 Road Assistance", "Unlimited Mileage"],
-    popular: false,
-    colors: ["Red"],
-  },
-  {
-    id: "l300-carry-mt-2024",
-    name: "L300 Carry MT 2024",
-    category: "Van",
-    image: "/hyundai-h350-van-car-rental.jpg",
-    seats: 12,
-    transmission: "Manual",
-    fuel: "Diesel",
-    pricePerDay: "₱3,800",
-    rating: 4.5,
-    reviews: 28,
-    features: ["Large Capacity", "Cargo Space", "Durable Design", "Power Steering"],
-    inclusions: ["Comprehensive Insurance", "24/7 Road Assistance", "Unlimited Mileage"],
-    popular: false,
-    colors: ["White"],
-  },
-]
+const vehicles = getAllVehicles()
+
+// Function to get hex color values for vehicle colors
+const getColorValue = (colorName: string): string => {
+  const colorMap: { [key: string]: string } = {
+    'Silver': '#C0C0C0',
+    'Orange': '#FF8C00',
+    'Blackish Red': '#8B0000',
+    'Super Red': '#DC143C',
+    'Blue': '#0066CC',
+    'Black': '#000000',
+    'White': '#FFFFFF',
+    'Gray': '#808080',
+    'Red': '#FF0000'
+  }
+  return colorMap[colorName] || '#CCCCCC' // Default gray if color not found
+}
+
+// Function to group vehicles by model and year
+const groupVehiclesByModel = () => {
+  const grouped: { [key: string]: any[] } = {}
+  
+  vehicles.forEach(vehicle => {
+    const key = `${vehicle.brand}-${vehicle.model}-${vehicle.year}-${vehicle.transmission}`
+    if (!grouped[key]) {
+      grouped[key] = []
+    }
+    grouped[key].push(vehicle)
+  })
+  
+  return Object.values(grouped).map(group => ({
+    ...group[0], // Use first vehicle as base
+    colorVariants: group.map(v => ({
+      id: v.id,
+      color: v.color,
+      image: v.images[0]
+    }))
+  }))
+}
 
 export function VehicleGrid() {
+  const [pricingMode, setPricingMode] = useState<'24hr' | '12hr'>('24hr')
+  const [selectedColors, setSelectedColors] = useState<{ [key: string]: number }>({})
+  
+  const groupedVehicles = groupVehiclesByModel()
+
   return (
     <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center mb-8">
-          <div>
-            <h2 className="text-2xl font-bold text-foreground mb-2">Available Vehicles</h2>
-            <p className="text-muted-foreground">{vehicles.length} vehicles found</p>
+        <div className="flex justify-center items-center mb-6 md:mb-8 px-4">
+          <div className="flex items-center space-x-2">
+            <span className="text-sm text-muted-foreground">Pricing:</span>
+            <div className="flex bg-muted rounded-lg p-1">
+              <Button
+                variant={pricingMode === '24hr' ? 'default' : 'ghost'}
+                size="sm"
+                onClick={() => setPricingMode('24hr')}
+                className="h-8 px-2 sm:px-3 text-xs sm:text-sm"
+              >
+                24hrs
+              </Button>
+              <Button
+                variant={pricingMode === '12hr' ? 'default' : 'ghost'}
+                size="sm"
+                onClick={() => setPricingMode('12hr')}
+                className="h-8 px-2 sm:px-3 text-xs sm:text-sm"
+              >
+                12hrs
+              </Button>
+            </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {vehicles.map((vehicle) => (
-            <Card key={vehicle.id} className="overflow-hidden hover:shadow-lg transition-shadow group">
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <img
-                  src={vehicle.image || "/placeholder.svg"}
-                  alt={`${vehicle.name} - ${vehicle.category} for rent in Bicol`}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                {vehicle.popular && (
-                  <Badge className="absolute top-3 left-3 bg-primary text-primary-foreground">Popular</Badge>
-                )}
-                <div className="absolute top-3 right-3 bg-background/90 backdrop-blur-sm px-2 py-1 rounded text-sm font-medium">
-                  {vehicle.category}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {groupedVehicles.map((vehicle) => {
+            const currentColorIndex = selectedColors[vehicle.id] || 0
+            const currentVariant = vehicle.colorVariants[currentColorIndex]
+            
+            return (
+              <div key={vehicle.id} className="bg-background rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow group">
+                {/* Image Carousel */}
+                <div className="relative aspect-video bg-muted/50 overflow-hidden">
+                  <img
+                    src={currentVariant.image || "/placeholder.svg"}
+                    alt={`${vehicle.name} - ${vehicle.category} for rent in Bicol`}
+                    className="w-full h-full object-cover"
+                  />
+                  
+                  {/* Carousel Navigation - Only show on hover */}
+                  {vehicle.colorVariants.length > 1 && (
+                    <>
+                      <button
+                        onClick={() => setSelectedColors(prev => ({
+                          ...prev,
+                          [vehicle.id]: currentColorIndex > 0 ? currentColorIndex - 1 : vehicle.colorVariants.length - 1
+                        }))}
+                        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-1 rounded-full transition-all opacity-0 group-hover:opacity-100"
+                      >
+                        <ChevronLeft className="h-4 w-4" />
+                      </button>
+                      <button
+                        onClick={() => setSelectedColors(prev => ({
+                          ...prev,
+                          [vehicle.id]: currentColorIndex < vehicle.colorVariants.length - 1 ? currentColorIndex + 1 : 0
+                        }))}
+                        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-1 rounded-full transition-all opacity-0 group-hover:opacity-100"
+                      >
+                        <ChevronRight className="h-4 w-4" />
+                      </button>
+                    </>
+                  )}
+                </div>
+                
+                <div className="p-4 md:p-6">
+                  <div className="flex justify-between items-start mb-3">
+                    <div>
+                      <h3 className="text-lg md:text-xl font-semibold text-foreground">{vehicle.name}</h3>
+                      <div className="flex items-center gap-2 mt-1">
+                        <span className="text-xs md:text-sm text-muted-foreground">Available Colors:</span>
+                        <div className="flex gap-1">
+                          {vehicle.colorVariants.map((variant, index) => (
+                            <div
+                              key={index}
+                              className={`w-4 h-4 md:w-5 md:h-5 rounded transition-all cursor-pointer ${
+                                index === currentColorIndex 
+                                  ? 'scale-110' 
+                                  : 'hover:scale-105'
+                              }`}
+                              style={{ 
+                                backgroundColor: getColorValue(variant.color),
+                                boxShadow: '0 1px 2px rgba(0,0,0,0.1)'
+                              }}
+                              onClick={() => setSelectedColors(prev => ({
+                                ...prev,
+                                [vehicle.id]: index
+                              }))}
+                              title={variant.color}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
+                    <div className="flex items-center space-x-1">
+                      <Users className="h-4 w-4" />
+                      <span>{vehicle.seats} seats</span>
+                    </div>
+                    <div className="flex items-center space-x-1">
+                      <Settings className="h-4 w-4" />
+                      <span>{vehicle.transmission}</span>
+                    </div>
+                    <div className="flex items-center space-x-1">
+                      <Fuel className="h-4 w-4" />
+                      <span>{vehicle.fuel}</span>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2 mb-4">
+                    <div className="text-sm font-medium text-foreground">Key Features:</div>
+                    <div className="flex flex-wrap gap-1">
+                      {vehicle.features.slice(0, 4).map((feature, index) => (
+                        <Badge key={index} variant="secondary" className="text-xs">
+                          {feature}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-2 mb-6">
+                    <div className="text-sm font-medium text-foreground">Included:</div>
+                    <div className="space-y-1">
+                      {vehicle.inclusions.slice(0, 2).map((inclusion, index) => (
+                        <div key={index} className="flex items-center text-xs text-muted-foreground">
+                          <Shield className="h-3 w-3 mr-2 text-primary" />
+                          {inclusion}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between mb-4">
+                    <div>
+                      <div className="text-2xl font-bold text-primary">
+                        {pricingMode === '24hr' ? vehicle.pricePerDay : vehicle.pricePer12hr}
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        {pricingMode === '24hr' ? 'per 24 hours' : 'per 12 hours'}
+                      </div>
+                      <div className="text-xs text-muted-foreground mt-1">{vehicle.type}</div>
+                    </div>
+                    <Link href={`/fleet/${currentVariant.id}`}>
+                      <Button variant="outline" size="sm" className="bg-transparent">
+                        View Details
+                      </Button>
+                    </Link>
+                  </div>
+
+                  <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
+                    Request to Book
+                  </Button>
                 </div>
               </div>
-
-              <CardContent className="p-6">
-                <div className="flex justify-between items-start mb-3">
-                  <h3 className="text-xl font-semibold text-foreground">{vehicle.name}</h3>
-                  <div className="flex items-center space-x-1 text-sm">
-                    <Star className="h-4 w-4 fill-primary text-primary" />
-                    <span className="font-medium">{vehicle.rating}</span>
-                    <span className="text-muted-foreground">({vehicle.reviews})</span>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
-                  <div className="flex items-center space-x-1">
-                    <Users className="h-4 w-4" />
-                    <span>{vehicle.seats} seats</span>
-                  </div>
-                  <div className="flex items-center space-x-1">
-                    <Settings className="h-4 w-4" />
-                    <span>{vehicle.transmission}</span>
-                  </div>
-                  <div className="flex items-center space-x-1">
-                    <Fuel className="h-4 w-4" />
-                    <span>{vehicle.fuel}</span>
-                  </div>
-                </div>
-
-                <div className="space-y-2 mb-4">
-                  <div className="text-sm font-medium text-foreground">Key Features:</div>
-                  <div className="flex flex-wrap gap-1">
-                    {vehicle.features.slice(0, 3).map((feature, index) => (
-                      <Badge key={index} variant="secondary" className="text-xs">
-                        {feature}
-                      </Badge>
-                    ))}
-                    {vehicle.features.length > 3 && (
-                      <Badge variant="secondary" className="text-xs">
-                        +{vehicle.features.length - 3} more
-                      </Badge>
-                    )}
-                  </div>
-                </div>
-
-                <div className="space-y-2 mb-6">
-                  <div className="text-sm font-medium text-foreground">Included:</div>
-                  <div className="space-y-1">
-                    {vehicle.inclusions.slice(0, 2).map((inclusion, index) => (
-                      <div key={index} className="flex items-center text-xs text-muted-foreground">
-                        <Shield className="h-3 w-3 mr-2 text-primary" />
-                        {inclusion}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <div className="text-2xl font-bold text-primary">{vehicle.pricePerDay}</div>
-                    <div className="text-sm text-muted-foreground">per day</div>
-                  </div>
-                  <Link href={`/fleet/${vehicle.id}`}>
-                    <Button variant="outline" size="sm" className="bg-transparent">
-                      View Details
-                    </Button>
-                  </Link>
-                </div>
-
-                <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
-                  Request to Book
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
+            )
+          })}
         </div>
 
         <div className="text-center mt-12">
