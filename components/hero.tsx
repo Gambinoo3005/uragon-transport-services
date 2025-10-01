@@ -20,7 +20,7 @@ export function Hero() {
         <div className="max-w-4xl mx-auto">
           <div className="relative mb-6 md:mb-8">
             {/* Main heading with enhanced styling */}
-            <h1 className="relative text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 text-balance leading-[0.9] tracking-tight">
+            <h1 className="relative text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 text-balance leading-[0.9] tracking-tight">
               <span className="block text-white drop-shadow-2xl">
                 Trusted Car Rental Service
               </span>
