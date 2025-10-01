@@ -21,7 +21,7 @@ import {
   Car, 
   Ship, 
   Waves, 
-  Island,
+  Mountain,
   Star,
   Navigation
 } from "lucide-react"
@@ -75,7 +75,7 @@ const services = [
     duration: "8 hours",
     price: "From ₱2,500",
     includes: ["Professional driver", "Vehicle", "Island access", "Beach activities"],
-    icon: Island
+    icon: Mountain
   },
   {
     name: "Beach Resort Tour",
