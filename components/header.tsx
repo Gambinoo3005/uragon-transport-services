@@ -222,29 +222,14 @@ export function Header() {
                 Home
               </Link>
               {navigation.map((item) => (
-                <div key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="text-sm font-medium text-foreground hover:text-primary transition-colors text-center block py-2"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                  {item.dropdown && (
-                    <div className="ml-4 space-y-2 mt-2">
-                      {item.dropdown.map((dropdownItem) => (
-                        <Link
-                          key={dropdownItem.name}
-                          href={dropdownItem.href}
-                          className="text-xs text-muted-foreground hover:text-primary transition-colors block py-1"
-                          onClick={() => setIsMenuOpen(false)}
-                        >
-                          {dropdownItem.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-sm font-medium text-foreground hover:text-primary transition-colors text-center block py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
               ))}
               <div className="pt-4 border-t">
                 <a
