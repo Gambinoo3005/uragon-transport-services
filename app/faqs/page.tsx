@@ -3,14 +3,6 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { BookingCTABanner } from "@/components/booking-cta-banner"
 import { StickyBookButton } from "@/components/sticky-book-button"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import {
   Accordion,
@@ -19,145 +11,175 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"
-import { HelpCircle, Phone, MessageCircle } from "lucide-react"
+import { HelpCircle, Phone, MessageCircle, Clock, MapPin, Shield, CreditCard, Car, Users, AlertTriangle } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Frequently Asked Questions | Uragon Transport Services | Car Rental FAQ",
+  title: "Frequently Asked Questions | Uragon Transport Services | Car Rental FAQ Bicol",
   description:
-    "Find answers to common questions about car rental with Uragon Transport Services. Learn about booking, requirements, rates, and more.",
-  keywords: "car rental FAQ, frequently asked questions, Bicol car rental questions, self drive rental FAQ",
+    "Get answers to all your car rental questions. Learn about booking, requirements, rates, policies, and services for Uragon Transport Services in Bicol.",
+  keywords: "car rental FAQ Bicol, Uragon Transport FAQ, car rental questions Albay, self drive rental FAQ Philippines, car rental requirements Bicol",
 }
 
 const faqCategories = [
   {
-    category: "Booking & Reservation",
-    icon: "📅",
+    category: "Booking & Availability",
+    icon: <Clock className="h-6 w-6" />,
     questions: [
       {
-        question: "How far in advance should I book a car?",
-        answer: "We recommend booking at least 24-48 hours in advance, especially during peak seasons or holidays. However, we also accept same-day bookings subject to vehicle availability."
-      },
-      {
-        question: "Can I modify or cancel my reservation?",
-        answer: "Yes, you can modify or cancel your reservation up to 24 hours before your scheduled pickup time without any penalty. Cancellations made within 24 hours may be subject to a cancellation fee."
-      },
-      {
-        question: "What payment methods do you accept?",
-        answer: "We accept credit cards (Visa, Mastercard, American Express), debit cards, bank transfers, and cash payments for local customers. Online payments are processed securely through our payment gateway."
-      },
-      {
-        question: "Do you offer long-term rentals?",
-        answer: "Yes, we offer weekly and monthly rental packages with discounted rates. Contact us for custom long-term rental arrangements and special pricing."
-      }
-    ]
-  },
-  {
-    category: "Requirements & Documents",
-    icon: "📋",
-    questions: [
-      {
-        question: "What documents do I need to rent a car?",
-        answer: "You need a valid driver's license (Philippine or international), a valid government-issued ID, and a credit card for the security deposit. Additional documents may be required for certain vehicle categories."
-      },
-      {
-        question: "Can I rent a car if I'm under 25?",
-        answer: "Yes, drivers aged 21-24 can rent economy and compact vehicles. However, a young driver surcharge may apply. Drivers must be at least 25 years old for SUVs and premium vehicles."
-      },
-      {
-        question: "Do you accept international driver's licenses?",
-        answer: "Yes, we accept valid international driving permits along with your passport. The international permit must be valid for the duration of your rental period."
-      },
-      {
-        question: "What is the security deposit amount?",
-        answer: "Security deposits range from ₱5,000 for economy cars to ₱15,000 for vans. The exact amount depends on the vehicle category and is held on your credit card during the rental period."
-      }
-    ]
-  },
-  {
-    category: "Vehicle & Driving",
-    icon: "🚗",
-    questions: [
-      {
-        question: "What is included in the rental rate?",
-        answer: "Our rates include unlimited mileage, basic insurance coverage, 24/7 roadside assistance, and free delivery within Legazpi City. Fuel is not included for self-drive rentals."
-      },
-      {
-        question: "Can I drive the car outside of Bicol?",
-        answer: "Yes, our vehicles can be driven within Luzon. For inter-island travel or specific restricted areas, please contact us in advance as additional permissions or insurance may be required."
-      },
-      {
-        question: "What happens if the car breaks down?",
-        answer: "We provide 24/7 roadside assistance. If the vehicle breaks down due to mechanical issues, we will provide a replacement vehicle or arrange for repairs at no additional cost to you."
-      },
-      {
-        question: "Can I add an additional driver?",
-        answer: "Yes, you can add additional drivers for a small fee. All additional drivers must meet the same age and license requirements and be present during vehicle pickup."
-      }
-    ]
-  },
-  {
-    category: "Insurance & Coverage",
-    icon: "🛡️",
-    questions: [
-      {
-        question: "What insurance coverage is included?",
-        answer: "Basic insurance coverage is included in all rentals, covering third-party liability and comprehensive coverage for the vehicle. Personal accident insurance is also included for the driver and passengers."
-      },
-      {
-        question: "What is not covered by insurance?",
-        answer: "Insurance does not cover personal belongings, damage from reckless driving, driving under the influence, or damage from off-road use. A deductible may apply for certain claims."
-      },
-      {
-        question: "Can I purchase additional insurance?",
-        answer: "Yes, we offer additional insurance options including zero-deductible coverage and enhanced personal accident insurance. Contact us for details and pricing."
-      },
-      {
-        question: "What should I do in case of an accident?",
-        answer: "In case of an accident, immediately contact the police and our 24/7 emergency hotline. Do not admit fault and gather as much information as possible, including photos and witness details."
-      }
-    ]
-  },
-  {
-    category: "Rates & Payment",
-    icon: "💰",
-    questions: [
-      {
-        question: "Are there any hidden fees?",
-        answer: "No, we believe in transparent pricing. All fees are clearly stated during the booking process. Additional charges may apply for late returns, excessive cleaning, or damage to the vehicle."
-      },
-      {
-        question: "Do you offer discounts for long-term rentals?",
-        answer: "Yes, we offer significant discounts for weekly and monthly rentals. The longer the rental period, the better the rate. Contact us for custom pricing for extended rentals."
-      },
-      {
-        question: "When is the security deposit refunded?",
-        answer: "The security deposit is released from your credit card within 3-5 business days after the vehicle is returned in good condition. Any additional charges will be deducted before the refund."
-      },
-      {
-        question: "Can I pay in installments?",
-        answer: "For long-term rentals, we may offer installment payment options. Contact us to discuss payment arrangements for rentals longer than one month."
-      }
-    ]
-  },
-  {
-    category: "Pickup & Return",
-    icon: "📍",
-    questions: [
-      {
-        question: "Where can I pick up and return the vehicle?",
-        answer: "You can pick up and return vehicles at our main office in Legazpi City, Legazpi Airport, or our Naga City location. Free delivery is available within Legazpi City for rentals of 3 days or more."
+        question: "How do I book a car?",
+        answer: "Call or text 0915 923 4867 between 7:00 AM–7:00 PM to check availability and reserve. A minimum ₱1,000 reservation fee confirms your booking. Same-day confirmations are processed during operating hours."
       },
       {
         question: "What are your operating hours?",
-        answer: "Our main office is open from 6:00 AM to 8:00 PM daily. Airport pickup is available from 5:00 AM to 10:00 PM. After-hours pickup can be arranged for an additional fee."
+        answer: "We're open daily, 7:00 AM–7:00 PM."
       },
       {
-        question: "What happens if I return the car late?",
-        answer: "Late returns are subject to additional charges. We provide a 1-hour grace period, after which hourly charges apply. Please contact us if you anticipate being late."
+        question: "How far in advance should I reserve?",
+        answer: "As early as possible—especially for weekends, holidays, and long drives—so we can secure your preferred unit and schedule. (Tip: Monthly and weekly bookings often unlock bigger savings.)"
       },
       {
-        question: "Can I return the car to a different location?",
-        answer: "One-way rentals are available between our locations for an additional fee. Contact us in advance to arrange a different return location."
+        question: "Can I get same-day rental?",
+        answer: "Yes, subject to vehicle availability and requirement verification during operating hours (7:00 AM–7:00 PM)."
+      }
+    ]
+  },
+  {
+    category: "Requirements (Self-Drive)",
+    icon: <HelpCircle className="h-6 w-6" />,
+    questions: [
+      {
+        question: "What are the rental requirements?",
+        answer: "For self-drive, prepare: Valid Driver's License, 1 Government-issued ID, Selfie with ID, LTO Portal login, Proof of billing, Reservation fee (minimum ₱1,000, non-refundable). All items must match the renter's identity."
+      },
+      {
+        question: "Do you allow additional drivers?",
+        answer: "Yes—additional drivers must also meet the same ID and license requirements."
+      }
+    ]
+  },
+  {
+    category: "Rates, Deposits & Payments",
+    icon: <CreditCard className="h-6 w-6" />,
+    questions: [
+      {
+        question: "How are rates computed?",
+        answer: "Rates are on a 24-hour basis per rental day. Add-ons (with-driver, delivery, tours, bridal) are quoted separately."
+      },
+      {
+        question: "What discounts do you offer?",
+        answer: "Up to 30% off for monthly rentals, 10% off for weekly rentals, 5% off for 3-day rentals, Promo: 6+1 (rent 6 days, get 1 day free). Available on qualified bookings; ask us for a tailored quote."
+      },
+      {
+        question: "What payment methods are accepted?",
+        answer: "We accept cash, bank transfer, and online payment."
+      },
+      {
+        question: "Is the reservation fee refundable?",
+        answer: "The reservation fee is non-refundable. One-time reschedule is allowed at least 1 day before the original travel date; same-day reschedules are not allowed."
+      }
+    ]
+  },
+  {
+    category: "Vehicles & Coverage",
+    icon: <Car className="h-6 w-6" />,
+    questions: [
+      {
+        question: "What vehicles are available?",
+        answer: "A well-maintained fleet including Toyota Wigo (AT/MT), Vios (AT), Avanza (AT/MT), Innova (AT), Rush (AT), Mitsubishi Xpander (AT), Mirage G4 (AT), L300 Carry (MT), Nissan Navara 4x4 (AT)—with various model years and colors. Ask us for the latest availability."
+      },
+      {
+        question: "Are your vehicles insured?",
+        answer: "Yes. All units have comprehensive insurance, and we provide 24/7 roadside assistance. A replacement unit is provided in case of accident or breakdown (subject to availability and terms)."
+      },
+      {
+        question: "Is there a mileage limit?",
+        answer: "Unlimited mileage applies within your declared province/destination. Please declare your travel route upon booking."
+      },
+      {
+        question: "Which areas do you serve?",
+        answer: "We service the Bicol Region and also support out-of-town rentals outside Bicol. Pickup/drop-off and delivery options are available (quoted separately)."
+      }
+    ]
+  },
+  {
+    category: "Pick-Up, Drop-Off, Delivery & With-Driver",
+    icon: <MapPin className="h-6 w-6" />,
+    questions: [
+      {
+        question: "Where is your base location?",
+        answer: "136 Purok 2, Sta. Teresa, Malilipot, Albay 4510."
+      },
+      {
+        question: "Do you offer pick-up and drop-off?",
+        answer: "Yes, we offer pick-up & drop-off and vehicle delivery. Fees depend on distance and schedule."
+      },
+      {
+        question: "Can I hire a driver instead of self-drive?",
+        answer: "Absolutely. Choose with-driver service for convenience (ideal for long trips, events, and business travel)."
+      }
+    ]
+  },
+  {
+    category: "Policies: Fuel, Cancellations, Extensions",
+    icon: <Shield className="h-6 w-6" />,
+    questions: [
+      {
+        question: "What is your fuel policy?",
+        answer: "Return the vehicle with the same fuel level as when released."
+      },
+      {
+        question: "Can I cancel or reschedule?",
+        answer: "Reservation fee: non-refundable. One-time reschedule: allowed if requested ≥ 1 day before your original travel date. Same-day reschedules: not allowed. For urgent changes, contact us ASAP to explore options."
+      },
+      {
+        question: "How do I extend my rental?",
+        answer: "Message or call us before your end time to request an extension. Approval depends on unit availability and updated billing on a 24-hour basis."
+      }
+    ]
+  },
+  {
+    category: "Special Services (Weddings, Tours, Corporate)",
+    icon: <Users className="h-6 w-6" />,
+    questions: [
+      {
+        question: "Do you have wedding/bridal packages?",
+        answer: "Yes—bridal service and wedding packages can be customized to your route, timings, and décor requests."
+      },
+      {
+        question: "Do you offer tour assistance?",
+        answer: "Yes—we provide tour assistance and local/out-of-town tours. Tell us your itinerary (Bicol or beyond) and we'll recommend the right vehicle and driver option."
+      },
+      {
+        question: "Can you support corporate or long-term use?",
+        answer: "Yes—corporate and monthly rentals are available and may qualify for up to 30% savings."
+      }
+    ]
+  },
+  {
+    category: "Safety, Support & Emergencies",
+    icon: <AlertTriangle className="h-6 w-6" />,
+    questions: [
+      {
+        question: "What if the car breaks down or I have an accident?",
+        answer: "Contact us immediately. We provide 24/7 roadside assistance and, when applicable, a replacement unit. Follow insurance instructions provided during vehicle release."
+      },
+      {
+        question: "What if I'm delayed returning the vehicle?",
+        answer: "Please inform us right away. Late returns without notice may incur additional charges and affect the next renter's schedule."
+      }
+    ]
+  },
+  {
+    category: "Company & Contact",
+    icon: <Phone className="h-6 w-6" />,
+    questions: [
+      {
+        question: "Who owns Uragon Transport Services?",
+        answer: "Owned and operated by Jerome Brofas Sombra and Mia Angela Ramos."
+      },
+      {
+        question: "How can I contact you?",
+        answer: "Call or text 0915 923 4867 (daily, 7:00 AM–7:00 PM). You can also arrange vehicle delivery, pick-up & drop-off, or with-driver service via this number."
       }
     ]
   }
@@ -166,57 +188,139 @@ const faqCategories = [
 export default function FAQsPage() {
   return (
     <div className="min-h-screen">
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How do I book a car?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Call or text 0915 923 4867 between 7:00 AM–7:00 PM to check availability and reserve. A minimum ₱1,000 reservation fee confirms your booking. Same-day confirmations are processed during operating hours."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What are the rental requirements?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Valid Driver's License, 1 Government ID, selfie with ID, LTO Portal login, proof of billing, and a non-refundable reservation fee."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What discounts do you offer?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Up to 30% off for monthly rentals, 10% off for weekly rentals, 5% off for 3-day rentals, and a 6+1 promo (rent 6 days, get 1 day free)."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is there a mileage limit?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Unlimited mileage within your declared province or destination."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do you offer pick-up, drop-off, and delivery?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. We offer pick-up & drop-off and vehicle delivery; fees depend on distance and schedule."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is your fuel policy?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Return the vehicle with the same fuel level as when released."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I reschedule or cancel?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Reservation fees are non-refundable. One-time reschedule is allowed at least 1 day before the original travel date; same-day reschedules are not allowed."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Are your vehicles insured and do you provide roadside assistance?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "All units have comprehensive insurance. We provide 24/7 roadside assistance and a replacement unit in case of accident or breakdown (subject to availability and terms)."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Which areas do you serve?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We serve the Bicol Region and also support out-of-town rentals outside Bicol."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Who owns Uragon Transport Services?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Jerome Brofas Sombra and Mia Angela Ramos."
+                }
+              }
+            ]
+          })
+        }}
+      />
+      
       <Header />
       <main>
-        <div className="container mx-auto px-4 py-6">
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/">Home</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>FAQs</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-        </div>
-
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-primary/10 to-primary/5 py-16">
-          <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Frequently Asked Questions
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Find answers to common questions about renting a car with Uragon Transport Services. 
-              Can't find what you're looking for? Contact us directly.
-            </p>
+        <section className="py-16 bg-gradient-to-br from-background to-muted">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto text-center">
+              <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
+                Frequently Asked <span className="text-primary">Questions</span>
+              </h1>
+              <p className="text-xl text-muted-foreground mb-8 text-pretty leading-relaxed">
+                Welcome! Below are the most common questions about booking, requirements, rates, policies, destinations, and support for Uragon Transport Services.
+              </p>
+            </div>
           </div>
         </section>
 
         {/* FAQ Categories */}
-        <section className="py-16">
+        <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="space-y-12">
               {faqCategories.map((category, categoryIndex) => (
-                <div key={categoryIndex}>
-                  <div className="flex items-center space-x-3 mb-8">
-                    <span className="text-3xl">{category.icon}</span>
-                    <h2 className="text-2xl font-bold text-foreground">{category.category}</h2>
+                <div key={categoryIndex} className="max-w-4xl mx-auto">
+                  <div className="flex items-center space-x-4 mb-8">
+                    <div className="bg-primary/10 w-16 h-16 rounded-2xl flex items-center justify-center">
+                      {category.icon}
+                    </div>
+                    <h2 className="text-2xl lg:text-3xl font-bold text-foreground">{category.category}</h2>
                   </div>
                   
-                  <Accordion type="single" collapsible className="space-y-4">
+                  <Accordion type="single" collapsible className="space-y-3">
                     {category.questions.map((faq, faqIndex) => (
                       <AccordionItem 
                         key={faqIndex} 
                         value={`${categoryIndex}-${faqIndex}`}
-                        className="border border-border rounded-lg px-6"
+                        className="bg-background rounded-2xl border border-border shadow-sm hover:shadow-md transition-shadow"
                       >
-                        <AccordionTrigger className="text-left hover:no-underline">
-                          <span className="font-medium">{faq.question}</span>
+                        <AccordionTrigger className="text-left hover:no-underline py-6 px-6">
+                          <span className="font-bold text-lg">{faq.question}</span>
                         </AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground">
+                        <AccordionContent className="text-muted-foreground text-base leading-relaxed px-6 pb-6">
                           {faq.answer}
                         </AccordionContent>
                       </AccordionItem>
@@ -228,111 +332,87 @@ export default function FAQsPage() {
           </div>
         </section>
 
-        {/* Contact Support */}
-        <section className="py-16 bg-muted/50">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-foreground mb-4">Still Have Questions?</h2>
-              <p className="text-lg text-muted-foreground">
-                Our customer support team is here to help you
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              <Card className="text-center">
-                <CardHeader>
-                  <div className="mx-auto mb-4 p-4 bg-primary/10 rounded-full w-fit">
-                    <Phone className="h-8 w-8 text-primary" />
-                  </div>
-                  <CardTitle>Call Us</CardTitle>
-                  <CardDescription>
-                    Speak directly with our customer service team
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <a 
-                    href="tel:+639159234867" 
-                    className="text-2xl font-bold text-primary hover:text-primary/80 transition-colors"
-                  >
-                    +63 915 923 4867
-                  </a>
-                  <p className="text-sm text-muted-foreground mt-2">
-                    Available 24/7 for emergencies<br />
-                    Regular support: 8:00 AM - 8:00 PM
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="text-center">
-                <CardHeader>
-                  <div className="mx-auto mb-4 p-4 bg-primary/10 rounded-full w-fit">
-                    <MessageCircle className="h-8 w-8 text-primary" />
-                  </div>
-                  <CardTitle>Live Chat</CardTitle>
-                  <CardDescription>
-                    Chat with us online for quick answers
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">
-                    Available Monday to Friday<br />
-                    8:00 AM - 6:00 PM
-                  </p>
-                  <div className="mt-4">
-                    <Badge variant="outline" className="text-xs">
-                      Coming Soon
-                    </Badge>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
-
-        {/* Quick Tips */}
-        <section className="py-16">
+        {/* Quick Tips Section */}
+        <section className="py-16 bg-muted">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
-              <Card className="border-blue-200 bg-blue-50/50">
+              <Card className="border-primary/10 bg-background">
                 <CardHeader>
-                  <div className="flex items-center space-x-2">
-                    <HelpCircle className="h-5 w-5 text-blue-600" />
-                    <CardTitle className="text-blue-800">Quick Tips for First-Time Renters</CardTitle>
+                  <div className="flex items-center justify-center space-x-3">
+                    <div className="p-2 bg-primary/10 rounded-lg">
+                      <HelpCircle className="h-6 w-6 text-primary" />
+                    </div>
+                    <CardTitle className="text-2xl text-foreground">Quick Tips Before You Drive</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <ul className="space-y-3 text-blue-700">
-                    <li className="flex items-start space-x-2">
-                      <span className="text-blue-600">•</span>
-                      <span>Book in advance to secure your preferred vehicle and get better rates</span>
-                    </li>
-                    <li className="flex items-start space-x-2">
-                      <span className="text-blue-600">•</span>
-                      <span>Inspect the vehicle thoroughly before driving away and report any existing damage</span>
-                    </li>
-                    <li className="flex items-start space-x-2">
-                      <span className="text-blue-600">•</span>
-                      <span>Keep our emergency contact number handy during your rental period</span>
-                    </li>
-                    <li className="flex items-start space-x-2">
-                      <span className="text-blue-600">•</span>
-                      <span>Return the vehicle with the same fuel level as when you received it</span>
-                    </li>
-                    <li className="flex items-start space-x-2">
-                      <span className="text-blue-600">•</span>
-                      <span>Read the rental agreement carefully and ask questions if anything is unclear</span>
-                    </li>
-                  </ul>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="text-center">
+                      <div className="bg-primary/10 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <span className="text-primary font-bold text-xl">✓</span>
+                      </div>
+                      <h4 className="font-semibold text-foreground mb-2">Required Documents</h4>
+                      <p className="text-sm text-muted-foreground">Bring all required IDs and ensure names match your booking</p>
+                    </div>
+                    <div className="text-center">
+                      <div className="bg-primary/10 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <span className="text-primary font-bold text-xl">✓</span>
+                      </div>
+                      <h4 className="font-semibold text-foreground mb-2">Declare Destination</h4>
+                      <p className="text-sm text-muted-foreground">Declare your destination to enjoy unlimited mileage within that province/route</p>
+                    </div>
+                    <div className="text-center">
+                      <div className="bg-primary/10 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <span className="text-primary font-bold text-xl">✓</span>
+                      </div>
+                      <h4 className="font-semibold text-foreground mb-2">Fuel Policy</h4>
+                      <p className="text-sm text-muted-foreground">Refuel to the same level before returning</p>
+                    </div>
+                    <div className="text-center md:col-span-2 lg:col-span-3">
+                      <div className="bg-primary/10 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <span className="text-primary font-bold text-xl">✓</span>
+                      </div>
+                      <h4 className="font-semibold text-foreground mb-2">Operating Hours</h4>
+                      <p className="text-sm text-muted-foreground">For smooth confirmations, complete requirements and settle the reservation fee during operating hours (7:00 AM–7:00 PM)</p>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             </div>
           </div>
         </section>
 
-        <BookingCTABanner />
+        {/* Custom FAQ CTA */}
+        <section className="bg-primary text-primary-foreground py-12">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <h3 className="text-3xl md:text-4xl font-bold mb-4">Need something else?</h3>
+              <p className="text-xl text-primary-foreground/90 mb-8 leading-relaxed">
+                If your question isn't covered here, message us at 0915 923 4867 and we'll help you plan the best option for your trip in the Bicol Region—from quick city errands to out-of-town adventures.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a 
+                  href="tel:+639159234867"
+                  className="inline-flex items-center justify-center bg-background text-foreground hover:bg-background/90 px-8 py-3 text-lg font-semibold rounded-md transition-colors"
+                >
+                  <Phone className="h-5 w-5 mr-2" />
+                  Call 0915 923 4867
+                </a>
+                <a 
+                  href="sms:+639159234867"
+                  className="inline-flex items-center justify-center bg-background text-foreground hover:bg-background/90 px-8 py-3 text-lg font-semibold rounded-md transition-colors"
+                >
+                  <MessageCircle className="h-5 w-5 mr-2" />
+                  Text Us
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
       <StickyBookButton />
     </div>
   )
 }
+

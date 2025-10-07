@@ -6,22 +6,27 @@ export function AboutStory() {
           <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
             <div>
               <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">Our Story</h2>
-              <div className="space-y-6 text-muted-foreground text-pretty">
+              <div className="space-y-6 text-lg text-muted-foreground text-pretty">
                 <p>
-                  Uragon Transport Services was established on January 22, 2025, by business owners Jerome Brofas Sombra and Mia Angela Ramos. We recognized the need for reliable and affordable car rental services in the Bicol region with a focus on unlimited mileage and exceptional customer service.
+                  Uragon was founded by Jerome Brofas Sombra and Mia Angela Ramos—Bicolanos who believed car rental should feel straightforward and neighborly. From day one, they set a simple standard: well-maintained, insured vehicles and service that treats every customer like a local friend.
                 </p>
                 <p>
-                  What sets us apart is our commitment to offering affordable rates with unlimited mileage for self drive rentals. We ensure safe, secure and clean units for every client's convenience. Our comprehensive car insurance coverage and 24/7 road assistance provide peace of mind for all our customers.
+                  Starting in Malilipot, they built the company through word-of-mouth—serving airport runs, family trips, corporate errands, and special occasions—growing one smooth, stress-free journey at a time.
                 </p>
-                <p>
-                  Today, we operate a modern fleet of Toyota, Mitsubishi, and Nissan vehicles including sedans, SUVs, MPVs, and vans. Our services include self drive, with driver, pick up-drop off, delivery, bridal service, tours, and business trips. We're committed to helping you unlock your journey and travel anywhere.
+              </div>
+              
+              <div className="mt-12 p-6 bg-primary/5 rounded-2xl border border-primary/10">
+                <h3 className="text-2xl font-bold text-foreground mb-4">Why "Uragon"?</h3>
+                <p className="text-muted-foreground text-pretty">
+                  In Bicolano, <span className="font-semibold text-foreground">uragon</span> celebrates excellence, grit, and skill. 
+                  It's the standard we hold ourselves to—on the road, in our service, and in how we take care of people.
                 </p>
               </div>
             </div>
             <div className="mt-12 lg:mt-0">
               <img
-                src="/uragon-tours-founder-story.jpg"
-                alt="Uragon Tours founder with first rental car"
+                src="/mayon_hero.jpg"
+                alt="Bicol region landscape with Mayon Volcano"
                 className="w-full rounded-2xl shadow-2xl"
               />
             </div>

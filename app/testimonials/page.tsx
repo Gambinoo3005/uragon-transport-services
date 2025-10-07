@@ -5,14 +5,6 @@ import { StickyBookButton } from "@/components/sticky-book-button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Star } from "lucide-react"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
 
 export default function TestimonialsPage() {
   const testimonials = [
@@ -76,19 +68,6 @@ export default function TestimonialsPage() {
     <div className="min-h-screen">
       <Header />
       <main>
-        <div className="container mx-auto px-4 py-6">
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/">Home</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>Testimonials</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-        </div>
         
         {/* Hero Section */}
         <section className="py-16 bg-gradient-to-br from-background to-muted">

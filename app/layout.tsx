@@ -12,23 +12,23 @@ const manrope = Manrope({
 })
 
 export const metadata: Metadata = {
-  title: "Car Rental in Albay | Uragon Transport Services — Bicol-Wide Coverage",
+  title: "Car Rental in Bicol Region | Uragon Transport Services",
   description:
-    "Book safe, clean cars with unlimited mileage, daily rates, 24/7 roadside assistance, and delivery/pick-up across Albay and the wider Bicol Region. Self-drive or with driver. Reserve now.",
+    "Affordable self-drive and with-driver rentals across Albay and the Bicol Region. Insured vehicles, 24/7 roadside assistance, unlimited mileage (within declared destination), and easy booking.",
   generator: "v0.app",
-  keywords: "car rental Albay, car rental Bicol, Legazpi car rental, Tabaco car rental, Daraga car rental, self drive rental, with driver service, unlimited mileage, 24/7 roadside assistance, comprehensive insurance, Bicol Region car rental",
+  keywords: "car rental in Bicol region, car rental Albay, car rental Bicol, Legazpi car rental, Tabaco car rental, Daraga car rental, self drive rental, with driver service, unlimited mileage, 24/7 roadside assistance, comprehensive insurance, Bicol Region car rental",
   openGraph: {
-    title: "Car Rental in Albay | Uragon Transport Services — Bicol-Wide Coverage",
+    title: "Car Rental in Bicol Region | Uragon Transport Services",
     description:
-      "Book safe, clean cars with unlimited mileage, daily rates, 24/7 roadside assistance, and delivery/pick-up across Albay and the wider Bicol Region. Self-drive or with driver. Reserve now.",
+      "Affordable self-drive and with-driver rentals across Albay and the Bicol Region. Insured vehicles, 24/7 roadside assistance, unlimited mileage (within declared destination), and easy booking.",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Car Rental in Albay | Uragon Transport Services — Bicol-Wide Coverage",
+    title: "Car Rental in Bicol Region | Uragon Transport Services",
     description:
-      "Book safe, clean cars with unlimited mileage, daily rates, 24/7 roadside assistance, and delivery/pick-up across Albay and the wider Bicol Region. Self-drive or with driver. Reserve now.",
+      "Affordable self-drive and with-driver rentals across Albay and the Bicol Region. Insured vehicles, 24/7 roadside assistance, unlimited mileage (within declared destination), and easy booking.",
   },
 }
 

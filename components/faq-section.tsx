@@ -2,49 +2,49 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 const faqs = [
   {
-    question: "What documents do I need to rent a car?",
+    question: "How do I book a car?",
     answer:
-      "You'll need a valid driver's license, 1 valid government ID, selfie with ID, LTO Portal login, proof of billing, and a minimum ₱1,000 reservation fee to confirm your booking.",
+      "Call or text 0915 923 4867 between 7:00 AM–7:00 PM to check availability and reserve. A minimum ₱1,000 reservation fee confirms your booking. Same-day confirmations are processed during operating hours.",
   },
   {
-    question: "Is insurance included in the rental price?",
+    question: "What are the rental requirements?",
     answer:
-      "Yes, all our units are covered with comprehensive car insurance. This provides you with peace of mind during your rental period.",
+      "For self-drive, prepare: Valid Driver's License, 1 Government-issued ID, Selfie with ID, LTO Portal login, Proof of billing, Reservation fee (minimum ₱1,000, non-refundable). All items must match the renter's identity.",
   },
   {
-    question: "What's your fuel policy?",
+    question: "What discounts do you offer?",
     answer:
-      "We operate on a same gas level policy. You'll receive the vehicle at a certain fuel level and should return it with the same gas level as when delivered.",
+      "Up to 30% off for monthly rentals, 10% off for weekly rentals, 5% off for 3-day rentals, Promo: 6+1 (rent 6 days, get 1 day free). Available on qualified bookings; ask us for a tailored quote.",
   },
   {
-    question: "What's your mileage policy?",
+    question: "Are your vehicles insured?",
     answer:
-      "We offer unlimited mileage within the declared province of destination. This means you can drive as much as you want within your specified area without additional charges.",
+      "Yes. All units have comprehensive insurance, and we provide 24/7 roadside assistance. A replacement unit is provided in case of accident or breakdown (subject to availability and terms).",
   },
   {
-    question: "What happens if I have car trouble during my rental?",
+    question: "Is there a mileage limit?",
     answer:
-      "We provide 24/7 road assistance and a replacement unit if necessary. Simply call our emergency hotline and we'll dispatch help immediately.",
+      "Unlimited mileage applies within your declared province/destination. Please declare your travel route upon booking.",
   },
   {
-    question: "What's your cancellation policy?",
+    question: "What is your fuel policy?",
     answer:
-      "Reservation fee is non-refundable but one-time reschedule is allowed at least 1 day prior to original travel date. Same day reschedule is not allowed.",
+      "Return the vehicle with the same fuel level as when released.",
   },
   {
-    question: "What forms of payment do you accept?",
+    question: "Can I cancel or reschedule?",
     answer:
-      "We accept online payment, cash, and bank transfer. A minimum ₱1,000 reservation fee is required to confirm your booking.",
+      "Reservation fee: non-refundable. One-time reschedule: allowed if requested ≥ 1 day before your original travel date. Same-day reschedules: not allowed.",
   },
   {
-    question: "Do you offer discounts for long-term rentals?",
+    question: "Do you offer pick-up and delivery?",
     answer:
-      "Yes, we offer up to 30% discount for monthly rentals. We also have 5% off for 3-day rentals and 10% off for weekly rentals. Current running promo is 6+1.",
+      "Yes, we offer pick-up & drop-off and vehicle delivery. Fees depend on distance and schedule.",
   },
   {
-    question: "Are vehicles available for out-of-town rentals?",
+    question: "Which areas do you serve?",
     answer:
-      "Yes, our vehicles are available for out-of-town rentals outside Bicol. Contact us for specific arrangements and pricing.",
+      "We service the Bicol Region and also support out-of-town rentals outside Bicol. Pickup/drop-off and delivery options are available (quoted separately).",
   },
 ]
 

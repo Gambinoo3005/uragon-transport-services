@@ -7,14 +7,6 @@ import { ContactHero } from "@/components/contact-hero"
 import { ContactForm } from "@/components/contact-form"
 import { ContactInfo } from "@/components/contact-info"
 import { ContactMap } from "@/components/contact-map"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
 
 export const metadata: Metadata = {
   title: "Contact Us | Book Your Car Rental in Bicol | Uragon Transport Services",
@@ -28,19 +20,6 @@ export default function ContactPage() {
     <div className="min-h-screen">
       <Header />
       <main>
-        <div className="container mx-auto px-4 py-6">
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/">Home</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>Contact</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-        </div>
         <ContactHero />
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-6xl mx-auto">

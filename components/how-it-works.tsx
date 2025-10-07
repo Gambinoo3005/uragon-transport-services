@@ -5,20 +5,20 @@ export function HowItWorks() {
     {
       number: "01",
       icon: Car,
-      title: "Choose Your Unit",
-      description: "Pick a car that fits your trip and passengers."
+      title: "Reserve",
+      description: "Pick a unit and travel dates; pay the reservation fee to confirm."
     },
     {
       number: "02", 
       icon: FileText,
-      title: "Send Requirements & Reserve",
-      description: "Driver's license, 1 gov't ID, selfie with ID, LTO portal login, proof of billing + reservation fee."
+      title: "Verify",
+      description: "Submit the required IDs and details for quick approval."
     },
     {
       number: "03",
       icon: MapPin,
-      title: "Pick-Up or Get It Delivered",
-      description: "Enjoy unlimited mileage and drive with confidence."
+      title: "Pick-Up or Delivery",
+      description: "Get the vehicle at our location or have it delivered; return with the same fuel level."
     }
   ]
 
@@ -28,7 +28,7 @@ export function HowItWorks() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Simple 3-Step <span className="text-primary">Car Hire Process</span>
+              How It Works <span className="text-primary">(3 Easy Steps)</span>
             </h2>
             <p className="text-xl text-muted-foreground">
               Simple 3-step process to get your car rental
@@ -58,7 +58,7 @@ export function HowItWorks() {
           </div>
 
           <div className="text-center mt-12">
-            <p className="text-lg text-muted-foreground">
+            <p className="text-xl text-muted-foreground">
               Perfect for <span className="font-semibold text-foreground">car hire in Bicol</span> needs—from weddings to business trips.
             </p>
           </div>

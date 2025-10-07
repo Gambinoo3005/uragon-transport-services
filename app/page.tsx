@@ -1,15 +1,18 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { BookingCTABanner } from "@/components/booking-cta-banner"
+import { HomepageCTABanner } from "@/components/homepage-cta-banner"
 import { StickyBookButton } from "@/components/sticky-book-button"
 import { Hero } from "@/components/hero"
 import { QuickBookingForm } from "@/components/quick-booking-form"
 import { KeyUSPs } from "@/components/key-usps"
 import { FleetHighlights } from "@/components/fleet-highlights"
-import { RatesTeaser } from "@/components/rates-teaser"
+import { LoyaltyCard } from "@/components/loyalty-card"
+import { ServicesSection } from "@/components/services-section"
+import { PromosSection } from "@/components/promos-section"
 import { HowItWorks } from "@/components/how-it-works"
-import { ServiceAreas } from "@/components/service-areas"
-import { SocialProof } from "@/components/social-proof"
+import { RequirementsSection } from "@/components/requirements-section"
+import { PoliciesSection } from "@/components/policies-section"
+import { SafetySupportSection } from "@/components/safety-support-section"
 import { FAQsPreview } from "@/components/faqs-preview"
 
 export default function HomePage() {
@@ -21,12 +24,15 @@ export default function HomePage() {
         <QuickBookingForm />
         <KeyUSPs />
         <FleetHighlights />
-        <RatesTeaser />
+        <LoyaltyCard />
+        <ServicesSection />
+        <PromosSection />
         <HowItWorks />
-        <ServiceAreas />
-        <SocialProof />
+        <RequirementsSection />
+        <PoliciesSection />
+        <SafetySupportSection />
         <FAQsPreview />
-        <BookingCTABanner />
+        <HomepageCTABanner />
       </main>
       <Footer />
       <StickyBookButton />

@@ -81,10 +81,10 @@ export function FleetHighlights() {
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 px-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 px-4">
               Our Most Popular <span className="text-primary">Cars for Every Journey</span>
             </h2>
-            <p className="text-lg sm:text-xl text-muted-foreground mb-6 md:mb-8 px-4">
+            <p className="text-xl text-muted-foreground mb-6 md:mb-8 px-4">
               From city errands to out-of-town tours—we have the perfect vehicle for every trip
             </p>
           </div>

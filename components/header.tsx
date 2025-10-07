@@ -16,7 +16,7 @@ export function Header() {
       href: "/services",
       dropdown: [
         { name: "Fleet", href: "/fleet" },
-        { name: "Rates", href: "/rates" },
+        { name: "Fleet", href: "/fleet" },
         { name: "How It Works", href: "/how-it-works" },
         { name: "Requirements", href: "/requirements" },
         { name: "Policies", href: "/policies" },
@@ -27,7 +27,7 @@ export function Header() {
       href: "/locations",
       dropdown: [
         { name: "Fleet", href: "/fleet" },
-        { name: "Rates", href: "/rates" },
+        { name: "Fleet", href: "/fleet" },
         { name: "How It Works", href: "/how-it-works" },
         { name: "Requirements", href: "/requirements" },
         { name: "Policies", href: "/policies" },
@@ -38,14 +38,13 @@ export function Header() {
       href: "/policies",
       dropdown: [
         { name: "Fleet", href: "/fleet" },
-        { name: "Rates", href: "/rates" },
+        { name: "Fleet", href: "/fleet" },
         { name: "How It Works", href: "/how-it-works" },
         { name: "Requirements", href: "/requirements" },
         { name: "FAQs", href: "/faqs" },
       ]
     },
     { name: "Fleet", href: "/fleet" },
-    { name: "Rates", href: "/rates" },
     { name: "How It Works", href: "/how-it-works" },
     { name: "Requirements", href: "/requirements" },
     { name: "FAQs", href: "/faqs" },

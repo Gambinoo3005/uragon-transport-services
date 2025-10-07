@@ -7,14 +7,6 @@ import { BlogHero } from "@/components/blog-hero"
 import { BlogGrid } from "@/components/blog-grid"
 import { BlogCategories } from "@/components/blog-categories"
 import { BlogNewsletter } from "@/components/blog-newsletter"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
 
 export const metadata: Metadata = {
   title: "Travel Blog | Car Rental Tips & Bicol Travel Guides | Uragon Transport Services",
@@ -28,19 +20,6 @@ export default function BlogPage() {
     <div className="min-h-screen">
       <Header />
       <main>
-        <div className="container mx-auto px-4 py-6">
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/">Home</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>Blog</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-        </div>
         <BlogHero />
         <BlogCategories />
         <BlogGrid />

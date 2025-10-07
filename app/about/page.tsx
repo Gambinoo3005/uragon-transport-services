@@ -5,17 +5,10 @@ import { BookingCTABanner } from "@/components/booking-cta-banner"
 import { StickyBookButton } from "@/components/sticky-book-button"
 import { AboutHero } from "@/components/about-hero"
 import { AboutStory } from "@/components/about-story"
-import { AboutTeam } from "@/components/about-team"
+import { MissionVision } from "@/components/mission-vision"
 import { AboutValues } from "@/components/about-values"
-import { AboutStats } from "@/components/about-stats"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
+import { AboutPromise } from "@/components/about-promise"
+import { AboutTeam } from "@/components/about-team"
 
 export const metadata: Metadata = {
   title: "About Us | Uragon Transport Services | Unlock your journey, travel anywhere",
@@ -29,23 +22,11 @@ export default function AboutPage() {
     <div className="min-h-screen">
       <Header />
       <main>
-        <div className="container mx-auto px-4 py-6">
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/">Home</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>About Us</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-        </div>
         <AboutHero />
         <AboutStory />
+        <MissionVision />
         <AboutValues />
-        <AboutStats />
+        <AboutPromise />
         <AboutTeam />
         <BookingCTABanner />
       </main>

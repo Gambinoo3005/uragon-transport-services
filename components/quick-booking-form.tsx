@@ -198,7 +198,7 @@ export function QuickBookingForm() {
                 <Button
                   type="submit"
                   size="lg"
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground px-12 py-4 text-lg font-semibold rounded-full shadow-2xl hover:shadow-primary/25 transition-all duration-300 hover:scale-105"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-primary/25 transition-all duration-300 hover:scale-105"
                 >
                   Get Instant Quote
                 </Button>

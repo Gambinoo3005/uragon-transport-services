@@ -7,14 +7,6 @@ import { VehicleFeatures } from "@/components/vehicle-features"
 import { VehiclePricing } from "@/components/vehicle-pricing"
 import { VehicleFAQ } from "@/components/vehicle-faq"
 import { Card, CardContent } from "@/components/ui/card"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
 import { notFound } from "next/navigation"
 import { vehicles, getVehicleById, getVehicleIds } from "@/lib/vehicles"
 
@@ -51,23 +43,6 @@ export default function VehiclePage({ params }: VehiclePageProps) {
     <div className="min-h-screen">
       <Header />
       <main>
-        <div className="container mx-auto px-4 py-6">
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/">Home</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/fleet">Fleet</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>{vehicle.name}</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-        </div>
         <VehicleDetailHero vehicle={vehicle} />
         <VehicleFeatures vehicle={vehicle} />
         

@@ -35,25 +35,25 @@ export function Hero() {
             
           </div>
           <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 md:mb-12 text-pretty leading-relaxed max-w-3xl mx-auto px-2">
-            Unlock your journey, travel anywhere. Get well-maintained units, comprehensive insurance, and 24/7 roadside assistance.
+            Unlock your journey with car rental in Bicol region. Get well-maintained units, comprehensive insurance, and 24/7 roadside assistance.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4">
             <Link href="/contact">
               <Button
                 size="lg"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 sm:px-12 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-full shadow-2xl hover:shadow-primary/25 transition-all duration-300 hover:scale-105 w-full sm:w-auto"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-primary/25 transition-all duration-300 hover:scale-105 w-full sm:w-auto"
               >
                 Book Now
               </Button>
             </Link>
-            <Link href="/rates">
+            <Link href="/fleet">
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-white text-white hover:bg-white hover:text-black bg-transparent px-8 sm:px-12 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-full backdrop-blur-sm hover:backdrop-blur-none transition-all duration-300 hover:scale-105 w-full sm:w-auto"
+                className="border-2 border-white text-white hover:bg-white hover:text-black bg-transparent px-8 py-4 text-lg font-semibold rounded-full backdrop-blur-sm hover:backdrop-blur-none transition-all duration-300 hover:scale-105 w-full sm:w-auto"
               >
-                View Rates
+                View Fleet
               </Button>
             </Link>
           </div>

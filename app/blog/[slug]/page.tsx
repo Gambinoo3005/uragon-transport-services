@@ -8,14 +8,6 @@ import { BlogPostHeader } from "@/components/blog-post-header"
 import { BlogPostContent } from "@/components/blog-post-content"
 import { BlogPostSidebar } from "@/components/blog-post-sidebar"
 import { RelatedPosts } from "@/components/related-posts"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
 
 // This would typically come from a CMS or database
 const blogPosts = {
@@ -78,23 +70,6 @@ export default function BlogPostPage({ params }: Props) {
     <div className="min-h-screen">
       <Header />
       <main>
-        <div className="container mx-auto px-4 py-6">
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/">Home</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/blog">Blog</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>{post.title}</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-        </div>
         <BlogPostHeader post={post} />
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-6xl mx-auto">

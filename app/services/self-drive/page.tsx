@@ -7,14 +7,6 @@ import { ServiceFeatures } from "@/components/service-features"
 import { ServicePricing } from "@/components/service-pricing"
 import { ServiceFAQ } from "@/components/service-faq"
 import { Card, CardContent } from "@/components/ui/card"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
 
 export const metadata = {
   title: "Self Drive Rental - Unlimited Mileage Car Rental | Uragon Transport Services",
@@ -154,23 +146,6 @@ export default function SelfDrivePage() {
     <div className="min-h-screen">
       <Header />
       <main>
-        <div className="container mx-auto px-4 py-6">
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/">Home</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/services">Services</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>Self Drive Rental</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-        </div>
         <ServiceDetailHero service={serviceData} />
         <ServiceFeatures service={serviceData} />
         

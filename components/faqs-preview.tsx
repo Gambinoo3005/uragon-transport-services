@@ -3,30 +3,27 @@
 import { ChevronDown } from "lucide-react"
 import { useState } from "react"
 import Link from "next/link"
+import { Button } from "@/components/ui/button"
 
 export function FAQsPreview() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   const faqs = [
     {
-      question: "What are your operating hours?",
-      answer: "7:00 AM–7:00 PM daily; roadside assistance is available 24/7."
+      question: "How do I book a car?",
+      answer: "Call or text 0915 923 4867 between 7:00 AM–7:00 PM. A minimum ₱1,000 reservation fee confirms your booking."
     },
     {
-      question: "What documents do I need?",
-      answer: "Valid driver's license, one government ID, selfie with ID, LTO portal login, proof of billing, and the reservation fee."
+      question: "What are the rental requirements?",
+      answer: "Valid Driver's License, Government ID, selfie with ID, LTO Portal login, proof of billing, and reservation fee."
     },
     {
-      question: "Is the reservation fee refundable?",
-      answer: "No. One-time reschedule allowed at least 1 day before the original date; same-day reschedules aren't allowed."
+      question: "What discounts do you offer?",
+      answer: "Up to 30% off monthly rentals, 10% off weekly, 5% off 3-day rentals, plus our 6+1 promo."
     },
     {
-      question: "Do you offer self-drive and with-driver options?",
-      answer: "Yes. We offer self-drive rentals (great for self-drive car rental Bicol) and with-driver services for convenience."
-    },
-    {
-      question: "Any discounts?",
-      answer: "Yes—up to 30% monthly, 10% weekly, 5% for 3-day rentals; plus 6+1 promo."
+      question: "Do you offer pick-up and delivery?",
+      answer: "Yes—we offer pick-up & drop-off and vehicle delivery. Fees depend on distance and schedule."
     }
   ]
 
@@ -40,7 +37,7 @@ export function FAQsPreview() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Frequently Asked <span className="text-primary">Questions</span>
+              FAQs <span className="text-primary">(Quick Answers)</span>
             </h2>
             <p className="text-xl text-muted-foreground">
               Quick answers to common questions about our car rental services
@@ -54,7 +51,7 @@ export function FAQsPreview() {
                   onClick={() => toggleFAQ(index)}
                   className="w-full p-6 text-left flex items-center justify-between hover:bg-muted/50 transition-colors"
                 >
-                  <h3 className="text-xl font-semibold text-foreground mb-3 pr-4">
+                  <h3 className="text-xl font-semibold text-foreground pr-4">
                     {faq.question}
                   </h3>
                   <ChevronDown 
@@ -76,9 +73,12 @@ export function FAQsPreview() {
 
           <div className="text-center">
             <Link href="/faqs">
-              <button className="text-primary hover:text-primary/80 font-semibold text-lg transition-colors">
-                View All FAQs →
-              </button>
+              <Button 
+                size="lg" 
+                className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-primary/25 transition-all duration-300 hover:scale-105"
+              >
+                View All FAQs
+              </Button>
             </Link>
           </div>
         </div>

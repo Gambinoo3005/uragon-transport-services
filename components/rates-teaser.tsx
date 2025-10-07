@@ -76,12 +76,12 @@ export function RatesTeaser() {
           </div>
 
           <div className="text-center mt-12">
-            <Link href="/rates">
+            <Link href="/fleet">
               <Button
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-primary/25 transition-all duration-300 hover:scale-105"
               >
-                View Detailed Rates & Promos
+                View Fleet
               </Button>
             </Link>
           </div>
