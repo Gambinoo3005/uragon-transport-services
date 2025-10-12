@@ -1,13 +1,11 @@
+import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { BookingCTABanner } from "@/components/booking-cta-banner"
 import { StickyBookButton } from "@/components/sticky-book-button"
-import { ServiceDetailHero } from "@/components/service-detail-hero"
-import { ServiceFeatures } from "@/components/service-features"
-import { ServicePricing } from "@/components/service-pricing"
+import { ServiceLandingHero } from "@/components/service-landing-hero"
 import { ServiceFAQ } from "@/components/service-faq"
 import { SectionContainer, SectionHeader } from "@/components/ui/content-grid"
-import { ContentCard } from "@/components/ui/content-card"
 
 export const metadata = {
   title: "Bridal Service - Wedding Transportation Bicol | Uragon Transport Services",
@@ -17,78 +15,74 @@ export const metadata = {
 }
 
 const serviceData = {
-  title: "Bridal Service",
-  subtitle: "Elegant transportation for your special day",
-  description:
-    "Make your wedding day perfect with our elegant bridal transportation service. We provide beautiful, well-maintained vehicles and professional drivers to ensure your special day runs smoothly and stress-free.",
-  image: "/toyota-vios-sedan-car-rental.jpg",
-  features: [
-    {
-      title: "Elegant Vehicles",
-      description: "Beautiful, well-maintained vehicles perfect for your wedding day, including sedans, SUVs, and luxury options.",
+  hero: {
+    eyebrow: "Wedding transport",
+    title: "Arrive in style with a dedicated bridal fleet",
+    description:
+      "Make your wedding day seamless with elegant vehicles, formally dressed chauffeurs, and a coordination team that keeps every transfer on schedule.",
+    primaryAction: {
+      label: "Plan your wedding ride",
+      href: "/contact"
     },
-    {
-      title: "Professional Drivers",
-      description: "Experienced, courteous drivers dressed appropriately for your special occasion, ensuring punctuality and professionalism.",
-    },
-    {
-      title: "Wedding Packages",
-      description: "Complete wedding transportation packages including ceremony, reception, and photo shoot transportation.",
-    },
-    {
-      title: "Special Occasions",
-      description: "Available for weddings, anniversaries, proms, and other special celebrations that require elegant transportation.",
-    },
-    {
-      title: "Flexible Scheduling",
-      description: "Accommodate your wedding timeline with flexible pickup and drop-off times for all wedding day events.",
-    },
-    {
-      title: "Stress-Free Service",
-      description: "Let us handle the transportation logistics so you can focus on enjoying your special day without worries.",
-    },
+    secondaryAction: {
+      label: "View vehicle gallery",
+      href: "/fleet"
+    }
+  },
+  overview: [
+    "Our bridal service provides elegant transportation solutions for your wedding day, ensuring you arrive in style and on time. Perfect for couples who want reliable, professional support for their celebration.",
+    "We combine experienced chauffeurs, well-maintained vehicles, and flexible scheduling so your ceremony, reception, and photo sessions flow without stress."
   ],
-  inclusions: [
-    "Elegant wedding vehicle",
-    "Professional driver in formal attire",
-    "Vehicle decoration (basic)",
-    "Flexible wedding day schedule",
-    "Complimentary waiting time",
-    "Emergency backup vehicle",
+  signatureHighlights: [
+    "Choose from sedans, SUVs, and vans that are detailed and styled specifically for weddings.",
+    "Professional chauffeurs in formal attire who coordinate with your planner and entourage.",
+    "Flexible routing that covers preparations, ceremony, reception, and photo shoots.",
+    "Complimentary waiting buffers and real-time timeline monitoring throughout the day.",
+    "Backup vehicle and support hotline on standby for absolute peace of mind."
   ],
-  exclusions: [
-    "Advanced vehicle decoration",
-    "Flower arrangements",
-    "Photography services",
-    "Wedding planning services",
-    "Extended waiting beyond schedule",
-    "Additional stops not in itinerary",
+  packages: [
+    {
+      name: "Wedding Day Package (8 hours)",
+      price: "from ₱4,000",
+      description:
+        "Covers the entire event—from preparation venue to reception—with chauffeur, fuel, ribbons, and contingency support. Upgrade to SUV or van for larger entourages."
+    },
+    {
+      name: "Ceremony Focus (4 hours)",
+      price: "from ₱2,500",
+      description:
+        "Perfect for quick transfers from the prep venue to the church and onward to the reception entrance photo moment."
+    },
+    {
+      name: "Reception Transfer (4 hours)",
+      price: "from ₱2,500",
+      description:
+        "Ensures smooth movement between venues for the couple and entourage with planned stops for pictorials."
+    },
+    {
+      name: "Photo Shoot Add-on",
+      price: "from ₱2,000",
+      description:
+        "Extend coverage for prenuptial sessions or additional portrait locations scheduled before or after the big day."
+    }
   ],
-  pricing: [
-    {
-      route: "Wedding Day Package (8 hours)",
-      sedan: "₱4,000",
-      suv: "₱5,000",
-      van: "₱6,000",
-    },
-    {
-      route: "Ceremony Only (4 hours)",
-      sedan: "₱2,500",
-      suv: "₱3,000",
-      van: "₱3,500",
-    },
-    {
-      route: "Reception Only (4 hours)",
-      sedan: "₱2,500",
-      suv: "₱3,000",
-      van: "₱3,500",
-    },
-    {
-      route: "Photo Shoot Transport",
-      sedan: "₱2,000",
-      suv: "₱2,500",
-      van: "₱3,000",
-    },
+  logistics: {
+    coverage: [
+      "Serving churches, hotels, resorts, and private venues across Legazpi, Naga, and the greater Bicol Region.",
+      "Familiar with coastal resorts, garden ceremonies, and mountain retreats—routes are scouted ahead of time.",
+      "Coordinate multiple vehicles for bridal party, family, and VIP guests as needed."
+    ],
+    timeline: [
+      "Pre-event coordination includes pickup times, alternate routes, and décor instructions.",
+      "On-the-day updates are shared between driver, planner, and point person to manage adjustments in real time.",
+      "Backup plans are ready for weather or traffic, including alternate staging points and shelter options."
+    ]
+  },
+  preparation: [
+    "Reserve your preferred vehicle at least 2–3 months ahead, especially during peak wedding months.",
+    "Share the full timeline, venue addresses, and key contact numbers one week before the event.",
+    "Provide decoration instructions or hand off décor to our team during the styling schedule.",
+    "Assign a point person who can approve changes and settle any add-ons on the wedding day."
   ],
   faqs: [
     {
@@ -117,29 +111,6 @@ const serviceData = {
         "Our professional drivers are experienced with wedding day logistics and can assist with timing, coordination with other vendors, and ensuring smooth transitions between venues.",
     },
   ],
-  // Additional content for SEO - Concise, focused information
-  content: {
-    introduction: [
-      "Our bridal service provides elegant transportation solutions for your wedding day, ensuring you arrive in style and on time. Perfect for couples who want reliable, professional service for their special celebration.",
-      "We understand that your wedding day is one of the most important days of your life, which is why we provide experienced drivers, well-maintained vehicles, and flexible scheduling to accommodate your unique wedding timeline.",
-    ],
-    benefits: [
-      "Enjoy peace of mind knowing that your wedding day transportation is handled by professionals. Our drivers are experienced with wedding logistics and will ensure punctual, stress-free service throughout your special day.",
-      "Save time and energy by letting us handle all transportation details, from ceremony to reception. Focus on celebrating with your loved ones while we take care of getting you where you need to be.",
-    ],
-    process: [
-      "Book your bridal service well in advance and provide your wedding day schedule, venues, and special requirements. We'll create a customized transportation plan for your special day.",
-      "Meet with our team to finalize details, including pickup times, routes, and any special requests. We'll provide a detailed timeline and ensure all wedding day transportation runs smoothly.",
-    ],
-    areas: [
-      "Our bridal service covers all of Bicol Region, including popular wedding venues in Legazpi, Naga, and surrounding areas. We're familiar with local churches, reception venues, and photo shoot locations.",
-      "We can accommodate weddings in hotels, beach resorts, gardens, and other special venues throughout Bicol. Contact us to discuss transportation for your specific wedding location.",
-    ],
-    tips: [
-      "Book early, especially for peak wedding seasons, to secure your preferred vehicle and ensure availability. Provide detailed wedding day schedules and venue information when booking.",
-      "Consider your wedding party size and choose an appropriate vehicle. Plan for extra time between venues and communicate any special requirements or last-minute changes to your driver.",
-    ],
-  },
 }
 
 export default function BridalServicePage() {
@@ -147,57 +118,112 @@ export default function BridalServicePage() {
     <div className="min-h-screen">
       <Header />
       <main>
-        <ServiceDetailHero service={serviceData} />
-        <ServiceFeatures service={serviceData} />
-        
-        {/* Additional Content Section for SEO */}
+        <ServiceLandingHero
+          eyebrow={serviceData.hero.eyebrow}
+          title={serviceData.hero.title}
+          description={serviceData.hero.description}
+          primaryAction={serviceData.hero.primaryAction}
+          secondaryAction={serviceData.hero.secondaryAction}
+        />
+
         <SectionContainer background="default" padding="xl">
-          <div className="max-w-4xl mx-auto space-y-12">
-            
-            {/* Introduction */}
-            <ContentCard
-              type="feature"
-              title="About Bridal Service"
-              description={serviceData.content.introduction.join(' ')}
-              variant="default"
-            />
-
-            {/* Benefits */}
-            <ContentCard
-              type="feature"
-              title="Why Choose Our Bridal Service?"
-              description={serviceData.content.benefits.join(' ')}
-              variant="default"
-            />
-
-            {/* How It Works */}
-            <ContentCard
-              type="feature"
-              title="How Bridal Service Works"
-              description={serviceData.content.process.join(' ')}
-              variant="default"
-            />
-
-            {/* Service Areas */}
-            <ContentCard
-              type="feature"
-              title="Service Areas"
-              description={serviceData.content.areas.join(' ')}
-              variant="default"
-            />
-
-            {/* Tips & Recommendations */}
-            <ContentCard
-              type="feature"
-              title="Tips & Recommendations"
-              description={serviceData.content.tips.join(' ')}
-              variant="default"
-            />
-
+          <div className="max-w-3xl mx-auto space-y-6">
+            {serviceData.overview.map((paragraph, index) => (
+              <p key={index} className="text-lg text-muted-foreground leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
           </div>
         </SectionContainer>
 
-        <ServicePricing service={serviceData} />
+        <SectionContainer background="muted/30" padding="xl">
+          <SectionHeader
+            title="Signature bridal experience"
+            description="Everything is choreographed so you can focus on the celebration."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <ul className="grid gap-4 md:grid-cols-2">
+            {serviceData.signatureHighlights.map((item, index) => (
+              <li key={index} className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </SectionContainer>
+
+        <SectionContainer background="default" padding="xl">
+          <SectionHeader
+            title="Curated packages"
+            description="Rates include chauffeur, fuel, ribbons, and coordination support."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <div className="grid gap-8 md:grid-cols-2">
+            {serviceData.packages.map((pkg, index) => (
+              <div key={index} className="space-y-2">
+                <p className="text-sm uppercase tracking-wide text-muted-foreground">{pkg.name}</p>
+                <p className="text-2xl font-semibold text-foreground">{pkg.price}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{pkg.description}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-8 text-base text-muted-foreground leading-relaxed">
+            Need a bespoke route or additional vehicles?{' '}
+            <Link href="/contact" className="text-primary font-semibold">
+              Talk to our coordinators
+            </Link>{' '}
+            for a tailored quote.
+          </p>
+        </SectionContainer>
+
+        <SectionContainer background="muted/30" padding="xl">
+          <SectionHeader
+            title="Wedding day logistics"
+            description="We cover every detail so transfers stay effortless even when timelines shift."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <div className="grid gap-10 md:grid-cols-2">
+            <div>
+              <h3 className="text-lg font-semibold text-foreground">Coverage & venues</h3>
+              <ul className="mt-3 space-y-3">
+                {serviceData.logistics.coverage.map((item, index) => (
+                  <li key={index} className="text-base text-muted-foreground leading-relaxed">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-foreground">Timeline support</h3>
+              <ul className="mt-3 space-y-3">
+                {serviceData.logistics.timeline.map((item, index) => (
+                  <li key={index} className="text-base text-muted-foreground leading-relaxed">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </SectionContainer>
+
+        <SectionContainer background="default" padding="xl">
+          <SectionHeader
+            title="How to prepare"
+            description="A few quick steps keep your wedding transportation smooth and stress-free."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <ul className="grid gap-4 md:grid-cols-2">
+            {serviceData.preparation.map((item, index) => (
+              <li key={index} className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </SectionContainer>
+
         <ServiceFAQ service={serviceData} />
         <BookingCTABanner />
       </main>

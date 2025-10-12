@@ -1,13 +1,11 @@
+import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { BookingCTABanner } from "@/components/booking-cta-banner"
 import { StickyBookButton } from "@/components/sticky-book-button"
-import { ServiceDetailHero } from "@/components/service-detail-hero"
-import { ServiceFeatures } from "@/components/service-features"
-import { ServicePricing } from "@/components/service-pricing"
+import { ServiceLandingHero } from "@/components/service-landing-hero"
 import { ServiceFAQ } from "@/components/service-faq"
 import { SectionContainer, SectionHeader } from "@/components/ui/content-grid"
-import { ContentCard } from "@/components/ui/content-card"
 
 export const metadata = {
   title: "Self Drive Rental - Unlimited Mileage Car Rental | Uragon Transport Services",
@@ -17,129 +15,139 @@ export const metadata = {
 }
 
 const serviceData = {
-  title: "Self Drive Rental",
-  subtitle: "Drive yourself with unlimited mileage",
-  description:
-    "Rent a car and explore Bicol at your own pace with our self-drive rental service. Enjoy unlimited mileage within the declared province and the freedom to create your own itinerary. Perfect for couples, families, and groups who want to discover the beauty of Bicol on their own terms.",
-  image: "/toyota-vios-sedan-car-rental.jpg",
-  features: [
-    {
-      title: "Unlimited Mileage",
-      description: "Drive as much as you want within the declared province with no additional mileage charges. Explore every corner of Bicol without worrying about distance limits.",
+  hero: {
+    eyebrow: "Self-Drive Rentals",
+    title: "Freedom to explore Bicol on your own terms",
+    description:
+      "Choose the car that fits your trip, enjoy unlimited mileage within your declared province, and drive with confidence thanks to insured units and responsive local support.",
+    primaryAction: {
+      label: "Book your self-drive",
+      href: "/contact"
     },
-    {
-      title: "24-Hour Rental",
-      description: "Full 24-hour rental periods give you maximum flexibility to plan your day. Pick up in the morning and return the next day at the same time.",
-    },
-    {
-      title: "Comprehensive Insurance",
-      description: "All our vehicles come with comprehensive insurance coverage, giving you peace of mind while exploring Bicol's roads and destinations.",
-    },
-    {
-      title: "Same Gas Level Policy",
-      description: "Return the vehicle with the same fuel level as when you received it. No need to worry about refueling to a specific amount.",
-    },
-    {
-      title: "Well-Maintained Fleet",
-      description: "Our fleet of Toyota, Mitsubishi, and Nissan vehicles are regularly maintained and inspected to ensure safety and reliability.",
-    },
-    {
-      title: "24/7 Roadside Assistance",
-      description: "Get help whenever you need it with our 24/7 roadside assistance service. We're here to support you throughout your journey.",
-    },
-  ],
+    secondaryAction: {
+      label: "Browse vehicle options",
+      href: "/fleet"
+    }
+  },
   inclusions: [
-    "Comprehensive vehicle insurance",
-    "24/7 roadside assistance",
-    "Unlimited mileage within declared province",
-    "Well-maintained vehicle",
-    "Basic vehicle documentation",
-    "Emergency contact support",
+    "Unlimited mileage within your declared province",
+    "Comprehensive insurance with documented participation fees",
+    "24/7 roadside assistance and emergency hotline",
+    "Clean, sanitized vehicle with updated registration and OR/CR",
+    "Flexible pick-up from Legazpi hub or door-to-door delivery",
+    "Dedicated support via phone, chat, or email throughout your trip"
   ],
-  exclusions: [
-    "Fuel costs",
-    "Toll fees",
-    "Parking fees",
-    "Traffic violations and fines",
-    "Driver services",
-    "Additional accessories",
+  vehicleOptions: [
+    {
+      category: "Hatchbacks",
+      description: "Compact units like Toyota Wigo—easy to park, fuel-efficient, and perfect for city drives or solo travelers."
+    },
+    {
+      category: "Sedans",
+      description: "Toyota Vios and Mitsubishi Mirage G4—comfortable cabins with large trunks for weekend bags and airport runs."
+    },
+    {
+      category: "MPVs & SUVs",
+      description: "Toyota Avanza, Rush, and Innova—ideal for families and barkadas needing extra space for luggage and passengers."
+    },
+    {
+      category: "Passenger Vans",
+      description: "Mitsubishi L300 and similar vans—built for group road trips, retreats, and equipment-heavy assignments."
+    }
   ],
-  pricing: [
-    {
-      route: "Hatchback (Wigo) - 4 Seaters",
-      sedan: "₱1,800",
-      suv: "₱1,800",
-      van: "₱1,800",
-    },
-    {
-      route: "Sedan (Vios/Mirage G4) - 5 Seaters",
-      sedan: "₱2,000",
-      suv: "₱2,000",
-      van: "₱2,000",
-    },
-    {
-      route: "SUV (Avanza/Rush) - 7-8 Seaters",
-      sedan: "₱3,000",
-      suv: "₱3,000",
-      van: "₱3,000",
-    },
-    {
-      route: "SUV (Innova) - 8-9 Seaters",
-      sedan: "₱3,500",
-      suv: "₱3,500",
-      van: "₱3,500",
-    },
+  pickupDelivery: {
+    overview: [
+      "Start your rental from our Legazpi City hub or request a door-to-door handover anywhere in Metro Legazpi, Daraga, Sto. Domingo, and neighboring towns.",
+      "Provincial drop-offs and ferry transfers can be arranged with advance notice so we can line up logistics and support."
+    ],
+    options: [
+      {
+        title: "Hub Pick-up",
+        detail: "Visit our Legazpi hub daily from 6:00 AM to 9:00 PM. We run through the checklist, fuel level, and emergency contacts before you leave."
+      },
+      {
+        title: "Door-to-Door Delivery",
+        detail: "Schedule delivery at least 6 hours ahead. Our team confirms the exact time and shares the assigned coordinator’s contact details."
+      }
+    ],
+    cutoffs: [
+      {
+        title: "Same-day requests",
+        detail: "Cut-off at 3:00 PM subject to vehicle availability. We’ll notify you immediately if the preferred unit is still on the road."
+      },
+      {
+        title: "Airport handovers",
+        detail: "Book 12 hours before your flight arrival for Legazpi and Naga airports so we can secure gate passes and staging."
+      }
+    ]
+  },
+  rates: {
+    overview:
+      "All rates already include unlimited mileage within your declared province, comprehensive insurance, and round-the-clock assistance.",
+    tiers: [
+      {
+        title: "Daily (24 hours)",
+        price: "from ₱1,800",
+        detail: "Great for quick errands, business runs, and weekend escapes. Extendable by the hour or by the day."
+      },
+      {
+        title: "Weekly (5-7 days)",
+        price: "from ₱11,500",
+        detail: "Save up to 10% versus daily rates when you keep the vehicle for an entire week."
+      },
+      {
+        title: "Monthly (28-30 days)",
+        price: "from ₱36,000",
+        detail: "Ideal for extended assignments. Includes complimentary maintenance checks and unit swap when needed."
+      }
+    ],
+    promos: [
+      "Weekend Getaway: Pick up Friday after 12 NN and return Monday before 10 AM to enjoy 5% off the total rate.",
+      "Road Trip Bundle: Rentals of 7 days and up get one additional driver registered at no extra cost.",
+      "Corporate Partner Perks: Ask about fleet pricing when booking three or more vehicles in a single month."
+    ]
+  },
+  requirements: [
+    "Valid driver's license (primary renter and any additional driver) with at least one year of driving experience.",
+    "Government-issued ID that matches the renter's current address.",
+    "Security deposit of ₱5,000 via cash or bank transfer, refundable within three business days after vehicle return.",
+    "Signed rental agreement and joint vehicle inspection before release.",
+    "Emergency contact details and intended travel provinces for support coordination."
   ],
   faqs: [
     {
-      question: "What documents do I need for self-drive rental?",
+      question: "How much is the security deposit and when is it returned?",
       answer:
-        "You need a valid driver's license, a valid ID, and a credit card for security deposit. International visitors can use their international driving permit along with their passport.",
+        "Self-drive rentals require a ₱5,000 security deposit secured via cash or bank transfer at least 24 hours before pick-up. The deposit is released within three business days after the vehicle is returned in good condition and all toll or traffic notices (if any) are cleared."
     },
     {
-      question: "What is the minimum age requirement?",
+      question: "What insurance coverage is included with the vehicle?",
       answer:
-        "You must be at least 21 years old with a valid driver's license to rent a vehicle. Drivers under 25 may be subject to additional fees.",
+        "All units carry comprehensive insurance with CTPL coverage. In the event of damage, you only shoulder the participation fee stated in your contract while mechanical failures are handled by our team. Roadside assistance is available 24/7 anywhere within your declared province."
     },
     {
-      question: "Can I drive outside the declared province?",
+      question: "Can I drive outside my declared province?",
       answer:
-        "Our unlimited mileage policy applies only within the declared province. Driving outside the province may incur additional charges and requires prior approval.",
-    },
-    {
-      question: "What happens if the vehicle breaks down?",
-      answer:
-        "We provide 24/7 roadside assistance. If the vehicle cannot be repaired on-site, we will arrange for a replacement vehicle or alternative transportation at no extra cost.",
-    },
-    {
-      question: "Can I add an additional driver?",
-      answer:
-        "Yes, you can add an additional driver for a small fee. The additional driver must also meet our age and license requirements and be present during vehicle pickup.",
-    },
+        "Unlimited mileage applies within the province you declared during booking. Out-of-province trips are possible with prior approval so we can log your route, update the insurance, and brief you on any additional charges or requirements."
+    }
   ],
   // Additional content for SEO - Concise, focused information
   content: {
     introduction: [
-      "Self-drive car rental in Bicol gives you complete freedom to explore the region at your own pace. Perfect for families, couples, and business travelers who want to discover Bicol's attractions without being tied to tour schedules.",
-      "Our unlimited mileage policy within the declared province means you can visit multiple destinations without worrying about distance charges. This makes our service ideal for exploring all six provinces of Bicol: Albay, Camarines Norte, Camarines Sur, Catanduanes, Masbate, and Sorsogon.",
+      "Self-drive car rental with Uragon lets you design the itinerary that fits your family, friends, or business schedule. Head to Mayon viewpoints at sunrise, chase Bicol's food trails, or blend remote work with weekend adventures without waiting on anyone else.",
+      "Each unit is detailed, inspected, and prepped with safety equipment before release. We also provide direct contact numbers so you can reach our coordinators quickly for extensions, support, or travel tips."
     ],
-    benefits: [
-      "Enjoy complete flexibility to start your day whenever you want and modify your itinerary on the go. With unlimited mileage, you can explore from Legazpi to Catanduanes without additional costs.",
-      "Save money compared to hiring a driver or using multiple transportation modes. Our comprehensive insurance and 24/7 roadside assistance provide peace of mind throughout your journey.",
-    ],
-    process: [
-      "Book online through our website or contact us via phone, WhatsApp, or email. We'll help you choose the right vehicle based on your group size and travel plans.",
-      "Bring a valid driver's license, ID, and credit card for the security deposit. International visitors need an international driving permit and passport.",
-    ],
-    areas: [
-      "Our service covers all six provinces of Bicol Region, including popular destinations like Mayon Volcano, Caramoan Islands, and Donsol whale shark watching.",
-      "Travel to Catanduanes requires a ferry crossing, and some remote areas may have limited fuel stations. We provide route guidance and emergency support.",
-    ],
-    tips: [
-      "Book in advance during peak seasons (March to May) and holidays to secure your preferred vehicle. Research destinations and plan your route before your trip.",
-      "Pack for Bicol's tropical climate and bring sun protection. Consider seasonal weather - dry season (November to April) offers the best conditions for outdoor activities.",
-    ],
-  },
+    vehicleOverview:
+      "Pick from hatchbacks, sedans, MPVs, SUVs, and vans—each maintained on a strict schedule and equipped with updated documentation for smooth checkpoints and port clearances.",
+    pickupDeliveryOverview:
+      "We coordinate handovers around your itinerary. Whether you prefer a quick hub pick-up or a doorstep delivery, our team ensures the vehicle is fueled, documented, and ready to roll.",
+    ratesOverview:
+      "Transparent pricing keeps your budgeting simple. Daily, weekly, and monthly tiers all include unlimited mileage within your declared province plus round-the-clock assistance.",
+    requirementsNotes: [
+      "Send digital copies of your IDs ahead of time to speed up verification and avoid delays at release.",
+      "For corporate accounts or multiple vehicles, let us know your billing requirements so we can prepare paperwork in advance."
+    ]
+  }
 }
 
 export default function SelfDrivePage() {
@@ -147,57 +155,151 @@ export default function SelfDrivePage() {
     <div className="min-h-screen">
       <Header />
       <main>
-        <ServiceDetailHero service={serviceData} />
-        <ServiceFeatures service={serviceData} />
-        
-        {/* Additional Content Section for SEO */}
+        <ServiceLandingHero
+          eyebrow={serviceData.hero.eyebrow}
+          title={serviceData.hero.title}
+          description={serviceData.hero.description}
+          primaryAction={serviceData.hero.primaryAction}
+          secondaryAction={serviceData.hero.secondaryAction}
+        />
+
         <SectionContainer background="default" padding="xl">
-          <div className="max-w-4xl mx-auto space-y-12">
-            
-            {/* Introduction */}
-            <ContentCard
-              type="feature"
-              title="About Self Drive Rental"
-              description={serviceData.content.introduction.join(' ')}
-              variant="default"
-            />
-
-            {/* Benefits */}
-            <ContentCard
-              type="feature"
-              title="Why Choose Self Drive Rental?"
-              description={serviceData.content.benefits.join(' ')}
-              variant="default"
-            />
-
-            {/* How It Works */}
-            <ContentCard
-              type="feature"
-              title="How Self Drive Rental Works"
-              description={serviceData.content.process.join(' ')}
-              variant="default"
-            />
-
-            {/* Service Areas */}
-            <ContentCard
-              type="feature"
-              title="Service Areas"
-              description={serviceData.content.areas.join(' ')}
-              variant="default"
-            />
-
-            {/* Tips & Recommendations */}
-            <ContentCard
-              type="feature"
-              title="Tips & Recommendations"
-              description={serviceData.content.tips.join(' ')}
-              variant="default"
-            />
-
+          <div className="max-w-3xl mx-auto space-y-6">
+            {serviceData.content.introduction.map((paragraph, index) => (
+              <p key={index} className="text-lg text-muted-foreground leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
           </div>
         </SectionContainer>
 
-        <ServicePricing service={serviceData} />
+        <SectionContainer background="muted/30" padding="xl">
+          <SectionHeader
+            title="What's included in every self-drive rental"
+            description="Every booking already covers the essentials so you can focus on the road ahead."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <ul className="grid gap-4 md:grid-cols-2">
+            {serviceData.inclusions.map((item, index) => (
+              <li key={index} className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </SectionContainer>
+
+        <SectionContainer background="default" padding="xl">
+          <SectionHeader
+            title="Vehicle options for every type of trip"
+            description={serviceData.content.vehicleOverview}
+            centered={false}
+            maxWidth="3xl"
+          />
+          <div className="grid gap-8 md:grid-cols-2">
+            {serviceData.vehicleOptions.map((option, index) => (
+              <div key={index} className="space-y-2">
+                <h3 className="text-xl font-semibold text-foreground">{option.category}</h3>
+                <p className="text-base text-muted-foreground leading-relaxed">
+                  {option.description}
+                </p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-10">
+            <Link href="/fleet" className="text-primary font-semibold">
+              Browse the complete fleet
+            </Link>
+          </div>
+        </SectionContainer>
+
+        <SectionContainer background="muted/30" padding="xl">
+          <SectionHeader
+            title="Pick-up and delivery options"
+            description={serviceData.content.pickupDeliveryOverview}
+            centered={false}
+            maxWidth="3xl"
+          />
+          <div className="space-y-4">
+            {serviceData.pickupDelivery.overview.map((paragraph, index) => (
+              <p key={index} className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+          <div className="mt-10 grid gap-8 md:grid-cols-2">
+            {serviceData.pickupDelivery.options.map((item, index) => (
+              <div key={index} className="space-y-2">
+                <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
+                <p className="text-base text-muted-foreground leading-relaxed">
+                  {item.detail}
+                </p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-10 border-t border-border/60 pt-6">
+            <h3 className="text-lg font-semibold text-foreground">Cut-off times & reminders</h3>
+            <ul className="mt-4 space-y-3">
+              {serviceData.pickupDelivery.cutoffs.map((item, index) => (
+                <li key={index} className="text-base text-muted-foreground leading-relaxed">
+                  <span className="font-semibold text-foreground">{item.title}:</span> {item.detail}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </SectionContainer>
+
+        <SectionContainer background="default" padding="xl">
+          <SectionHeader
+            title="Rates and savings"
+            description={serviceData.rates.overview}
+            centered={false}
+            maxWidth="3xl"
+          />
+          <div className="grid gap-8 md:grid-cols-3">
+            {serviceData.rates.tiers.map((tier, index) => (
+              <div key={index} className="space-y-2">
+                <p className="text-sm uppercase tracking-wide text-muted-foreground">{tier.title}</p>
+                <p className="text-2xl font-semibold text-foreground">{tier.price}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{tier.detail}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-10">
+            <h3 className="text-lg font-semibold text-foreground">Current promos</h3>
+            <ul className="mt-4 space-y-3">
+              {serviceData.rates.promos.map((promo, index) => (
+                <li key={index} className="text-base text-muted-foreground leading-relaxed">
+                  {promo}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </SectionContainer>
+
+        <SectionContainer background="muted/30" padding="xl">
+          <SectionHeader
+            title="Rental requirements"
+            description="Prepare these documents and details ahead of time to make vehicle release quick and easy."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <ul className="grid gap-4 md:grid-cols-2">
+            {serviceData.requirements.map((item, index) => (
+              <li key={index} className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                {item}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-8 space-y-3">
+            {serviceData.content.requirementsNotes.map((note, index) => (
+              <p key={index} className="text-base text-muted-foreground leading-relaxed">
+                {note}
+              </p>
+            ))}
+          </div>
+        </SectionContainer>
+
         <ServiceFAQ service={serviceData} />
         <BookingCTABanner />
       </main>

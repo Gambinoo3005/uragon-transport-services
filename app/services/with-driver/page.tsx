@@ -1,13 +1,11 @@
+import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { BookingCTABanner } from "@/components/booking-cta-banner"
 import { StickyBookButton } from "@/components/sticky-book-button"
-import { ServiceDetailHero } from "@/components/service-detail-hero"
-import { ServiceFeatures } from "@/components/service-features"
-import { ServicePricing } from "@/components/service-pricing"
+import { ServiceLandingHero } from "@/components/service-landing-hero"
 import { ServiceFAQ } from "@/components/service-faq"
 import { SectionContainer, SectionHeader } from "@/components/ui/content-grid"
-import { ContentCard } from "@/components/ui/content-card"
 
 export const metadata = {
   title: "With Driver Service - Professional Driver Car Rental | Uragon Transport Services",
@@ -17,78 +15,85 @@ export const metadata = {
 }
 
 const serviceData = {
-  title: "With Driver Service",
-  subtitle: "Professional drivers for your convenience",
-  description:
-    "Sit back and relax while our professional drivers take you to your destinations. Perfect for business trips, family tours, and when you want to enjoy the scenery without worrying about navigation or driving.",
-  image: "/toyota-innova-mpv-car-rental.jpg",
-  features: [
-    {
-      title: "Professional Drivers",
-      description: "Experienced, licensed drivers with extensive knowledge of Bicol's roads and destinations.",
+  hero: {
+    eyebrow: "With driver",
+    title: "Professional chauffeurs, wherever Bicol takes you",
+    description:
+      "Ride with licensed drivers who know the routes, manage your itinerary, and keep every stop on schedule for business, tours, or family trips.",
+    primaryAction: {
+      label: "Reserve a driver",
+      href: "/contact"
     },
-    {
-      title: "Local Knowledge",
-      description: "Our drivers know the best routes, shortcuts, and hidden gems throughout the Bicol region.",
-    },
-    {
-      title: "Business Trips",
-      description: "Reliable service for corporate meetings, airport transfers, and business appointments.",
-    },
-    {
-      title: "Tour Guide Services",
-      description: "Drivers can provide basic tour information and recommendations for local attractions.",
-    },
-    {
-      title: "Flexible Scheduling",
-      description: "Available for half-day, full-day, or multi-day trips with flexible pickup and drop-off times.",
-    },
-    {
-      title: "Safety First",
-      description: "All drivers are background-checked, drug-tested, and trained in defensive driving techniques.",
-    },
+    secondaryAction: {
+      label: "Browse vehicle lineup",
+      href: "/fleet"
+    }
+  },
+  overview: [
+    "Our with-driver service pairs you with vetted, locally knowledgeable chauffeurs so your group can focus on the experience and not the road.",
+    "Ideal for business delegations, tourists, and families who need punctual transfers, flexible stops, and on-call assistance throughout the trip."
   ],
-  inclusions: [
-    "Professional licensed driver",
-    "Vehicle fuel and toll fees",
-    "Driver's meals and accommodation (for multi-day trips)",
-    "Comprehensive vehicle insurance",
-    "24/7 customer support",
-    "Flexible scheduling",
+  driverAssurances: [
+    "All drivers are professionally licensed, background-checked, and trained in defensive driving.",
+    "Local experts who know the best routes, rest stops, and safety considerations across Bicol.",
+    "Chauffeurs arrive in uniform with updated itineraries and contact details for coordination.",
+    "24/7 operations center ready to support itinerary changes, emergencies, or replacement vehicles.",
+    "Insurance coverage, fuel, tolls, and basic driver meals already included in every booking."
   ],
-  exclusions: [
-    "Driver's gratuity (optional)",
-    "Additional stops beyond agreed itinerary",
-    "Waiting time beyond 1 hour",
-    "Personal expenses",
-    "Entrance fees to attractions",
-    "Meals for passengers",
+  serviceOptions: [
+    {
+      name: "Half-day deployment (4 hours)",
+      price: "from ₱1,500",
+      description:
+        "Best for airport runs, client meetings, or city tours with a flexible 30-minute buffer for unexpected delays."
+    },
+    {
+      name: "Full-day coverage (8 hours)",
+      price: "from ₱2,500",
+      description:
+        "Complete day of chauffeured service for itineraries with multiple stops, dining breaks, and meetings. Extendable by the hour."
+    },
+    {
+      name: "Multi-day driver",
+      price: "from ₱2,000/day",
+      description:
+        "Dedicated driver assigned for out-of-town tours or work trips, including coordination for lodging and per diem."
+    },
+    {
+      name: "L300 & coaster support",
+      price: "from ₱3,000",
+      description:
+        "Ideal for large groups or equipment-heavy trips—includes assistance with loading and convoy coordination."
+    }
   ],
-  pricing: [
-    {
-      route: "L300 12-Seaters",
-      sedan: "₱3,000",
-      suv: "₱3,000",
-      van: "₱3,000",
-    },
-    {
-      route: "Half Day (4 hours)",
-      sedan: "₱1,500",
-      suv: "₱2,000",
-      van: "₱2,500",
-    },
-    {
-      route: "Full Day (8 hours)",
-      sedan: "₱2,500",
-      suv: "₱3,000",
-      van: "₱3,500",
-    },
-    {
-      route: "Multi-day (per day)",
-      sedan: "₱2,000",
-      suv: "₱2,500",
-      van: "₱3,000",
-    },
+  coverageDetails: {
+    areas: [
+      "Servicing Legazpi, Naga, Sorsogon, Masbate, and nearby cities with advance scheduling.",
+      "Airport transfers for Legazpi and Naga with meet-and-greet signage upon request.",
+      "Cross-region trips to Manila and Southern Luzon available with prior coordination."
+    ],
+    inclusions: [
+      "Fuel, tolls, and basic parking fees",
+      "Driver meals and accommodations for multi-day assignments",
+      "Coordinated routing and itinerary management with your point person"
+    ],
+    addOns: [
+      "Accredited tour guides for heritage and cultural briefings",
+      "Simultaneous deployment of multiple vehicle classes",
+      "Onboard Wi-Fi, coolers, and other amenities upon request"
+    ]
+  },
+  preparation: [
+    "Share passenger list, pickup points, and time-sensitive commitments at least 24 hours ahead.",
+    "Provide preferred contact method for real-time updates during the trip.",
+    "Confirm accommodation arrangements for the driver when traveling overnight.",
+    "Advise of special requirements such as child seats, luggage volume, or assistance for senior passengers."
+  ],
+  etiquette: [
+    "Allow a 15-minute window at each stop for route adjustments and rest breaks.",
+    "Notify the coordinator immediately for itinerary extensions to secure approvals and updated rates.",
+    "Settle incidental expenses (parking beyond standard, entrance fees) directly at the site.",
+    "Tipping is optional but appreciated for exceptional service."
   ],
   faqs: [
     {
@@ -117,29 +122,6 @@ const serviceData = {
         "While we cannot guarantee a specific driver, we can note your preferences and do our best to match you with a driver that meets your requirements.",
     },
   ],
-  // Additional content for SEO - Concise, focused information
-  content: {
-    introduction: [
-      "Our with driver service provides professional chauffeur services for business travelers, families, and tourists who prefer to relax and enjoy their journey. Perfect for those who want to focus on their destination rather than navigation.",
-      "All our drivers are experienced professionals with extensive knowledge of Bicol's roads, attractions, and best routes. They can provide local insights and recommendations to enhance your travel experience.",
-    ],
-    benefits: [
-      "Enjoy stress-free travel while our professional drivers handle navigation, traffic, and parking. Focus on your business meetings, family time, or sightseeing without worrying about driving.",
-      "Save time and energy by having a local expert who knows the best routes, shortcuts, and can help you avoid traffic congestion and road construction delays.",
-    ],
-    process: [
-      "Book your with driver service online or contact us directly. Specify your pickup location, destination, and preferred schedule. We'll assign a professional driver to your trip.",
-      "Provide your contact details and any special requirements. Our driver will contact you before the scheduled pickup time to confirm details and provide their contact information.",
-    ],
-    areas: [
-      "Our with driver service covers all of Bicol Region, including inter-provincial trips between Albay, Camarines Norte, Camarines Sur, Catanduanes, Masbate, and Sorsogon.",
-      "We can also provide airport transfers to and from Legazpi and Naga airports, as well as long-distance trips to Manila or other regions with advance notice.",
-    ],
-    tips: [
-      "Book in advance for business trips and special occasions to ensure driver availability. Provide detailed itinerary and special requirements when booking.",
-      "Communicate your preferences and any specific needs to your driver at the start of the trip. Don't hesitate to ask for recommendations on local attractions and dining options.",
-    ],
-  },
 }
 
 export default function WithDriverPage() {
@@ -147,57 +129,138 @@ export default function WithDriverPage() {
     <div className="min-h-screen">
       <Header />
       <main>
-        <ServiceDetailHero service={serviceData} />
-        <ServiceFeatures service={serviceData} />
-        
-        {/* Additional Content Section for SEO */}
+        <ServiceLandingHero
+          eyebrow={serviceData.hero.eyebrow}
+          title={serviceData.hero.title}
+          description={serviceData.hero.description}
+          primaryAction={serviceData.hero.primaryAction}
+          secondaryAction={serviceData.hero.secondaryAction}
+        />
+
         <SectionContainer background="default" padding="xl">
-          <div className="max-w-4xl mx-auto space-y-12">
-            
-            {/* Introduction */}
-            <ContentCard
-              type="feature"
-              title="About With Driver Service"
-              description={serviceData.content.introduction.join(' ')}
-              variant="default"
-            />
-
-            {/* Benefits */}
-            <ContentCard
-              type="feature"
-              title="Why Choose With Driver Service?"
-              description={serviceData.content.benefits.join(' ')}
-              variant="default"
-            />
-
-            {/* How It Works */}
-            <ContentCard
-              type="feature"
-              title="How With Driver Service Works"
-              description={serviceData.content.process.join(' ')}
-              variant="default"
-            />
-
-            {/* Service Areas */}
-            <ContentCard
-              type="feature"
-              title="Service Areas"
-              description={serviceData.content.areas.join(' ')}
-              variant="default"
-            />
-
-            {/* Tips & Recommendations */}
-            <ContentCard
-              type="feature"
-              title="Tips & Recommendations"
-              description={serviceData.content.tips.join(' ')}
-              variant="default"
-            />
-
+          <div className="max-w-3xl mx-auto space-y-6">
+            {serviceData.overview.map((paragraph, index) => (
+              <p key={index} className="text-lg text-muted-foreground leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
           </div>
         </SectionContainer>
 
-        <ServicePricing service={serviceData} />
+        <SectionContainer background="muted/30" padding="xl">
+          <SectionHeader
+            title="Driver assurances"
+            description="Ride with chauffeurs who prioritize safety, discretion, and time management."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <ul className="grid gap-4 md:grid-cols-2">
+            {serviceData.driverAssurances.map((item, index) => (
+              <li key={index} className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </SectionContainer>
+
+        <SectionContainer background="default" padding="xl">
+          <SectionHeader
+            title="Service options"
+            description="Choose the deployment that fits your agenda and group size."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <div className="grid gap-8 md:grid-cols-2">
+            {serviceData.serviceOptions.map((option, index) => (
+              <div key={index} className="space-y-2">
+                <p className="text-sm uppercase tracking-wide text-muted-foreground">{option.name}</p>
+                <p className="text-2xl font-semibold text-foreground">{option.price}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{option.description}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-8 text-base text-muted-foreground leading-relaxed">
+            Planning a multi-vehicle convoy?{' '}
+            <Link href="/contact" className="text-primary font-semibold">
+              Coordinate with our team
+            </Link>
+            .
+          </p>
+        </SectionContainer>
+
+        <SectionContainer background="muted/30" padding="xl">
+          <SectionHeader
+            title="Coverage & inclusions"
+            description="Support that keeps every kilometer comfortable and on schedule."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <div className="grid gap-10 md:grid-cols-3">
+            <div className="md:col-span-1 space-y-3">
+              <h3 className="text-lg font-semibold text-foreground">Where we go</h3>
+              <ul className="space-y-3">
+                {serviceData.coverageDetails.areas.map((item, index) => (
+                  <li key={index} className="text-base text-muted-foreground leading-relaxed">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="space-y-3">
+              <h3 className="text-lg font-semibold text-foreground">Included as standard</h3>
+              <ul className="space-y-3">
+                {serviceData.coverageDetails.inclusions.map((item, index) => (
+                  <li key={index} className="text-base text-muted-foreground leading-relaxed">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="space-y-3">
+              <h3 className="text-lg font-semibold text-foreground">Helpful add-ons</h3>
+              <ul className="space-y-3">
+                {serviceData.coverageDetails.addOns.map((item, index) => (
+                  <li key={index} className="text-base text-muted-foreground leading-relaxed">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </SectionContainer>
+
+        <SectionContainer background="default" padding="xl">
+          <SectionHeader
+            title="Before the trip"
+            description="Share these details so we can prepare the perfect driver assignment."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <ul className="grid gap-4 md:grid-cols-2">
+            {serviceData.preparation.map((item, index) => (
+              <li key={index} className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </SectionContainer>
+
+        <SectionContainer background="muted/30" padding="xl">
+          <SectionHeader
+            title="On-the-road etiquette"
+            description="Simple guidelines that keep the journey comfortable for everyone."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <ul className="grid gap-4 md:grid-cols-2">
+            {serviceData.etiquette.map((item, index) => (
+              <li key={index} className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </SectionContainer>
+
         <ServiceFAQ service={serviceData} />
         <BookingCTABanner />
       </main>

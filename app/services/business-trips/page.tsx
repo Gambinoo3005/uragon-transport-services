@@ -1,13 +1,11 @@
+import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { BookingCTABanner } from "@/components/booking-cta-banner"
 import { StickyBookButton } from "@/components/sticky-book-button"
-import { ServiceDetailHero } from "@/components/service-detail-hero"
-import { ServiceFeatures } from "@/components/service-features"
-import { ServicePricing } from "@/components/service-pricing"
+import { ServiceLandingHero } from "@/components/service-landing-hero"
 import { ServiceFAQ } from "@/components/service-faq"
 import { SectionContainer, SectionHeader } from "@/components/ui/content-grid"
-import { ContentCard } from "@/components/ui/content-card"
 
 export const metadata = {
   title: "Business Trips - Corporate Transportation Bicol | Uragon Transport Services",
@@ -17,78 +15,79 @@ export const metadata = {
 }
 
 const serviceData = {
-  title: "Business Trips",
-  subtitle: "Professional transportation for business travel",
-  description:
-    "Reliable, professional transportation service for business trips, corporate meetings, and executive travel throughout Bicol. Our experienced drivers and well-maintained vehicles ensure you arrive on time and in comfort for all your business needs.",
-  image: "/toyota-vios-sedan-car-rental.jpg",
-  features: [
-    {
-      title: "Professional Service",
-      description: "Experienced drivers with professional demeanor, punctuality, and discretion for all your business transportation needs.",
+  hero: {
+    eyebrow: "Corporate travel",
+    title: "Reliable transport for executive schedules",
+    description:
+      "From airport arrivals to boardroom shuttles, keep every business commitment on time with chauffeurs who know Bicol's routes and corporate protocols.",
+    primaryAction: {
+      label: "Book business transport",
+      href: "/contact"
     },
-    {
-      title: "Executive Comfort",
-      description: "Well-maintained, comfortable vehicles with air conditioning, clean interiors, and professional appearance for business meetings.",
-    },
-    {
-      title: "Flexible Scheduling",
-      description: "Accommodate your business schedule with flexible pickup times, waiting periods, and multi-day service for extended business trips.",
-    },
-    {
-      title: "Airport Transfers",
-      description: "Reliable airport pickup and drop-off service for business travelers arriving at Legazpi and Naga airports.",
-    },
-    {
-      title: "Multi-City Travel",
-      description: "Inter-provincial business travel between different cities and provinces in Bicol with professional drivers and comfortable vehicles.",
-    },
-    {
-      title: "Corporate Accounts",
-      description: "Special rates and billing arrangements for corporate clients with regular business transportation needs.",
-    },
+    secondaryAction: {
+      label: "Set up a corporate account",
+      href: "/contact"
+    }
+  },
+  overview: [
+    "Our business trip service supports executives, field teams, and visiting clients throughout Bicol with punctual, discreet transportation.",
+    "Drivers arrive early, vehicles are presentation-ready, and itineraries are coordinated so you can focus on meetings and negotiations."
   ],
-  inclusions: [
-    "Professional driver",
-    "Comfortable business vehicle",
-    "Flexible scheduling",
-    "Airport transfers",
-    "Waiting time included",
-    "Corporate billing options",
+  valuePoints: [
+    "Professionally trained chauffeurs who understand corporate etiquette and confidentiality.",
+    "Clean, executive-grade sedans, SUVs, and vans with stable Wi-Fi hotspot options on request.",
+    "Flexible scheduling with standby and multi-day assignments handled by a dedicated coordinator.",
+    "Airport meet-and-greet services at Legazpi and Naga with luggage assistance.",
+    "Centralized billing, receipts, and monthly reports for procurement or finance teams."
   ],
-  exclusions: [
-    "Meals and refreshments",
-    "Accommodation",
-    "Personal expenses",
-    "Extended waiting beyond schedule",
-    "Non-business related stops",
-    "Gratuity for driver",
+  offerings: [
+    {
+      name: "Half-day standby (4 hours)",
+      price: "from ₱2,000",
+      description:
+        "Ideal for short client visits or on-site inspections within the city. Includes 30-minute complimentary buffer time."
+    },
+    {
+      name: "Full-day coverage (8 hours)",
+      price: "from ₱3,500",
+      description:
+        "A single vehicle and driver on call for back-to-back meetings, plant visits, or conferences. Extendable by the hour."
+    },
+    {
+      name: "Airport concierge",
+      price: "from ₱1,500",
+      description:
+        "Coordinated airport pick-up or drop-off with signage, luggage handling, and real-time flight monitoring."
+    },
+    {
+      name: "Multi-day corporate retainer",
+      price: "custom pricing",
+      description:
+        "Bundle rates for recurring visits, roadshows, or executive deployments across provinces. Includes vehicle rotation and relief drivers."
+    }
   ],
-  pricing: [
-    {
-      route: "Half Day Business Service (4 hours)",
-      sedan: "₱2,000",
-      suv: "₱2,500",
-      van: "₱3,000",
-    },
-    {
-      route: "Full Day Business Service (8 hours)",
-      sedan: "₱3,500",
-      suv: "₱4,000",
-      van: "₱4,500",
-    },
-    {
-      route: "Airport Transfer",
-      sedan: "₱1,500",
-      suv: "₱2,000",
-      van: "₱2,500",
-    },
-    {
-      route: "Multi-Day Corporate Rate",
-      sedan: "₱3,000",
-      suv: "₱3,500",
-      van: "₱4,000",
-    },
+  travelLogistics: {
+    destinations: [
+      "Coverage across Legazpi, Naga, Sorsogon, and other business hubs in Bicol.",
+      "Inter-city routes planned with vetted stops for meals, rest, and refueling.",
+      "VIP handling available for visiting executives, ambassadors, and investor groups."
+    ],
+    scheduling: [
+      "Dedicated coordinator monitors traffic, weather, and schedule shifts to adjust routes in real time.",
+      "Drivers briefed with agenda notes, contact persons, and access requirements before dispatch.",
+      "After-hours and weekend coverage available with advance notice."
+    ]
+  },
+  corporateSupport: [
+    "Consolidated invoices with cost centers and trip references for finance reconciliation.",
+    "Signed NDAs for teams handling sensitive site visits or negotiations.",
+    "Standby support line for sudden extensions, additional vehicles, or alternative routing."
+  ],
+  preparation: [
+    "Share meeting schedules, venue security requirements, and key contacts at least 24 hours ahead.",
+    "Provide flight numbers for airport assignments so we can adjust for delays in real time.",
+    "Let us know if you need Wi-Fi, bottled water, or other onboard amenities prepared.",
+    "Assign an internal coordinator for multi-vehicle deployments to streamline communications."
   ],
   faqs: [
     {
@@ -117,29 +116,6 @@ const serviceData = {
         "Yes, we can provide transportation for business trips that involve multiple cities or provinces in Bicol. We'll work with your schedule and provide comfortable transportation throughout your business travel.",
     },
   ],
-  // Additional content for SEO - Concise, focused information
-  content: {
-    introduction: [
-      "Our business trip service provides reliable, professional transportation for corporate meetings, executive travel, and business activities throughout Bicol. Perfect for business professionals who need punctual, comfortable, and discreet transportation.",
-      "We understand the importance of business travel and provide experienced drivers, well-maintained vehicles, and flexible scheduling to accommodate your corporate needs and ensure you arrive on time for all business appointments.",
-    ],
-    benefits: [
-      "Focus on your business meetings and presentations while we handle all transportation logistics. Our professional drivers ensure punctual arrivals and comfortable travel between business locations.",
-      "Save time and reduce stress with reliable transportation that accommodates your business schedule. We provide flexible pickup times, waiting periods, and can handle last-minute changes to your itinerary.",
-    ],
-    process: [
-      "Book your business transportation service online or contact us directly. Provide your business travel details including dates, times, locations, and any special requirements for your corporate needs.",
-      "Our professional driver will arrive on time at your specified location, handle your luggage if needed, and provide comfortable transportation to your business destinations throughout your trip.",
-    ],
-    areas: [
-      "Our business trip service covers all of Bicol Region, including major business centers in Legazpi, Naga, and other cities. We also provide airport transfers to and from Legazpi and Naga airports.",
-      "We can accommodate inter-provincial business travel and multi-city trips throughout Bicol. Contact us to discuss transportation for your specific business travel requirements and destinations.",
-    ],
-    tips: [
-      "Book your business transportation in advance to ensure availability, especially for important meetings or during peak business travel periods. Provide detailed schedules and any special requirements when booking.",
-      "Communicate any changes to your business schedule as soon as possible. Our drivers are experienced with business travel and will work with you to accommodate schedule adjustments and ensure punctual service.",
-    ],
-  },
 }
 
 export default function BusinessTripsPage() {
@@ -147,57 +123,128 @@ export default function BusinessTripsPage() {
     <div className="min-h-screen">
       <Header />
       <main>
-        <ServiceDetailHero service={serviceData} />
-        <ServiceFeatures service={serviceData} />
-        
-        {/* Additional Content Section for SEO */}
+        <ServiceLandingHero
+          eyebrow={serviceData.hero.eyebrow}
+          title={serviceData.hero.title}
+          description={serviceData.hero.description}
+          primaryAction={serviceData.hero.primaryAction}
+          secondaryAction={serviceData.hero.secondaryAction}
+        />
+
         <SectionContainer background="default" padding="xl">
-          <div className="max-w-4xl mx-auto space-y-12">
-            
-            {/* Introduction */}
-            <ContentCard
-              type="feature"
-              title="About Business Trips Service"
-              description={serviceData.content.introduction.join(' ')}
-              variant="default"
-            />
-
-            {/* Benefits */}
-            <ContentCard
-              type="feature"
-              title="Why Choose Our Business Trips Service?"
-              description={serviceData.content.benefits.join(' ')}
-              variant="default"
-            />
-
-            {/* How It Works */}
-            <ContentCard
-              type="feature"
-              title="How Business Trips Service Works"
-              description={serviceData.content.process.join(' ')}
-              variant="default"
-            />
-
-            {/* Service Areas */}
-            <ContentCard
-              type="feature"
-              title="Service Areas"
-              description={serviceData.content.areas.join(' ')}
-              variant="default"
-            />
-
-            {/* Tips & Recommendations */}
-            <ContentCard
-              type="feature"
-              title="Tips & Recommendations"
-              description={serviceData.content.tips.join(' ')}
-              variant="default"
-            />
-
+          <div className="max-w-3xl mx-auto space-y-6">
+            {serviceData.overview.map((paragraph, index) => (
+              <p key={index} className="text-lg text-muted-foreground leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
           </div>
         </SectionContainer>
 
-        <ServicePricing service={serviceData} />
+        <SectionContainer background="muted/30" padding="xl">
+          <SectionHeader
+            title="Why executives ride with Uragon"
+            description="Organized support that keeps investors, teams, and VIP guests moving without delays."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <ul className="grid gap-4 md:grid-cols-2">
+            {serviceData.valuePoints.map((item, index) => (
+              <li key={index} className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </SectionContainer>
+
+        <SectionContainer background="default" padding="xl">
+          <SectionHeader
+            title="Service tiers"
+            description="Pick the coverage window that fits your agenda."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <div className="grid gap-8 md:grid-cols-2">
+            {serviceData.offerings.map((offer, index) => (
+              <div key={index} className="space-y-2">
+                <p className="text-sm uppercase tracking-wide text-muted-foreground">{offer.name}</p>
+                <p className="text-2xl font-semibold text-foreground">{offer.price}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{offer.description}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-8 text-base text-muted-foreground leading-relaxed">
+            Planning a regional roadshow?{' '}
+            <Link href="/contact" className="text-primary font-semibold">
+              Coordinate a custom itinerary
+            </Link>
+            .
+          </p>
+        </SectionContainer>
+
+        <SectionContainer background="muted/30" padding="xl">
+          <SectionHeader
+            title="Travel logistics"
+            description="Coverage extends beyond city centers with proactive schedule management."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <div className="grid gap-10 md:grid-cols-2">
+            <div>
+              <h3 className="text-lg font-semibold text-foreground">Destinations & scope</h3>
+              <ul className="mt-3 space-y-3">
+                {serviceData.travelLogistics.destinations.map((item, index) => (
+                  <li key={index} className="text-base text-muted-foreground leading-relaxed">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-foreground">Scheduling support</h3>
+              <ul className="mt-3 space-y-3">
+                {serviceData.travelLogistics.scheduling.map((item, index) => (
+                  <li key={index} className="text-base text-muted-foreground leading-relaxed">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </SectionContainer>
+
+        <SectionContainer background="default" padding="xl">
+          <SectionHeader
+            title="Corporate support"
+            description="Tools and processes that make procurement and compliance easier."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <ul className="space-y-3">
+            {serviceData.corporateSupport.map((item, index) => (
+              <li key={index} className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </SectionContainer>
+
+        <SectionContainer background="muted/30" padding="xl">
+          <SectionHeader
+            title="Prep checklist"
+            description="Send these details ahead so we can execute flawlessly."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <ul className="grid gap-4 md:grid-cols-2">
+            {serviceData.preparation.map((item, index) => (
+              <li key={index} className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </SectionContainer>
+
         <ServiceFAQ service={serviceData} />
         <BookingCTABanner />
       </main>

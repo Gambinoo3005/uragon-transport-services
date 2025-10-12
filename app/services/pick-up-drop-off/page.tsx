@@ -1,13 +1,11 @@
+import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { BookingCTABanner } from "@/components/booking-cta-banner"
 import { StickyBookButton } from "@/components/sticky-book-button"
-import { ServiceDetailHero } from "@/components/service-detail-hero"
-import { ServiceFeatures } from "@/components/service-features"
-import { ServicePricing } from "@/components/service-pricing"
+import { ServiceLandingHero } from "@/components/service-landing-hero"
 import { ServiceFAQ } from "@/components/service-faq"
 import { SectionContainer, SectionHeader } from "@/components/ui/content-grid"
-import { ContentCard } from "@/components/ui/content-card"
 
 export const metadata = {
   title: "Pick Up & Drop Off Service - Convenient Transportation | Uragon Transport Services",
@@ -17,78 +15,54 @@ export const metadata = {
 }
 
 const serviceData = {
-  title: "Pick Up & Drop Off",
-  subtitle: "Convenient service to your preferred location",
-  description:
-    "Save time and hassle with our convenient pick up and drop off service. We'll collect your rental vehicle from your location and return it when you're done, making your car rental experience seamless and stress-free.",
-  image: "/honda-city-sedan-car-rental.jpg",
-  features: [
-    {
-      title: "Flexible Locations",
-      description: "We can pick up and drop off at hotels, airports, homes, offices, or any convenient location within our service area.",
+  hero: {
+    eyebrow: "Pick-up & drop-off",
+    title: "We bring the vehicle to your doorstep and take it back when you're done",
+    description:
+      "Skip the commute to our hub. Schedule vehicle delivery and collection anywhere within our service zones with professional handovers and punctual timing.",
+    primaryAction: {
+      label: "Schedule pick-up",
+      href: "/contact"
     },
-    {
-      title: "All Vehicles Available",
-      description: "Pick up and drop off service is available for all our vehicle types - sedans, SUVs, MPVs, and vans.",
-    },
-    {
-      title: "Convenient Service",
-      description: "No need to travel to our office. We bring the vehicle to you and collect it when you're finished.",
-    },
-    {
-      title: "Reliable Timing",
-      description: "We arrive on time as scheduled, ensuring your plans aren't disrupted by delays or waiting.",
-    },
-    {
-      title: "Professional Staff",
-      description: "Our delivery team is professional, courteous, and will handle all vehicle documentation and handover procedures.",
-    },
-    {
-      title: "Same Day Service",
-      description: "Available for same-day bookings with advance notice, perfect for last-minute travel needs.",
-    },
+    secondaryAction: {
+      label: "Check coverage areas",
+      href: "/contact"
+    }
+  },
+  overview: [
+    "Our pick-up and drop-off service gets you on the road faster by delivering the vehicle where you need it and collecting it once your trip wraps up.",
+    "Each handover includes documentation checks, a quick vehicle briefing, and support contacts so extensions or adjustments are just a message away."
   ],
-  inclusions: [
-    "Vehicle delivery to your location",
-    "Vehicle collection from your location",
-    "Professional delivery staff",
-    "Vehicle documentation handover",
-    "Basic vehicle orientation",
-    "Flexible scheduling",
+  benefits: [
+    "Coverage for hotels, residences, offices, airports, and transport hubs across Metro Legazpi, Daraga, and Metro Naga.",
+    "Available for every vehicle class—from compact hatchbacks to vans—so fleet mix never limits your plans.",
+    "Coordinated logistics team confirms arrival windows and keeps you updated en route.",
+    "Same-day requests accommodated when slots are open; priority given to bookings made 24 hours in advance.",
+    "Return collection includes quick inspection and documentation so you can head to your next commitment immediately."
   ],
-  exclusions: [
-    "Delivery outside service area",
-    "Same-day delivery without advance notice",
-    "Vehicle cleaning or detailing",
-    "Fuel refilling service",
-    "Personal driver service",
-    "Extended waiting time",
+  coverage: {
+    standard: [
+      "Metro Legazpi, Daraga, Sto. Domingo, and nearby towns",
+      "Metro Naga, Pili, and neighboring municipalities",
+      "Legazpi Airport and Naga Airport arrival areas"
+    ],
+    extended: [
+      "Provincial deliveries across Albay, Camarines Sur, Sorsogon, and Masbate",
+      "Port handovers for ferry-bound routes (advance coordination required)",
+      "Corporate accounts with recurring logistics needs"
+    ]
+  },
+  process: [
+    "Reserve your vehicle and specify preferred delivery and collection addresses plus time windows.",
+    "Receive confirmation with assigned coordinator, driver details, and any required access instructions.",
+    "Meet the team at the scheduled time for documentation, inspection, and a quick vehicle orientation.",
+    "Enjoy your rental. When finished, hand over the keys and documents at the arranged drop-off slot."
   ],
-  pricing: [
-    {
-      route: "Within Legazpi City",
-      sedan: "₱500",
-      suv: "₱500",
-      van: "₱500",
-    },
-    {
-      route: "Within Naga City",
-      sedan: "₱500",
-      suv: "₱500",
-      van: "₱500",
-    },
-    {
-      route: "Legazpi to Naga (or vice versa)",
-      sedan: "₱1,000",
-      suv: "₱1,000",
-      van: "₱1,000",
-    },
-    {
-      route: "Other Bicol Areas",
-      sedan: "₱800",
-      suv: "₱800",
-      van: "₱800",
-    },
+  preparation: [
+    "Ensure access to parking or a safe handover point at both pick-up and return locations.",
+    "Have a valid ID, license, and payment confirmation ready for verification on delivery.",
+    "Notify us at least 2 hours ahead for delivery time adjustments to avoid rescheduling fees.",
+    "For airport arrivals, share flight details so we can monitor delays and stage the vehicle accordingly."
   ],
   faqs: [
     {
@@ -117,29 +91,6 @@ const serviceData = {
         "Yes, our pick up and drop off service is available for all our vehicles including sedans, SUVs, MPVs, and vans. Pricing may vary by location.",
     },
   ],
-  // Additional content for SEO - Concise, focused information
-  content: {
-    introduction: [
-      "Our pick up and drop off service eliminates the need to visit our office, bringing convenience directly to your doorstep. Perfect for busy travelers, business professionals, and anyone who values their time.",
-      "Whether you're staying at a hotel, arriving at the airport, or need the vehicle delivered to your home or office, we'll handle the logistics so you can focus on your trip.",
-    ],
-    benefits: [
-      "Save valuable time by having your rental vehicle delivered directly to your location. No need to navigate to our office or wait in line for vehicle pickup.",
-      "Enjoy seamless service with professional staff who handle all documentation and vehicle orientation at your preferred location, ensuring a smooth rental experience.",
-    ],
-    process: [
-      "Book your rental with pick up and drop off service online or by phone. Specify your preferred pickup location, date, and time. We'll confirm the delivery details with you.",
-      "Our delivery team will arrive at your specified location with the vehicle, complete all necessary paperwork, and provide a brief orientation on the vehicle's features and policies.",
-    ],
-    areas: [
-      "We provide pick up and drop off service within Legazpi City, Naga City, and surrounding areas. Service is also available to and from Legazpi and Naga airports.",
-      "For locations outside our standard service area, please contact us for availability and custom pricing. We may be able to accommodate special requests with advance notice.",
-    ],
-    tips: [
-      "Book your pick up and drop off service when making your rental reservation to ensure availability. Provide accurate location details and contact information for smooth delivery.",
-      "Be available at the scheduled pickup time to complete documentation and vehicle orientation. Have your driver's license and ID ready for verification.",
-    ],
-  },
 }
 
 export default function PickupDropoffPage() {
@@ -147,57 +98,108 @@ export default function PickupDropoffPage() {
     <div className="min-h-screen">
       <Header />
       <main>
-        <ServiceDetailHero service={serviceData} />
-        <ServiceFeatures service={serviceData} />
-        
-        {/* Additional Content Section for SEO */}
+        <ServiceLandingHero
+          eyebrow={serviceData.hero.eyebrow}
+          title={serviceData.hero.title}
+          description={serviceData.hero.description}
+          primaryAction={serviceData.hero.primaryAction}
+          secondaryAction={serviceData.hero.secondaryAction}
+        />
+
         <SectionContainer background="default" padding="xl">
-          <div className="max-w-4xl mx-auto space-y-12">
-            
-            {/* Introduction */}
-            <ContentCard
-              type="feature"
-              title="About Pick Up & Drop Off Service"
-              description={serviceData.content.introduction.join(' ')}
-              variant="default"
-            />
-
-            {/* Benefits */}
-            <ContentCard
-              type="feature"
-              title="Why Choose Pick Up & Drop Off Service?"
-              description={serviceData.content.benefits.join(' ')}
-              variant="default"
-            />
-
-            {/* How It Works */}
-            <ContentCard
-              type="feature"
-              title="How Pick Up & Drop Off Works"
-              description={serviceData.content.process.join(' ')}
-              variant="default"
-            />
-
-            {/* Service Areas */}
-            <ContentCard
-              type="feature"
-              title="Service Areas"
-              description={serviceData.content.areas.join(' ')}
-              variant="default"
-            />
-
-            {/* Tips & Recommendations */}
-            <ContentCard
-              type="feature"
-              title="Tips & Recommendations"
-              description={serviceData.content.tips.join(' ')}
-              variant="default"
-            />
-
+          <div className="max-w-3xl mx-auto space-y-6">
+            {serviceData.overview.map((paragraph, index) => (
+              <p key={index} className="text-lg text-muted-foreground leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
           </div>
         </SectionContainer>
 
-        <ServicePricing service={serviceData} />
+        <SectionContainer background="muted/30" padding="xl">
+          <SectionHeader
+            title="Why travelers love doorstep handovers"
+            description="Designed for busy schedules, airport arrivals, and hassle-free returns."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <ul className="grid gap-4 md:grid-cols-2">
+            {serviceData.benefits.map((item, index) => (
+              <li key={index} className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </SectionContainer>
+
+        <SectionContainer background="default" padding="xl">
+          <SectionHeader
+            title="Coverage map"
+            description="Standard zones plus extended support when you need to go further."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <div className="grid gap-10 md:grid-cols-2">
+            <div>
+              <h3 className="text-lg font-semibold text-foreground">Standard service areas</h3>
+              <ul className="mt-3 space-y-3">
+                {serviceData.coverage.standard.map((item, index) => (
+                  <li key={index} className="text-base text-muted-foreground leading-relaxed">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-foreground">Extended & corporate support</h3>
+              <ul className="mt-3 space-y-3">
+                {serviceData.coverage.extended.map((item, index) => (
+                  <li key={index} className="text-base text-muted-foreground leading-relaxed">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <p className="mt-8 text-base text-muted-foreground leading-relaxed">
+            Not sure if your location is covered?{' '}
+            <Link href="/contact" className="text-primary font-semibold">
+              Message our logistics desk
+            </Link>
+            .
+          </p>
+        </SectionContainer>
+
+        <SectionContainer background="muted/30" padding="xl">
+          <SectionHeader
+            title="How the handover works"
+            description="Every vehicle release follows the same four-step playbook."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <ol className="space-y-3 text-base md:text-lg text-muted-foreground leading-relaxed list-decimal list-inside">
+            {serviceData.process.map((step, index) => (
+              <li key={index}>{step}</li>
+            ))}
+          </ol>
+        </SectionContainer>
+
+        <SectionContainer background="default" padding="xl">
+          <SectionHeader
+            title="Before we arrive"
+            description="Set everything up so delivery and collection take just a few minutes."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <ul className="grid gap-4 md:grid-cols-2">
+            {serviceData.preparation.map((item, index) => (
+              <li key={index} className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </SectionContainer>
+
         <ServiceFAQ service={serviceData} />
         <BookingCTABanner />
       </main>

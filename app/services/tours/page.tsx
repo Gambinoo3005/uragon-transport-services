@@ -1,13 +1,11 @@
+import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { BookingCTABanner } from "@/components/booking-cta-banner"
 import { StickyBookButton } from "@/components/sticky-book-button"
-import { ServiceDetailHero } from "@/components/service-detail-hero"
-import { ServiceFeatures } from "@/components/service-features"
-import { ServicePricing } from "@/components/service-pricing"
+import { ServiceLandingHero } from "@/components/service-landing-hero"
 import { ServiceFAQ } from "@/components/service-faq"
 import { SectionContainer, SectionHeader } from "@/components/ui/content-grid"
-import { ContentCard } from "@/components/ui/content-card"
 
 export const metadata = {
   title: "Tour Packages - Bicol Sightseeing Tours | Uragon Transport Services",
@@ -17,78 +15,84 @@ export const metadata = {
 }
 
 const serviceData = {
-  title: "Tour Packages",
-  subtitle: "Explore Bicol's beautiful destinations",
-  description:
-    "Discover the best of Bicol with our guided tour packages. From the majestic Mayon Volcano to the pristine beaches of Caramoan, our experienced drivers will take you to the region's most beautiful and interesting destinations.",
-  image: "/mayon_hero.jpg",
-  features: [
-    {
-      title: "Guided Tours",
-      description: "Professional drivers with local knowledge who can provide insights about Bicol's history, culture, and attractions.",
+  hero: {
+    eyebrow: "Tour experiences",
+    title: "See Bicol's icons with a local tour driver and curated itinerary",
+    description:
+      "From Mayon sunrise to Caramoan island hops, travel with storytellers behind the wheel and routes optimized for every photo stop.",
+    primaryAction: {
+      label: "Plan your tour",
+      href: "/contact"
     },
-    {
-      title: "Popular Destinations",
-      description: "Visit iconic locations like Mayon Volcano, Caramoan Islands, Cagsawa Ruins, and other must-see Bicol attractions.",
-    },
-    {
-      title: "Flexible Itineraries",
-      description: "Customize your tour based on your interests, time constraints, and group preferences for a personalized experience.",
-    },
-    {
-      title: "All-Day Tours",
-      description: "Full-day tour packages that include multiple destinations with comfortable transportation and professional service.",
-    },
-    {
-      title: "Group Tours",
-      description: "Perfect for families, friends, and corporate groups with vehicles that can accommodate different group sizes.",
-    },
-    {
-      title: "Local Expertise",
-      description: "Our drivers know the best routes, timing, and hidden gems to make your Bicol tour experience memorable and enjoyable.",
-    },
+    secondaryAction: {
+      label: "View vehicle options",
+      href: "/fleet"
+    }
+  },
+  overview: [
+    "Uragon tour packages pair comfortable vehicles with driver-guides who have navigated Bicol's attractions for years.",
+    "Whether you're a first-time visitor or returning with friends, we customize pacing, stops, and stories so every kilometer is memorable."
   ],
-  inclusions: [
-    "Professional driver/guide",
-    "Vehicle fuel and toll fees",
-    "Flexible itinerary planning",
-    "Local destination knowledge",
-    "Comfortable transportation",
-    "All-day service",
+  highlights: [
+    "Driver-guides who share history, legends, and local recommendations while keeping schedules on track.",
+    "Flexible itineraries—swap destinations, add side trips, or extend hours on the fly.",
+    "Coordinated timing for sunrise viewpoints, market stops, and off-peak attraction entries.",
+    "Comfortable sedans, SUVs, and vans scaled to your group size, gear, and desired amenities.",
+    "Logistics support for permits, ferry tickets, and destination-specific requirements."
   ],
-  exclusions: [
-    "Entrance fees to attractions",
-    "Meals and refreshments",
-    "Accommodation",
-    "Personal expenses",
-    "Optional activities",
-    "Gratuity for driver",
+  itineraries: [
+    {
+      name: "Mayon & Legazpi heritage",
+      price: "from ₱3,500",
+      description:
+        "Cagsawa Ruins, Daraga Church, Lignon Hill, and foodie stops for sili ice cream and Bicol express—all in one scenic loop."
+    },
+    {
+      name: "Caramoan island hopping",
+      price: "from ₱5,000",
+      description:
+        "Vehicle plus boat coordination for sandbar hopping, limestone cliffs, and hidden coves with picnic lunch recommendations."
+    },
+    {
+      name: "Bicol faith & culture",
+      price: "from ₱3,200",
+      description:
+        "Naga basilicas, Peñafrancia shrine, and heritage houses—with time for pili pastries and local craft markets."
+    },
+    {
+      name: "Custom adventure day",
+      price: "build your route",
+      description:
+        "Combine waterfalls, farm tours, or hiking trails. Share your wishlist and we'll design the flow, permits, and meal stops."
+    }
   ],
-  pricing: [
-    {
-      route: "Mayon Volcano Tour (Full Day)",
-      sedan: "₱3,500",
-      suv: "₱4,000",
-      van: "₱4,500",
-    },
-    {
-      route: "Caramoan Islands Tour (Full Day)",
-      sedan: "₱4,500",
-      suv: "₱5,000",
-      van: "₱5,500",
-    },
-    {
-      route: "Bicol Heritage Tour (Full Day)",
-      sedan: "₱3,000",
-      suv: "₱3,500",
-      van: "₱4,000",
-    },
-    {
-      route: "Custom Tour (Per Day)",
-      sedan: "₱3,000",
-      suv: "₱3,500",
-      van: "₱4,000",
-    },
+  destinations: {
+    popular: [
+      "Mayon Volcano viewpoints",
+      "Cagsawa Ruins & Daraga Church",
+      "Sumlang Lake bamboo rafts",
+      "Caramoan's Matukad and Lahos islands",
+      "Naga City's basilicas and river promenade"
+    ],
+    hiddenGems: [
+      "Quinale Beach sunsets in Albay",
+      "Kawa-kawa Hill gardens in Ligao",
+      "Farm-to-table lunch spots in Camalig",
+      "Halo-an falls and eco-parks off the usual routes",
+      "Sorsogon whale shark and hot spring combos"
+    ]
+  },
+  logistics: [
+    "Entrance fees and meals are optional add-ons—we'll brief you on current rates for budgeting.",
+    "Tours include fuel, tolls, driver meals, and standard parking fees unless otherwise noted.",
+    "Assistance booking guides, resort day passes, and boat providers upon request.",
+    "Multi-day itineraries include driver lodging coordination and vehicle staging for early departures."
+  ],
+  preparation: [
+    "Share travel dates, group size, and must-see spots 48 hours before your tour to lock in availability.",
+    "Tell us about mobility needs, dietary restrictions, or special occasions so we can plan accordingly.",
+    "Pack comfortable clothing, sun protection, and cash for entrance fees and local snacks.",
+    "Monitor weather advisories—our team will propose backup sites if conditions shift."
   ],
   faqs: [
     {
@@ -117,29 +121,6 @@ const serviceData = {
         "Tour prices include transportation and driver service only. Entrance fees to attractions, meals, and other personal expenses are not included and should be budgeted separately.",
     },
   ],
-  // Additional content for SEO - Concise, focused information
-  content: {
-    introduction: [
-      "Our tour packages offer the perfect way to explore Bicol's most beautiful and interesting destinations with professional transportation and local expertise. Ideal for tourists, families, and groups who want to see the best of the region.",
-      "From the iconic Mayon Volcano to the pristine beaches of Caramoan, our experienced drivers will take you to must-see attractions while providing insights about local history, culture, and hidden gems.",
-    ],
-    benefits: [
-      "Enjoy stress-free sightseeing with professional drivers who know the best routes and timing for each destination. Focus on enjoying the sights while we handle all transportation logistics.",
-      "Save time and energy by having a local expert plan your itinerary and navigate Bicol's roads. Our drivers can recommend the best photo spots, local restaurants, and timing for optimal experiences.",
-    ],
-    process: [
-      "Choose from our popular tour packages or contact us to create a custom itinerary. Provide your group size, interests, and preferred destinations for a personalized tour experience.",
-      "Meet your driver at the designated pickup location and enjoy a full day of sightseeing. Your driver will handle all transportation while you focus on exploring and enjoying Bicol's attractions.",
-    ],
-    areas: [
-      "Our tour packages cover all major Bicol destinations including Albay (Mayon Volcano, Cagsawa Ruins), Camarines Sur (Caramoan, Naga City), and other provinces with popular attractions.",
-      "We can arrange tours to beaches, historical sites, natural attractions, and cultural destinations throughout the Bicol Region. Custom tours can include multiple provinces in a single day.",
-    ],
-    tips: [
-      "Book your tour in advance, especially during peak tourist seasons, to secure your preferred vehicle and ensure availability. Consider weather conditions when planning outdoor destinations.",
-      "Bring comfortable walking shoes, sun protection, and a camera for your tour. Ask your driver for recommendations on local restaurants and the best times to visit each attraction.",
-    ],
-  },
 }
 
 export default function ToursPage() {
@@ -147,57 +128,128 @@ export default function ToursPage() {
     <div className="min-h-screen">
       <Header />
       <main>
-        <ServiceDetailHero service={serviceData} />
-        <ServiceFeatures service={serviceData} />
-        
-        {/* Additional Content Section for SEO */}
+        <ServiceLandingHero
+          eyebrow={serviceData.hero.eyebrow}
+          title={serviceData.hero.title}
+          description={serviceData.hero.description}
+          primaryAction={serviceData.hero.primaryAction}
+          secondaryAction={serviceData.hero.secondaryAction}
+        />
+
         <SectionContainer background="default" padding="xl">
-          <div className="max-w-4xl mx-auto space-y-12">
-            
-            {/* Introduction */}
-            <ContentCard
-              type="feature"
-              title="About Tour Packages"
-              description={serviceData.content.introduction.join(' ')}
-              variant="default"
-            />
-
-            {/* Benefits */}
-            <ContentCard
-              type="feature"
-              title="Why Choose Our Tour Packages?"
-              description={serviceData.content.benefits.join(' ')}
-              variant="default"
-            />
-
-            {/* How It Works */}
-            <ContentCard
-              type="feature"
-              title="How Tour Packages Work"
-              description={serviceData.content.process.join(' ')}
-              variant="default"
-            />
-
-            {/* Service Areas */}
-            <ContentCard
-              type="feature"
-              title="Tour Destinations"
-              description={serviceData.content.areas.join(' ')}
-              variant="default"
-            />
-
-            {/* Tips & Recommendations */}
-            <ContentCard
-              type="feature"
-              title="Tips & Recommendations"
-              description={serviceData.content.tips.join(' ')}
-              variant="default"
-            />
-
+          <div className="max-w-3xl mx-auto space-y-6">
+            {serviceData.overview.map((paragraph, index) => (
+              <p key={index} className="text-lg text-muted-foreground leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
           </div>
         </SectionContainer>
 
-        <ServicePricing service={serviceData} />
+        <SectionContainer background="muted/30" padding="xl">
+          <SectionHeader
+            title="Why tour with Uragon"
+            description="Curated routes, storytelling drivers, and the flexibility to explore beyond the usual."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <ul className="grid gap-4 md:grid-cols-2">
+            {serviceData.highlights.map((item, index) => (
+              <li key={index} className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </SectionContainer>
+
+        <SectionContainer background="default" padding="xl">
+          <SectionHeader
+            title="Signature itineraries"
+            description="Pick a ready-made adventure or use these as inspiration for your own route."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <div className="grid gap-8 md:grid-cols-2">
+            {serviceData.itineraries.map((item, index) => (
+              <div key={index} className="space-y-2">
+                <p className="text-sm uppercase tracking-wide text-muted-foreground">{item.name}</p>
+                <p className="text-2xl font-semibold text-foreground">{item.price}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-8 text-base text-muted-foreground leading-relaxed">
+            Want something different?{' '}
+            <Link href="/contact" className="text-primary font-semibold">
+              Tell us your bucket list
+            </Link>
+            . We'll map it out."
+          </p>
+        </SectionContainer>
+
+        <SectionContainer background="muted/30" padding="xl">
+          <SectionHeader
+            title="Destinations we love"
+            description="Mix iconic stops with hidden gems for a balanced Bicol experience."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <div className="grid gap-10 md:grid-cols-2">
+            <div>
+              <h3 className="text-lg font-semibold text-foreground">Must-visit icons</h3>
+              <ul className="mt-3 space-y-3">
+                {serviceData.destinations.popular.map((item, index) => (
+                  <li key={index} className="text-base text-muted-foreground leading-relaxed">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-foreground">Hidden-gem add-ons</h3>
+              <ul className="mt-3 space-y-3">
+                {serviceData.destinations.hiddenGems.map((item, index) => (
+                  <li key={index} className="text-base text-muted-foreground leading-relaxed">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </SectionContainer>
+
+        <SectionContainer background="default" padding="xl">
+          <SectionHeader
+            title="Logistics & add-ons"
+            description="Everything included—and the extras you can layer on."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <ul className="space-y-3">
+            {serviceData.logistics.map((item, index) => (
+              <li key={index} className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </SectionContainer>
+
+        <SectionContainer background="muted/30" padding="xl">
+          <SectionHeader
+            title="Before travel"
+            description="Share the details below so your tour day runs perfectly."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <ul className="grid gap-4 md:grid-cols-2">
+            {serviceData.preparation.map((item, index) => (
+              <li key={index} className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </SectionContainer>
+
         <ServiceFAQ service={serviceData} />
         <BookingCTABanner />
       </main>

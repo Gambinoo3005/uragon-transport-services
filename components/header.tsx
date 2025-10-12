@@ -132,12 +132,21 @@ export function Header() {
         <div className="hidden lg:flex items-center justify-center py-4 border-t">
           <nav className="flex items-center space-x-8">
             {navigation.map((item) => (
-              <div key={item.name} className="relative group">
+              <div
+                key={item.name}
+                className="relative"
+                onMouseEnter={() => item.dropdown && setActiveDropdown(item.name)}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
                 <Link
                   href={item.href}
                   className="text-sm font-medium text-foreground hover:text-primary transition-colors flex items-center space-x-1"
-                  onMouseEnter={() => item.dropdown && setActiveDropdown(item.name)}
-                  onMouseLeave={() => setActiveDropdown(null)}
+                  onFocus={() => item.dropdown && setActiveDropdown(item.name)}
+                  onBlur={(event) => {
+                    if (!event.currentTarget.contains(event.relatedTarget as Node)) {
+                      setActiveDropdown(null)
+                    }
+                  }}
                 >
                   <span>{item.name}</span>
                   {item.dropdown && <ChevronDown className="h-3 w-3" />}
@@ -145,17 +154,23 @@ export function Header() {
 
                 {/* Dropdown Menu */}
                 {item.dropdown && activeDropdown === item.name && (
-                  <div className="absolute top-full left-0 mt-2 w-48 bg-background border border-border rounded-lg shadow-lg z-50">
-                    <div className="py-2">
-                      {item.dropdown.map((dropdownItem) => (
-                        <Link
-                          key={dropdownItem.name}
-                          href={dropdownItem.href}
-                          className="block px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors"
-                        >
-                          {dropdownItem.name}
-                        </Link>
-                      ))}
+                  <div
+                    className="absolute left-0 top-full z-50 w-48 pt-2"
+                    onMouseEnter={() => setActiveDropdown(item.name)}
+                    onMouseLeave={() => setActiveDropdown(null)}
+                  >
+                    <div className="rounded-lg border border-border bg-background shadow-lg">
+                      <div className="py-2">
+                        {item.dropdown.map((dropdownItem) => (
+                          <Link
+                            key={dropdownItem.name}
+                            href={dropdownItem.href}
+                            className="block px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors"
+                          >
+                            {dropdownItem.name}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 )}

@@ -1,13 +1,11 @@
+import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { BookingCTABanner } from "@/components/booking-cta-banner"
 import { StickyBookButton } from "@/components/sticky-book-button"
-import { ServiceDetailHero } from "@/components/service-detail-hero"
-import { ServiceFeatures } from "@/components/service-features"
-import { ServicePricing } from "@/components/service-pricing"
+import { ServiceLandingHero } from "@/components/service-landing-hero"
 import { ServiceFAQ } from "@/components/service-faq"
 import { SectionContainer, SectionHeader } from "@/components/ui/content-grid"
-import { ContentCard } from "@/components/ui/content-card"
 
 export const metadata = {
   title: "Delivery Service - Cargo & Package Delivery Bicol | Uragon Transport Services",
@@ -17,78 +15,82 @@ export const metadata = {
 }
 
 const serviceData = {
-  title: "Delivery Service",
-  subtitle: "Reliable delivery for packages and cargo",
-  description:
-    "Fast, secure, and reliable delivery service for packages, documents, and cargo throughout Bicol. Our professional delivery team ensures your items reach their destination safely and on time.",
-  image: "/hyundai-h350-van-car-rental.jpg",
-  features: [
-    {
-      title: "Secure Handling",
-      description: "Professional handling and secure transportation of your packages, documents, and cargo with proper care and attention.",
+  hero: {
+    eyebrow: "Delivery logistics",
+    title: "Secure, on-time delivery across Bicol",
+    description:
+      "Move documents, parcels, and bulk cargo with professional handlers, insured coverage, and real-time updates from dispatch to drop-off.",
+    primaryAction: {
+      label: "Schedule a delivery",
+      href: "/contact"
     },
-    {
-      title: "Fast Delivery",
-      description: "Quick and efficient delivery service with same-day and next-day delivery options for urgent packages and documents.",
-    },
-    {
-      title: "Package Tracking",
-      description: "Track your delivery status with regular updates and confirmation when your package reaches its destination.",
-    },
-    {
-      title: "Various Sizes",
-      description: "Handle packages of different sizes from small documents to large cargo using appropriate vehicles for each delivery.",
-    },
-    {
-      title: "Wide Coverage",
-      description: "Delivery service covering all areas of Bicol Region with reliable transportation to cities, towns, and remote locations.",
-    },
-    {
-      title: "Professional Service",
-      description: "Experienced delivery team with proper documentation, receipt confirmation, and professional customer service.",
-    },
+    secondaryAction: {
+      label: "Request bulk rates",
+      href: "/contact"
+    }
+  },
+  overview: [
+    "Our delivery service provides fast, secure transport for documents, parcels, and cargo throughout the Bicol Region.",
+    "Each booking includes careful handling, documentation, and status updates so you and your recipients stay informed."
   ],
-  inclusions: [
-    "Secure package handling",
-    "Delivery confirmation",
-    "Professional delivery staff",
-    "Package tracking updates",
-    "Receipt confirmation",
-    "Insurance coverage",
+  serviceHighlights: [
+    "Trained couriers handle everything from sealed envelopes to multi-box shipments.",
+    "GPS monitoring and status pings keep you updated until the package is signed for.",
+    "Dedicated dispatch support for scheduling, special handling, and delivery confirmations.",
+    "Insurance coverage for declared value items with optional upgrades for high-value cargo.",
+    "Proof of delivery with recipient signature and photo documentation when required."
   ],
-  exclusions: [
-    "Hazardous materials",
-    "Perishable goods (special handling required)",
-    "Cash or valuable items",
-    "International deliveries",
-    "Same-day delivery without advance notice",
-    "Packaging materials",
+  deliveryPrograms: [
+    {
+      name: "Metro runs",
+      price: "from ₱200",
+      description:
+        "Same-day or next-day deliveries within Legazpi, Daraga, Sto. Domingo, and Metro Naga. Perfect for documents and light parcels."
+    },
+    {
+      name: "City-to-city",
+      price: "from ₱500",
+      description:
+        "Scheduled routes between major Bicol hubs with guaranteed next-day arrival and dispatch notifications."
+    },
+    {
+      name: "Regional coverage",
+      price: "from ₱400",
+      description:
+        "Deliveries to towns and barangays across Albay, Camarines Sur, Camarines Norte, Sorsogon, and Masbate using vans or L300 units."
+    },
+    {
+      name: "Custom logistics",
+      price: "quote based",
+      description:
+        "Project-based or recurring deliveries with volume pricing, dedicated vehicles, and warehouse-to-branch routing."
+    }
   ],
-  pricing: [
-    {
-      route: "Within Legazpi City",
-      sedan: "₱200",
-      suv: "₱300",
-      van: "₱400",
-    },
-    {
-      route: "Within Naga City",
-      sedan: "₱200",
-      suv: "₱300",
-      van: "₱400",
-    },
-    {
-      route: "Legazpi to Naga (or vice versa)",
-      sedan: "₱500",
-      suv: "₱600",
-      van: "₱700",
-    },
-    {
-      route: "Other Bicol Areas",
-      sedan: "₱400",
-      suv: "₱500",
-      van: "₱600",
-    },
+  handlingMatrix: {
+    accepted: [
+      "Sealed documents, legal papers, and government filings",
+      "E-commerce parcels and retail stocks",
+      "Non-hazardous equipment, spare parts, and packaged goods",
+      "Temperature-stable food products with insulated packaging"
+    ],
+    restricted: [
+      "Hazardous chemicals or biological materials",
+      "Perishables requiring cold chain unless pre-arranged",
+      "Cash, jewelry, or high-value electronics without prior declaration",
+      "International or cross-border shipments"
+    ]
+  },
+  scheduling: [
+    "Book at least 6 hours ahead for same-day metro runs; earlier for provincial routes to secure a slot.",
+    "Provide exact pickup/drop-off points, contact persons, and special instructions for building access.",
+    "Packages should be sealed and labeled with sender and recipient details before pickup.",
+    "Bulk deliveries can be consolidated at our Legazpi hub for sorting and staging."
+  ],
+  trackingSupport: [
+    "SMS and email updates at pickup, in-transit, and delivery milestones.",
+    "Direct line to dispatch for rerouting, additional stops, or urgent inquiries.",
+    "Signed proof of delivery and photo confirmation stored for 30 days.",
+    "Dashboard access available for enterprise accounts with recurring deliveries."
   ],
   faqs: [
     {
@@ -117,29 +119,6 @@ const serviceData = {
         "Yes, we provide basic insurance coverage for delivered items. For valuable items, additional insurance may be required and should be discussed when booking the delivery.",
     },
   ],
-  // Additional content for SEO - Concise, focused information
-  content: {
-    introduction: [
-      "Our delivery service provides fast, secure, and reliable transportation for packages, documents, and cargo throughout Bicol. Perfect for businesses, individuals, and organizations that need dependable delivery solutions.",
-      "We handle deliveries of various sizes using appropriate vehicles and provide professional service with tracking updates and delivery confirmation to ensure your items reach their destination safely.",
-    ],
-    benefits: [
-      "Save time and effort by having us handle your delivery needs. Our professional team ensures secure handling and timely delivery of your packages and documents throughout Bicol.",
-      "Enjoy peace of mind with delivery tracking, confirmation receipts, and insurance coverage. Focus on your business while we take care of getting your items to their destination.",
-    ],
-    process: [
-      "Contact us to book your delivery service with package details, pickup and delivery locations, and preferred delivery time. We'll provide a quote and schedule your delivery.",
-      "Our delivery team will collect your package, provide tracking information, and deliver it to the specified location with confirmation and receipt from the recipient.",
-    ],
-    areas: [
-      "Our delivery service covers all of Bicol Region including Legazpi, Naga, and surrounding areas. We can deliver to cities, towns, and remote locations throughout the region.",
-      "We provide same-day delivery for local areas and next-day delivery for most destinations in Bicol. Contact us to confirm delivery times for your specific location.",
-    ],
-    tips: [
-      "Package your items securely and provide clear delivery instructions including recipient contact information. Book your delivery in advance to ensure timely service.",
-      "Keep tracking information handy and communicate any special delivery requirements. Ensure the recipient is available at the delivery location or provide alternative arrangements.",
-    ],
-  },
 }
 
 export default function DeliveryPage() {
@@ -147,57 +126,128 @@ export default function DeliveryPage() {
     <div className="min-h-screen">
       <Header />
       <main>
-        <ServiceDetailHero service={serviceData} />
-        <ServiceFeatures service={serviceData} />
-        
-        {/* Additional Content Section for SEO */}
+        <ServiceLandingHero
+          eyebrow={serviceData.hero.eyebrow}
+          title={serviceData.hero.title}
+          description={serviceData.hero.description}
+          primaryAction={serviceData.hero.primaryAction}
+          secondaryAction={serviceData.hero.secondaryAction}
+        />
+
         <SectionContainer background="default" padding="xl">
-          <div className="max-w-4xl mx-auto space-y-12">
-            
-            {/* Introduction */}
-            <ContentCard
-              type="feature"
-              title="About Delivery Service"
-              description={serviceData.content.introduction.join(' ')}
-              variant="default"
-            />
-
-            {/* Benefits */}
-            <ContentCard
-              type="feature"
-              title="Why Choose Our Delivery Service?"
-              description={serviceData.content.benefits.join(' ')}
-              variant="default"
-            />
-
-            {/* How It Works */}
-            <ContentCard
-              type="feature"
-              title="How Delivery Service Works"
-              description={serviceData.content.process.join(' ')}
-              variant="default"
-            />
-
-            {/* Service Areas */}
-            <ContentCard
-              type="feature"
-              title="Service Areas"
-              description={serviceData.content.areas.join(' ')}
-              variant="default"
-            />
-
-            {/* Tips & Recommendations */}
-            <ContentCard
-              type="feature"
-              title="Tips & Recommendations"
-              description={serviceData.content.tips.join(' ')}
-              variant="default"
-            />
-
+          <div className="max-w-3xl mx-auto space-y-6">
+            {serviceData.overview.map((paragraph, index) => (
+              <p key={index} className="text-lg text-muted-foreground leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
           </div>
         </SectionContainer>
 
-        <ServicePricing service={serviceData} />
+        <SectionContainer background="muted/30" padding="xl">
+          <SectionHeader
+            title="Why businesses trust our delivery team"
+            description="Secure handling, transparent updates, and reliable coverage for every run."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <ul className="grid gap-4 md:grid-cols-2">
+            {serviceData.serviceHighlights.map((item, index) => (
+              <li key={index} className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </SectionContainer>
+
+        <SectionContainer background="default" padding="xl">
+          <SectionHeader
+            title="Delivery programs"
+            description="Pick the schedule and coverage that match your logistics needs."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <div className="grid gap-8 md:grid-cols-2">
+            {serviceData.deliveryPrograms.map((program, index) => (
+              <div key={index} className="space-y-2">
+                <p className="text-sm uppercase tracking-wide text-muted-foreground">{program.name}</p>
+                <p className="text-2xl font-semibold text-foreground">{program.price}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{program.description}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-8 text-base text-muted-foreground leading-relaxed">
+            Need daily milk-run deliveries or dedicated vehicles?{' '}
+            <Link href="/contact" className="text-primary font-semibold">
+              Talk to our logistics team
+            </Link>
+            .
+          </p>
+        </SectionContainer>
+
+        <SectionContainer background="muted/30" padding="xl">
+          <SectionHeader
+            title="Handling guidelines"
+            description="Know what we can safely transport and what requires special clearance."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <div className="grid gap-10 md:grid-cols-2">
+            <div>
+              <h3 className="text-lg font-semibold text-foreground">Accepted items</h3>
+              <ul className="mt-3 space-y-3">
+                {serviceData.handlingMatrix.accepted.map((item, index) => (
+                  <li key={index} className="text-base text-muted-foreground leading-relaxed">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-foreground">Restricted & requires clearance</h3>
+              <ul className="mt-3 space-y-3">
+                {serviceData.handlingMatrix.restricted.map((item, index) => (
+                  <li key={index} className="text-base text-muted-foreground leading-relaxed">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </SectionContainer>
+
+        <SectionContainer background="default" padding="xl">
+          <SectionHeader
+            title="Scheduling checklist"
+            description="Prepare these details before booking to keep dispatch smooth."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <ul className="grid gap-4 md:grid-cols-2">
+            {serviceData.scheduling.map((item, index) => (
+              <li key={index} className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </SectionContainer>
+
+        <SectionContainer background="muted/30" padding="xl">
+          <SectionHeader
+            title="Tracking & support"
+            description="Stay informed from pick-up to proof of delivery."
+            centered={false}
+            maxWidth="3xl"
+          />
+          <ul className="space-y-3">
+            {serviceData.trackingSupport.map((item, index) => (
+              <li key={index} className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </SectionContainer>
+
         <ServiceFAQ service={serviceData} />
         <BookingCTABanner />
       </main>
