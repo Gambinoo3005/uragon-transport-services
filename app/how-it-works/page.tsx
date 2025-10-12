@@ -4,9 +4,7 @@ import { Footer } from "@/components/footer"
 import { BookingCTABanner } from "@/components/booking-cta-banner"
 import { StickyBookButton } from "@/components/sticky-book-button"
 import { PageHero } from "@/components/ui/hero-components"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { SixStepProcess } from "@/components/six-step"
 import { uragonSteps } from "@/lib/six-step-data"
 import { 
@@ -15,9 +13,7 @@ import {
   Fuel,
   RotateCcw,
   Banknote,
-  Shield,
-  MapPin,
-  Heart
+  Shield
 } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -165,44 +161,6 @@ export default function HowItWorksPage() {
                   </CardContent>
                 </Card>
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* With-Driver Service Section */}
-        <section className="py-16 bg-primary/5">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="mb-8">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/20 rounded-full mb-6">
-                  <Heart className="h-8 w-8 text-primary" />
-                </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                  With-Driver Service
-                </h2>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Prefer to relax? Choose our with-driver option for tours, bridal service, or corporate trips. 
-                  We'll coordinate routes, pick-ups/drop-offs, and timing for a seamless experience.
-              </p>
-            </div>
-
-              <div className="grid md:grid-cols-3 gap-6 mt-12">
-                <Card className="text-center p-6">
-                  <MapPin className="h-8 w-8 text-primary mx-auto mb-4" />
-                  <h3 className="font-semibold text-foreground mb-2">Tours & Sightseeing</h3>
-                  <p className="text-sm text-muted-foreground">Professional drivers who know the best routes and destinations</p>
-                </Card>
-                <Card className="text-center p-6">
-                  <Heart className="h-8 w-8 text-primary mx-auto mb-4" />
-                  <h3 className="font-semibold text-foreground mb-2">Bridal Service</h3>
-                  <p className="text-sm text-muted-foreground">Special occasion transportation with attention to detail</p>
-                </Card>
-                <Card className="text-center p-6">
-                  <Users className="h-8 w-8 text-primary mx-auto mb-4" />
-                  <h3 className="font-semibold text-foreground mb-2">Corporate Trips</h3>
-                  <p className="text-sm text-muted-foreground">Professional service for business meetings and events</p>
-                </Card>
-              </div>
             </div>
           </div>
         </section>

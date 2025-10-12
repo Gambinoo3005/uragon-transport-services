@@ -1,9 +1,9 @@
 import { Card, CardContent } from "@/components/ui/card"
-import { Shield, Wrench, Car } from "lucide-react"
+import { Shield } from "lucide-react"
 
 export function SafetySupportSection() {
   return (
-    <section className="py-16 bg-background">
+    <section className="py-16 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
@@ -38,4 +38,3 @@ export function SafetySupportSection() {
     </section>
   )
 }
-

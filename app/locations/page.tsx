@@ -7,7 +7,7 @@ import { LocationsHero } from "@/components/locations-hero"
 import { LocationGrid, type Location } from "@/components/location-grid"
 import { SectionContainer, SectionHeader, StandardGrid } from "@/components/ui/content-grid"
 import { ContentCard } from "@/components/ui/content-card"
-import { MapPin, Phone, Car, Users, Star } from "lucide-react"
+import { MapPin, Car, Users, Star } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Service Locations | Uragon Transport Services | Bicol Car Rental Locations",
@@ -129,7 +129,7 @@ export default function LocationsPage() {
 
         <LocationGrid locations={locations} />
 
-        <SectionContainer background="muted/50" padding="xl">
+        <SectionContainer background="muted/30" padding="xl">
           <SectionHeader
             title="Local Support Across Bicol"
             description="Our coordinators live in the communities they serve. Expect quick turnarounds, real-time updates, and the kind of wayfinding only locals can provide."
@@ -169,47 +169,6 @@ export default function LocationsPage() {
               />
             ))}
           </StandardGrid>
-        </SectionContainer>
-
-        <SectionContainer background="muted/40" padding="xl">
-          <SectionHeader
-            title="Know the Roads Before You Roll"
-            description="Ask for route briefings, traffic windows, and weather updates. Our dispatchers coordinate with local barangays and tourism desks so you can travel with confidence."
-            maxWidth="3xl"
-          />
-
-          <div className="max-w-4xl mx-auto">
-            <ContentCard
-              type="feature"
-              title="Interactive Map Coming Soon"
-              description="We're building a live map that shows meetup points, landmarks, and travel advisories for each hub."
-              variant="default"
-            />
-          </div>
-        </SectionContainer>
-
-        <SectionContainer background="default" padding="xl">
-          <SectionHeader
-            title="Need Service in Your Area?"
-            description="Let us know your pickup point and schedule. We'll confirm availability and coordinate the nearest dispatch team."
-            maxWidth="2xl"
-          />
-
-          <div className="max-w-2xl mx-auto text-center">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <Phone className="h-5 w-5 text-primary" />
-              <a
-                href="tel:+639159234867"
-                className="text-2xl font-bold text-primary hover:text-primary/80 transition-colors"
-              >
-                +63 915 923 4867
-              </a>
-            </div>
-            <p className="text-muted-foreground">
-              Prefer messaging? Send us a Viber or WhatsApp chat and we'll get right back with options tailored to
-              your trip.
-            </p>
-          </div>
         </SectionContainer>
 
         <BookingCTABanner />

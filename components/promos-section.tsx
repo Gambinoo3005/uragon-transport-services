@@ -1,7 +1,7 @@
 import { ContentCard } from "@/components/ui/content-card"
 import { SectionContainer, SectionHeader, StandardGrid } from "@/components/ui/content-grid"
 import { Button } from "@/components/ui/button"
-import { Percent, Calendar, Gift, Star } from "lucide-react"
+import { Calendar, Gift } from "lucide-react"
 import Link from "next/link"
 
 const promos = [
@@ -41,7 +41,7 @@ const promos = [
 
 export function PromosSection() {
   return (
-    <SectionContainer background="default">
+    <SectionContainer background="muted/30">
       <SectionHeader
         title="Promos & Discounts"
         description="Save more with our special offers and long-term rental discounts"
@@ -72,4 +72,3 @@ export function PromosSection() {
     </SectionContainer>
   )
 }
-

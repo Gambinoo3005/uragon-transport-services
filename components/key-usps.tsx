@@ -1,4 +1,4 @@
-import { CheckCircle, Shield, Clock, MapPin, Wrench, FileCheck, Zap } from "lucide-react"
+import { CheckCircle, Shield, MapPin, Wrench, FileCheck, Zap } from "lucide-react"
 import { ContentCard } from "@/components/ui/content-card"
 import { SectionContainer, SectionHeader, StandardGrid } from "@/components/ui/content-grid"
 
@@ -37,7 +37,7 @@ export function KeyUSPs() {
   ]
 
   return (
-    <SectionContainer background="default">
+    <SectionContainer background="muted/30">
       <SectionHeader
         title="Why Choose Uragon Transport?"
         description="Experience the difference with our comprehensive car rental services"

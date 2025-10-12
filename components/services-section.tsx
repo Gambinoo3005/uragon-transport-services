@@ -1,7 +1,7 @@
 import { ContentCard } from "@/components/ui/content-card"
 import { SectionContainer, SectionHeader, StandardGrid } from "@/components/ui/content-grid"
 import { Button } from "@/components/ui/button"
-import { Car, UserCheck, MapPin, Truck, Heart, Plane, Briefcase } from "lucide-react"
+import { Car, UserCheck, MapPin, Plane } from "lucide-react"
 import Link from "next/link"
 
 // 4 Most Popular Services for Homepage
@@ -38,7 +38,7 @@ const popularServices = [
 
 export function ServicesSection() {
   return (
-    <SectionContainer background="muted/30">
+    <SectionContainer background="default">
       <SectionHeader
         title="Our Services"
         description="Comprehensive transportation solutions for all your needs"
@@ -73,4 +73,3 @@ export function ServicesSection() {
     </SectionContainer>
   )
 }
-

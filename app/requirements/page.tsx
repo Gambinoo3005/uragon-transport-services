@@ -3,8 +3,9 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { BookingCTABanner } from "@/components/booking-cta-banner"
 import { StickyBookButton } from "@/components/sticky-book-button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { PageHero } from "@/components/ui/hero-components"
+import { SectionContainer, SectionHeader, StandardGrid } from "@/components/ui/content-grid"
+import { Card, CardContent } from "@/components/ui/card"
 import { 
   FileText,
   Camera,
@@ -60,108 +61,90 @@ export default function RequirementsPage() {
       <Header />
       <main>
 
-        {/* Hero Section */}
-        <section className="py-16 bg-gradient-to-br from-background to-muted">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
-                Rental <span className="text-primary">Requirements</span>
-              </h1>
-              <p className="text-xl text-muted-foreground mb-8 text-pretty leading-relaxed">
-                Everything you need to know about renting with Uragon Transport Services. Simple requirements, clear process, and transparent policies for both self-drive and with-driver bookings.
-              </p>
-            </div>
-          </div>
-        </section>
+        <PageHero
+          title="Rental Requirements"
+          highlight="Requirements"
+          description="Everything you need to know about renting with Uragon Transport Services. Simple requirements, clear process, and transparent policies for both self-drive and with-driver bookings."
+        />
 
+        <SectionContainer background="default" padding="xl">
+          <SectionHeader
+            title="Required Documents (Self-Drive)"
+            description="Prepare these documents for booking and vehicle pickup"
+            maxWidth="4xl"
+          />
 
-        {/* Required Documents (Self-Drive) */}
-        <section className="py-20 bg-background">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-foreground mb-4">Required Documents (Self-Drive)</h2>
-              <p className="text-lg text-muted-foreground">
-                Prepare these documents for booking and vehicle pickup
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-              {selfDriveRequirements.map((requirement, index) => (
-                <Card key={index} className="h-full hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6 flex flex-col h-full">
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                        <requirement.icon className="h-6 w-6 text-primary" />
-                      </div>
-                      <h3 className="text-lg font-semibold text-foreground">
-                        {requirement.title}
-                      </h3>
-                    </div>
-                    
-                    <p className="text-muted-foreground flex-grow">
-                      {requirement.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* With-Driver Bookings */}
-        <section className="py-20 bg-muted/50">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-foreground mb-4">With-Driver Bookings</h2>
-              <p className="text-lg text-muted-foreground">
-                Simplified requirements for chauffeur-assisted trips
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-              <Card className="h-full hover:shadow-lg transition-shadow">
+          <StandardGrid variant="2col" gap="lg">
+            {selfDriveRequirements.map((requirement, index) => (
+              <Card key={index} className="h-full hover:shadow-lg transition-shadow">
                 <CardContent className="p-6 flex flex-col h-full">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                      <FileText className="h-6 w-6 text-primary" />
+                      <requirement.icon className="h-6 w-6 text-primary" />
                     </div>
                     <h3 className="text-lg font-semibold text-foreground">
-                      One (1) Valid Government ID
+                      {requirement.title}
                     </h3>
                   </div>
-                  
+
                   <p className="text-muted-foreground flex-grow">
-                    Any government-issued identification document to verify your identity
+                    {requirement.description}
                   </p>
                 </CardContent>
               </Card>
+            ))}
+          </StandardGrid>
+        </SectionContainer>
 
-              <Card className="h-full hover:shadow-lg transition-shadow">
-                <CardContent className="p-6 flex flex-col h-full">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                      <CreditCard className="h-6 w-6 text-primary" />
-                    </div>
-                    <h3 className="text-lg font-semibold text-foreground">
-                      Reservation Fee
-                    </h3>
+        <SectionContainer background="muted/30" padding="xl">
+          <SectionHeader
+            title="With-Driver Bookings"
+            description="Simplified requirements for chauffeur-assisted trips"
+            maxWidth="4xl"
+          />
+
+          <StandardGrid variant="2col" gap="lg">
+            <Card className="h-full hover:shadow-lg transition-shadow">
+              <CardContent className="p-6 flex flex-col h-full">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                    <FileText className="h-6 w-6 text-primary" />
                   </div>
-                  
-                  <p className="text-muted-foreground flex-grow">
-                    Minimum ₱1,000 to confirm booking and secure the schedule (non-refundable)
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
+                  <h3 className="text-lg font-semibold text-foreground">
+                    One (1) Valid Government ID
+                  </h3>
+                </div>
 
-            <div className="text-center mt-8">
-              <p className="text-sm text-muted-foreground italic">
-                Core ID + reservation requirement reflected in the policy and pricing sections.
-              </p>
-            </div>
+                <p className="text-muted-foreground flex-grow">
+                  Any government-issued identification document to verify your identity
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="h-full hover:shadow-lg transition-shadow">
+              <CardContent className="p-6 flex flex-col h-full">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                    <CreditCard className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-foreground">
+                    Reservation Fee
+                  </h3>
+                </div>
+
+                <p className="text-muted-foreground flex-grow">
+                  Minimum ₱1,000 to confirm booking and secure the schedule (non-refundable)
+                </p>
+              </CardContent>
+            </Card>
+          </StandardGrid>
+
+          <div className="text-center mt-8">
+            <p className="text-sm text-muted-foreground italic">
+              Core ID + reservation requirement reflected in the policy and pricing sections.
+            </p>
           </div>
-        </section>
-
+        </SectionContainer>
 
         <BookingCTABanner />
       </main>

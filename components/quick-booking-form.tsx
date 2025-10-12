@@ -5,10 +5,10 @@ export function QuickBookingForm() {
     <UnifiedBookingForm
       title="Quick Booking"
       description="Get your quote in seconds. Fill out the form below and we'll get back to you immediately."
-      background="muted/30"
+      background="default"
       maxWidth="4xl"
       redirectToContact={true}
+      highlight="Booking"
     />
   )
 }
-

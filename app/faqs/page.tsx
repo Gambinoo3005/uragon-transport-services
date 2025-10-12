@@ -4,14 +4,14 @@ import { Footer } from "@/components/footer"
 import { BookingCTABanner } from "@/components/booking-cta-banner"
 import { StickyBookButton } from "@/components/sticky-book-button"
 import { PageHero } from "@/components/ui/hero-components"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import { Badge } from "@/components/ui/badge"
+import { SectionContainer, SectionHeader, StandardGrid } from "@/components/ui/content-grid"
 import { HelpCircle, Phone, MessageCircle, Clock, MapPin, Shield, CreditCard, Car, Users, AlertTriangle } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -292,89 +292,83 @@ export default function FAQsPage() {
         />
 
         {/* FAQ Categories */}
-        <section className="py-20">
-          <div className="container mx-auto px-4">
-            <div className="space-y-12">
-              {faqCategories.map((category, categoryIndex) => (
-                <div key={categoryIndex} className="max-w-4xl mx-auto">
-                  <div className="flex items-center space-x-4 mb-8">
-                    <div className="bg-primary/10 w-16 h-16 rounded-2xl flex items-center justify-center">
-                      {category.icon}
-                    </div>
-                    <h2 className="text-2xl lg:text-3xl font-bold text-foreground">{category.category}</h2>
+        <SectionContainer background="default" padding="xl">
+          <SectionHeader
+            title="Answers by Category"
+            description="Browse the most common questions about booking, requirements, pricing, policies, and more."
+            maxWidth="4xl"
+          />
+
+          <div className="space-y-12">
+            {faqCategories.map((category, categoryIndex) => (
+              <div key={categoryIndex} className="max-w-4xl mx-auto">
+                <div className="flex items-center space-x-4 mb-8">
+                  <div className="bg-primary/10 w-16 h-16 rounded-2xl flex items-center justify-center">
+                    {category.icon}
                   </div>
-                  
-                  <Accordion type="single" collapsible className="space-y-3">
-                    {category.questions.map((faq, faqIndex) => (
-                      <AccordionItem 
-                        key={faqIndex} 
-                        value={`${categoryIndex}-${faqIndex}`}
-                        className="bg-background rounded-2xl border border-border shadow-sm hover:shadow-md transition-shadow"
-                      >
-                        <AccordionTrigger className="text-left hover:no-underline py-6 px-6">
-                          <span className="font-bold text-lg">{faq.question}</span>
-                        </AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground text-base leading-relaxed px-6 pb-6">
-                          {faq.answer}
-                        </AccordionContent>
-                      </AccordionItem>
-                    ))}
-                  </Accordion>
+                  <h2 className="text-2xl lg:text-3xl font-bold text-foreground">{category.category}</h2>
                 </div>
-              ))}
-            </div>
+
+                <Accordion type="single" collapsible className="space-y-3">
+                  {category.questions.map((faq, faqIndex) => (
+                    <AccordionItem 
+                      key={faqIndex} 
+                      value={`${categoryIndex}-${faqIndex}`}
+                      className="bg-background rounded-2xl border border-border shadow-sm hover:shadow-md transition-shadow"
+                    >
+                      <AccordionTrigger className="text-left hover:no-underline py-6 px-6">
+                        <span className="font-bold text-lg">{faq.question}</span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-muted-foreground text-base leading-relaxed px-6 pb-6">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
+            ))}
           </div>
-        </section>
+        </SectionContainer>
 
         {/* Quick Tips Section */}
-        <section className="py-16 bg-muted">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <Card className="border-primary/10 bg-background">
-                <CardHeader>
-                  <div className="flex items-center justify-center space-x-3">
-                    <div className="p-2 bg-primary/10 rounded-lg">
-                      <HelpCircle className="h-6 w-6 text-primary" />
-                    </div>
-                    <CardTitle className="text-2xl text-foreground">Quick Tips Before You Drive</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div className="text-center">
-                      <div className="bg-primary/10 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4">
-                        <span className="text-primary font-bold text-xl">✓</span>
-                      </div>
-                      <h4 className="font-semibold text-foreground mb-2">Required Documents</h4>
-                      <p className="text-sm text-muted-foreground">Bring all required IDs and ensure names match your booking</p>
-                    </div>
-                    <div className="text-center">
-                      <div className="bg-primary/10 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4">
-                        <span className="text-primary font-bold text-xl">✓</span>
-                      </div>
-                      <h4 className="font-semibold text-foreground mb-2">Declare Destination</h4>
-                      <p className="text-sm text-muted-foreground">Declare your destination to enjoy unlimited mileage within that province/route</p>
-                    </div>
-                    <div className="text-center">
-                      <div className="bg-primary/10 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4">
-                        <span className="text-primary font-bold text-xl">✓</span>
-                      </div>
-                      <h4 className="font-semibold text-foreground mb-2">Fuel Policy</h4>
-                      <p className="text-sm text-muted-foreground">Refuel to the same level before returning</p>
-                    </div>
-                    <div className="text-center md:col-span-2 lg:col-span-3">
-                      <div className="bg-primary/10 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4">
-                        <span className="text-primary font-bold text-xl">✓</span>
-                      </div>
-                      <h4 className="font-semibold text-foreground mb-2">Operating Hours</h4>
-                      <p className="text-sm text-muted-foreground">For smooth confirmations, complete requirements and settle the reservation fee during operating hours (7:00 AM–7:00 PM)</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+        <SectionContainer background="muted/30" padding="xl">
+          <SectionHeader
+            title="Quick Tips Before You Drive"
+            description="Keep these reminders in mind so your booking, release, and return go smoothly."
+            maxWidth="4xl"
+          />
+
+          <StandardGrid variant="3col" gap="lg">
+            <div className="text-center bg-background rounded-2xl p-6 shadow-sm">
+              <div className="bg-primary/10 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <span className="text-primary font-bold text-xl">✓</span>
+              </div>
+              <h4 className="font-semibold text-foreground mb-2">Required Documents</h4>
+              <p className="text-sm text-muted-foreground">Bring all required IDs and ensure names match your booking.</p>
             </div>
-          </div>
-        </section>
+            <div className="text-center bg-background rounded-2xl p-6 shadow-sm">
+              <div className="bg-primary/10 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <span className="text-primary font-bold text-xl">✓</span>
+              </div>
+              <h4 className="font-semibold text-foreground mb-2">Declare Destination</h4>
+              <p className="text-sm text-muted-foreground">Declare your destination to enjoy unlimited mileage within that province/route.</p>
+            </div>
+            <div className="text-center bg-background rounded-2xl p-6 shadow-sm">
+              <div className="bg-primary/10 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <span className="text-primary font-bold text-xl">✓</span>
+              </div>
+              <h4 className="font-semibold text-foreground mb-2">Fuel Policy</h4>
+              <p className="text-sm text-muted-foreground">Refuel to the same level before returning.</p>
+            </div>
+            <div className="text-center bg-background rounded-2xl p-6 shadow-sm md:col-span-2 lg:col-span-3">
+              <div className="bg-primary/10 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <span className="text-primary font-bold text-xl">✓</span>
+              </div>
+              <h4 className="font-semibold text-foreground mb-2">Operating Hours</h4>
+              <p className="text-sm text-muted-foreground">For smooth confirmations, complete requirements and settle the reservation fee during operating hours (7:00 AM–7:00 PM).</p>
+            </div>
+          </StandardGrid>
+        </SectionContainer>
 
         {/* Custom FAQ CTA */}
         <section className="bg-primary text-primary-foreground py-12">
@@ -409,4 +403,3 @@ export default function FAQsPage() {
     </div>
   )
 }
-

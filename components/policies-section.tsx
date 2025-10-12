@@ -1,6 +1,6 @@
 import { ContentCard } from "@/components/ui/content-card"
 import { SectionContainer, SectionHeader, StandardGrid } from "@/components/ui/content-grid"
-import { Fuel, MapPin, Calendar, AlertCircle } from "lucide-react"
+import { Fuel, MapPin, Calendar } from "lucide-react"
 
 const policies = [
   {
@@ -22,7 +22,7 @@ const policies = [
 
 export function PoliciesSection() {
   return (
-    <SectionContainer background="muted/30">
+    <SectionContainer background="default">
       <SectionHeader
         title="Clear Policies"
         description="Transparent policies for a smooth rental experience"
@@ -44,4 +44,3 @@ export function PoliciesSection() {
     </SectionContainer>
   )
 }
-

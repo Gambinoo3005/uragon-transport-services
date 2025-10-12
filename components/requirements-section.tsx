@@ -1,6 +1,6 @@
 import { ContentCard } from "@/components/ui/content-card"
 import { SectionContainer, SectionHeader, StandardGrid } from "@/components/ui/content-grid"
-import { CheckCircle, FileText, CreditCard, Camera, Globe, Receipt } from "lucide-react"
+import { FileText, CreditCard, Camera, Globe, Receipt } from "lucide-react"
 
 const requirements = [
   {
@@ -37,7 +37,7 @@ const requirements = [
 
 export function RequirementsSection() {
   return (
-    <SectionContainer background="default">
+    <SectionContainer background="muted/30">
       <SectionHeader
         title="Requirements (Self-Drive)"
         description="Bring these on the day of release (or send ahead for fast processing):"
@@ -59,4 +59,3 @@ export function RequirementsSection() {
     </SectionContainer>
   )
 }
-

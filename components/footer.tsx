@@ -14,7 +14,6 @@ export function Footer() {
             <p className="text-background/80 mb-4 text-sm leading-relaxed">
               Unlock your journey, travel anywhere. We offer affordable rates with unlimited mileage for self drive rentals.
             </p>
-            <div className="flex space-x-4">{/* Social media links would go here */}</div>
           </div>
 
           {/* Quick Links */}

@@ -1,4 +1,5 @@
-import type { Metadata } from "next"
+"use client"
+
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { BookingCTABanner } from "@/components/booking-cta-banner"
@@ -6,24 +7,7 @@ import { StickyBookButton } from "@/components/sticky-book-button"
 import { PageHero } from "@/components/ui/hero-components"
 import { SectionContainer, SectionHeader, StandardGrid } from "@/components/ui/content-grid"
 import { ContentCard } from "@/components/ui/content-card"
-import { Badge } from "@/components/ui/badge"
-import { 
-  FileText, 
-  Fuel, 
-  Gauge, 
-  Shield, 
-  X,
-  CheckCircle,
-  AlertCircle
-} from "lucide-react"
-import Link from "next/link"
-
-export const metadata: Metadata = {
-  title: "Rental Policies | Uragon Transport Services | Terms & Conditions",
-  description:
-    "View our comprehensive rental policies including fuel policy, mileage policy, insurance coverage, and cancellation terms. Transparent and fair policies for all customers.",
-  keywords: "car rental policies, fuel policy, mileage policy, insurance, cancellation policy, rental terms",
-}
+import { FileText, Fuel, Gauge, Shield, X } from "lucide-react"
 
 const policies = [
   {
@@ -122,23 +106,22 @@ export default function PoliciesPage() {
 
           <StandardGrid variant="4col" gap="md">
             {policies.map((policy, index) => (
-              <Link key={index} href={`/policies/${policy.slug}`}>
-                <ContentCard
-                  type="icon"
-                  icon={policy.icon}
-                  title={policy.name}
-                  description={policy.description}
-                  variant="centered"
-                  href={`/policies/${policy.slug}`}
-                  buttonText="Read More"
-                />
-              </Link>
+              <ContentCard
+                key={index}
+                type="icon"
+                icon={policy.icon}
+                title={policy.name}
+                description={policy.description}
+                variant="centered"
+                href={`/policies/${policy.slug}`}
+                buttonText="Read More"
+              />
             ))}
           </StandardGrid>
         </SectionContainer>
 
         {/* General Terms */}
-        <SectionContainer background="muted/50" padding="xl">
+        <SectionContainer background="muted/30" padding="xl">
           <SectionHeader
             title="General Terms & Conditions"
             description="Important information about your rental agreement"
@@ -167,29 +150,6 @@ export default function PoliciesPage() {
               description="All policies are subject to change without notice. Customers are responsible for reading and understanding all policies. Violation of policies may result in additional charges or rental termination. Contact us if you have any questions about our policies."
               variant="default"
             />
-          </div>
-        </SectionContainer>
-
-        {/* Contact Information */}
-        <SectionContainer background="muted/50" padding="xl">
-          <SectionHeader
-            title="Questions About Our Policies?"
-            description="Our customer service team is here to help clarify any policy questions"
-            maxWidth="2xl"
-          />
-
-          <div className="max-w-2xl mx-auto text-center">
-            <div className="flex items-center justify-center space-x-2 mb-6">
-              <a 
-                href="tel:+639159234867" 
-                className="text-2xl font-bold text-primary hover:text-primary/80 transition-colors"
-              >
-                +63 915 923 4867
-              </a>
-            </div>
-            <p className="text-muted-foreground">
-              Call us for clarification on any policy or to discuss your specific rental needs
-            </p>
           </div>
         </SectionContainer>
 
