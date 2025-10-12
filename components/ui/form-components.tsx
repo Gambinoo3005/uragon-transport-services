@@ -33,6 +33,7 @@ interface ContactFormProps {
   maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl'
   showHeader?: boolean
   variant?: 'contact' | 'booking'
+  highlight?: string
   prefilledData?: {
     pickup?: string
     destination?: string
@@ -54,6 +55,7 @@ export function ContactForm({
   maxWidth = '2xl',
   showHeader = true,
   variant = 'contact',
+  highlight,
   prefilledData = {},
   onSubmit,
   className
@@ -466,6 +468,7 @@ export function ContactForm({
           title={title}
           description={description}
           maxWidth={maxWidth}
+          highlight={highlight}
         />
         <div className={cn('mx-auto', maxWidthClasses[maxWidth])}>
           {formContent}
@@ -494,6 +497,7 @@ interface BookingFormProps {
   maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl'
   showHeader?: boolean
   redirectToContact?: boolean
+  highlight?: string
   onSubmit?: (data: any) => void
   className?: string
 }
@@ -505,6 +509,7 @@ export function BookingForm({
   maxWidth = '4xl',
   showHeader = true,
   redirectToContact = true,
+  highlight,
   onSubmit,
   className
 }: BookingFormProps) {
@@ -734,6 +739,7 @@ export function BookingForm({
           title={title}
           description={description}
           maxWidth={maxWidth}
+          highlight={highlight}
         />
         <div className={cn('mx-auto', maxWidthClasses[maxWidth])}>
           {formContent}

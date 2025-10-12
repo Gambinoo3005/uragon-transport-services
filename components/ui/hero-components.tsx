@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button"
-import { SectionContainer } from "@/components/ui/content-grid"
 import { StatsGridBlock } from "@/components/ui/content-blocks"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
@@ -37,22 +36,22 @@ export function PageHero({
   const backgroundClasses = {
     default: 'bg-background',
     muted: 'bg-muted',
-    gradient: 'bg-gradient-to-br from-primary/10 via-primary/15 to-primary/20'
+    gradient: 'cta-banner-primary'
   }
 
   return (
-    <section className={cn('py-16', backgroundClasses[background], className)}>
-      <SectionContainer>
+    <section className={cn('h-80 flex items-center', backgroundClasses[background], className)}>
+      <div className="container mx-auto px-4 w-full">
         <div className="max-w-4xl mx-auto text-center">
           {subtitle && (
-            <p className="text-xl text-primary mb-6 font-medium">{subtitle}</p>
+            <p className="text-base md:text-lg lg:text-xl text-white/90 mb-3 font-medium">{subtitle}</p>
           )}
           
-          <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-4 text-balance">
             {highlight ? (
               <>
                 {title.split(highlight)[0]}
-                <span className="text-primary">{highlight}</span>
+                <span className="text-white/90">{highlight}</span>
                 {title.split(highlight)[1]}
               </>
             ) : (
@@ -61,7 +60,7 @@ export function PageHero({
           </h1>
           
           {description && (
-            <p className="text-xl text-muted-foreground mb-8 text-pretty leading-relaxed">
+            <p className="text-base md:text-lg lg:text-xl text-white/80 mb-6 text-pretty leading-relaxed">
               {description}
             </p>
           )}
@@ -72,14 +71,14 @@ export function PageHero({
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center mt-8">
               {stats.map((stat, index) => (
                 <div key={index}>
-                  <div className="text-2xl font-bold text-primary">{stat.number}</div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
+                  <div className="text-2xl font-bold text-white">{stat.number}</div>
+                  <div className="text-sm text-white/70">{stat.label}</div>
                 </div>
               ))}
             </div>
           )}
         </div>
-      </SectionContainer>
+      </div>
     </section>
   )
 }
@@ -207,29 +206,29 @@ export function DetailHero({
   const backgroundClasses = {
     default: 'bg-background',
     muted: 'bg-muted',
-    gradient: 'bg-gradient-to-br from-primary/10 via-primary/15 to-primary/20'
+    gradient: 'cta-banner-primary'
   }
 
   return (
-    <section className={cn('py-16', backgroundClasses[background], className)}>
-      <SectionContainer>
+    <section className={cn('h-80 flex items-center', backgroundClasses[background], className)}>
+      <div className="container mx-auto px-4 w-full">
         <div className="max-w-4xl mx-auto text-center">
           {badge && (
-            <div className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
+            <div className="inline-block px-4 py-2 bg-white/20 text-white rounded-full text-sm font-medium mb-3">
               {badge}
             </div>
           )}
           
           {subtitle && (
-            <p className="text-xl text-primary mb-6 font-medium">{subtitle}</p>
+            <p className="text-base md:text-lg lg:text-xl text-white/90 mb-3 font-medium">{subtitle}</p>
           )}
           
-          <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-4 text-balance">
             {title}
           </h1>
           
           {description && (
-            <p className="text-xl text-muted-foreground mb-8 text-pretty leading-relaxed">
+            <p className="text-base md:text-lg lg:text-xl text-white/80 mb-6 text-pretty leading-relaxed">
               {description}
             </p>
           )}
@@ -246,7 +245,7 @@ export function DetailHero({
             </div>
           )}
         </div>
-      </SectionContainer>
+      </div>
     </section>
   )
 }

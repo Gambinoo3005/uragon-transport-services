@@ -124,3 +124,10 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .cta-banner-primary {
+    background-color: oklch(0.4 0.25 15) !important;
+    color: oklch(1 0 0) !important;
+  }
+}

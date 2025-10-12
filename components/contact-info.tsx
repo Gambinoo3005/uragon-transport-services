@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { SectionContainer } from "@/components/ui/content-grid"
 import { MapPin, Phone, Mail, Clock } from "lucide-react"
 
 const contactDetails = [
@@ -56,15 +57,6 @@ export function ContactInfo() {
         ))}
       </div>
 
-      <Card className="bg-primary text-primary-foreground">
-        <CardHeader>
-          <CardTitle>Need Immediate Assistance?</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="mb-4">For urgent bookings or roadside assistance, call our hotline:</p>
-          <p className="text-2xl font-bold">+63 915 923 4867</p>
-        </CardContent>
-      </Card>
     </div>
   )
 }

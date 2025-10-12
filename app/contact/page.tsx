@@ -6,7 +6,7 @@ import { StickyBookButton } from "@/components/sticky-book-button"
 import { ContactHero } from "@/components/contact-hero"
 import { ContactForm } from "@/components/contact-form"
 import { ContactInfo } from "@/components/contact-info"
-import { ContactMap } from "@/components/contact-map"
+import { SectionContainer, SectionHeader } from "@/components/ui/content-grid"
 
 export const metadata: Metadata = {
   title: "Contact Us | Book Your Car Rental in Bicol | Uragon Transport Services",
@@ -21,19 +21,22 @@ export default function ContactPage() {
       <Header />
       <main>
         <ContactHero />
-        <div className="container mx-auto px-4 py-16">
-          <div className="max-w-6xl mx-auto">
-            <div className="lg:grid lg:grid-cols-2 lg:gap-16">
-              <div>
-                <ContactForm />
-              </div>
-              <div>
-                <ContactInfo />
-              </div>
+        <SectionContainer background="default" padding="xl">
+          <SectionHeader
+            title="We’re Here to Help"
+            description="Send us your trip details and we’ll respond within operating hours with options tailored to your needs."
+            maxWidth="3xl"
+          />
+
+          <div className="lg:grid lg:grid-cols-2 lg:gap-16">
+            <div className="space-y-8">
+              <ContactForm />
+            </div>
+            <div className="space-y-8">
+              <ContactInfo />
             </div>
           </div>
-        </div>
-        <ContactMap />
+        </SectionContainer>
         <BookingCTABanner />
       </main>
       <Footer />

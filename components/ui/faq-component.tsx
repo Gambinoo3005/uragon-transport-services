@@ -23,6 +23,7 @@ interface FAQSectionProps {
   showViewAll?: boolean
   viewAllHref?: string
   viewAllText?: string
+  highlight?: string
   className?: string
 }
 
@@ -36,6 +37,7 @@ export function FAQSection({
   showViewAll = false,
   viewAllHref = '/faqs',
   viewAllText = 'View All FAQs',
+  highlight,
   className
 }: FAQSectionProps) {
   const backgroundClasses = {
@@ -93,7 +95,7 @@ export function FAQSection({
       backgroundClasses[background],
       className
     )}>
-      <SectionContainer>
+      <div className="container mx-auto px-4">
         <div className={cn(
           'mx-auto',
           maxWidthClasses[maxWidth]
@@ -102,7 +104,15 @@ export function FAQSection({
             <div className="text-center mb-12">
               {title && (
                 <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4 text-balance">
-                  {title}
+                  {highlight ? (
+                    <>
+                      {title.split(highlight)[0]}
+                      <span className="text-primary">{highlight}</span>
+                      {title.split(highlight)[1]}
+                    </>
+                  ) : (
+                    title
+                  )}
                 </h2>
               )}
               {description && (
@@ -133,7 +143,7 @@ export function FAQSection({
             </div>
           )}
         </div>
-      </SectionContainer>
+      </div>
     </div>
   )
 

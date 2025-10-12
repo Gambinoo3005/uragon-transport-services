@@ -161,14 +161,14 @@ function IconCard({
         </p>
         
         {href && (
-          <Link href={href} className="mt-6">
+          <div className="mt-6">
             <Button 
               variant="outline" 
               className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
             >
               {buttonText}
             </Button>
-          </Link>
+          </div>
         )}
       </CardContent>
     </Card>
@@ -306,14 +306,14 @@ function PromoCard({
         </p>
         
         {href && (
-          <Link href={href} className="mt-6">
+          <div className="mt-6">
             <Button 
               variant="outline" 
               className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
             >
               {buttonText}
             </Button>
-          </Link>
+          </div>
         )}
       </CardContent>
     </Card>

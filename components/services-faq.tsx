@@ -30,7 +30,7 @@ export function ServicesFAQ() {
       description="Frequently asked questions about our services"
       faqs={faqs}
       variant="card"
-      background="default"
+      background="muted/30"
       maxWidth="4xl"
       showViewAll={true}
       viewAllHref="/faqs"

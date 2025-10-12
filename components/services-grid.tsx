@@ -87,7 +87,9 @@ export function ServicesGrid() {
         highlight="Offer"
       />
 
-      <FeaturedGrid regularItems={regularItems} gap="md" />
+      <FeaturedGrid variant="featured" regularItems={regularItems} gap="md">
+        {null}
+      </FeaturedGrid>
     </SectionContainer>
   )
 }

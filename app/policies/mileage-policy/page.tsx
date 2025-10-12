@@ -1,4 +1,5 @@
-import type { Metadata } from "next"
+"use client"
+
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { BookingCTABanner } from "@/components/booking-cta-banner"
@@ -17,12 +18,6 @@ import {
   Clock
 } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "Mileage Policy | Uragon Transport Services | Unlimited Mileage Car Rental",
-  description:
-    "Learn about our mileage policy for car rentals. Unlimited mileage for self-drive rentals with no restrictions on distance traveled within Luzon.",
-  keywords: "unlimited mileage car rental, mileage policy, car rental distance, Bicol car rental mileage",
-}
 
 const mileagePolicyPoints = [
   {

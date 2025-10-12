@@ -215,19 +215,13 @@ export function VehicleGrid() {
   return (
     <SectionContainer background="default">
       <VehicleGridComponent 
+        variant="vehicle"
         showFilters={true}
         filterControls={filterControls}
         gap="md"
       >
         {vehicleComponents}
       </VehicleGridComponent>
-
-      <div className="text-center mt-12">
-        <p className="text-muted-foreground mb-4">Need help choosing the right vehicle?</p>
-        <Button variant="outline" size="lg" className="bg-transparent">
-          Contact Our Fleet Experts
-        </Button>
-      </div>
     </SectionContainer>
   )
 }

@@ -4,9 +4,7 @@ import Link from "next/link"
 import { MapPin, Clock, Navigation, Sparkles } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import { SectionContainer, SectionHeader, LocationGrid as LocationGridComponent } from "@/components/ui/content-grid"
-import { useMemo, useState } from "react"
 
 export type Location = {
   name: string
@@ -23,50 +21,8 @@ type LocationGridProps = {
   locations: Location[]
 }
 
-type FilterOption = "all" | "featured"
-
 export function LocationGrid({ locations }: LocationGridProps) {
-  const [activeFilter, setActiveFilter] = useState<FilterOption>("all")
-
-  const filteredLocations = useMemo(() => {
-    if (activeFilter === "featured") {
-      return locations.filter((location) => location.popular)
-    }
-    return locations
-  }, [activeFilter, locations])
-
-  const filterControls = (
-    <>
-      <div className="max-w-2xl">
-        <h2 className="text-3xl font-bold text-foreground mb-3">Where We Can Meet You</h2>
-        <p className="text-lg text-muted-foreground">
-          Choose the hub that&apos;s closest to your pickup. Each location is staffed by local coordinators who know
-          the routes, landmarks, and service shortcuts across Bicol.
-        </p>
-      </div>
-
-      <div className="bg-muted rounded-full p-1 inline-flex w-fit self-start md:self-auto">
-        <Button
-          variant={activeFilter === "all" ? "default" : "ghost"}
-          size="sm"
-          className="px-4"
-          onClick={() => setActiveFilter("all")}
-        >
-          All Locations
-        </Button>
-        <Button
-          variant={activeFilter === "featured" ? "default" : "ghost"}
-          size="sm"
-          className="px-4"
-          onClick={() => setActiveFilter("featured")}
-        >
-          Featured
-        </Button>
-      </div>
-    </>
-  )
-
-  const locationComponents = filteredLocations.map((location) => (
+  const locationComponents = locations.map((location) => (
     <Link
       key={location.slug}
       href={`/locations/${location.slug}`}
@@ -125,7 +81,7 @@ export function LocationGrid({ locations }: LocationGridProps) {
           <div className="mt-6 flex items-center justify-between">
             <div className="text-sm font-semibold text-primary">View location guide</div>
             <span className="text-sm text-muted-foreground group-hover:text-primary transition-colors">
-              Learn more >
+              Learn more {'>'}
             </span>
           </div>
         </CardContent>
@@ -136,18 +92,11 @@ export function LocationGrid({ locations }: LocationGridProps) {
   return (
     <SectionContainer background="default">
       <LocationGridComponent 
-        showFilters={true}
-        filterControls={filterControls}
+        variant="location"
         gap="lg"
       >
         {locationComponents}
       </LocationGridComponent>
-
-      {filteredLocations.length === 0 ? (
-        <div className="mt-12 text-center text-muted-foreground">
-          No locations match this filter yet. Try switching back to all locations.
-        </div>
-      ) : null}
     </SectionContainer>
   )
 }

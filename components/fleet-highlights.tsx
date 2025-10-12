@@ -79,7 +79,7 @@ export function FleetHighlights() {
   }
 
   return (
-    <SectionContainer background="muted/30">
+    <SectionContainer background="default">
       <SectionHeader
         title="Our Most Popular Cars for Every Journey"
         description="From city errands to out-of-town tours—we have the perfect vehicle for every trip"

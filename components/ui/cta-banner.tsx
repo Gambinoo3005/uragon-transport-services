@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button"
-import { SectionContainer } from "@/components/ui/content-grid"
 import { cn } from "@/lib/utils"
 import { LucideIcon } from "lucide-react"
 
@@ -29,20 +28,20 @@ export function CTABanner({
   className
 }: CTABannerProps) {
   const backgroundClasses = {
-    primary: 'bg-primary text-primary-foreground',
+    primary: 'cta-banner-primary',
     secondary: 'bg-secondary text-secondary-foreground',
     muted: 'bg-muted text-muted-foreground'
   }
 
   const buttonClasses = {
-    primary: 'bg-background text-foreground hover:bg-background/90',
+    primary: 'bg-white text-primary hover:bg-white/90 border-white',
     secondary: 'bg-background text-foreground hover:bg-background/90',
     muted: 'bg-primary text-primary-foreground hover:bg-primary/90'
   }
 
   return (
     <div className={cn(backgroundClasses[background], 'py-12', className)}>
-      <SectionContainer>
+      <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h3 className="text-3xl md:text-4xl font-bold mb-4">{title}</h3>
           <p className="text-xl mb-8 leading-relaxed opacity-90">
@@ -79,7 +78,7 @@ export function CTABanner({
             </div>
           )}
         </div>
-      </SectionContainer>
+      </div>
     </div>
   )
 }

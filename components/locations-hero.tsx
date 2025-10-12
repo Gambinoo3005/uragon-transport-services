@@ -18,12 +18,6 @@ export function LocationsHero({ totalLocations, highlightAreas = [] }: Locations
       title="Service Locations"
       highlight="Locations"
       description="Wherever your trip takes you in Bicol, our on-ground team is ready to deliver clean, well-maintained vehicles with professional support. Book in advance and we'll meet you right where you need us."
-      stats={[
-        { number: `${totalLocations}+`, label: "Active Hubs" },
-        { number: "45 min", label: "Avg. Response" },
-        { number: "24/7", label: "Dispatch Support" },
-        { number: "Full", label: highlightSummary ? `${highlightSummary} Coverage` : "Bicol Coverage" }
-      ]}
     />
   )
 }

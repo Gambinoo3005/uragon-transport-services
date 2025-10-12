@@ -31,6 +31,7 @@ export function FAQsPreview() {
       showViewAll={true}
       viewAllHref="/faqs"
       viewAllText="View All FAQs"
+      highlight="(Quick Answers)"
     />
   )
 }

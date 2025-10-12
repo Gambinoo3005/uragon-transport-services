@@ -6,6 +6,7 @@ export function HomepageCTABanner() {
     <CTABanner
       title="Ready to drive?"
       description="Get car rental in bicol region with Uragon Transport Services—insured units, unlimited mileage (within declared destination), and friendly support."
+      background="primary"
       buttons={[
         {
           text: "Call 0915 923 4867",

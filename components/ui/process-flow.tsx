@@ -29,6 +29,7 @@ interface ProcessFlowProps {
   maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl'
   showNumbers?: boolean
   showIcons?: boolean
+  highlight?: string
   className?: string
 }
 
@@ -42,6 +43,7 @@ export function ProcessFlow({
   maxWidth = '6xl',
   showNumbers = true,
   showIcons = true,
+  highlight,
   className
 }: ProcessFlowProps) {
   const [activeStep, setActiveStep] = useState<string | number | null>(null)
@@ -190,7 +192,15 @@ export function ProcessFlow({
             <div className="text-center mb-12">
               {title && (
                 <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                  {title}
+                  {highlight ? (
+                    <>
+                      {title.split(highlight)[0]}
+                      <span className="text-primary">{highlight}</span>
+                      {title.split(highlight)[1]}
+                    </>
+                  ) : (
+                    title
+                  )}
                 </h2>
               )}
               {description && (
