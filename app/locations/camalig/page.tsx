@@ -1,22 +1,12 @@
+import Link from "next/link"
 import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { BookingCTABanner } from "@/components/booking-cta-banner"
 import { StickyBookButton } from "@/components/sticky-book-button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { 
-  MapPin, 
-  Clock, 
-  Phone, 
-  Car, 
-  Mountain, 
-  Trees, 
-  Wheat,
-  Star,
-  Navigation
-} from "lucide-react"
+import { LocationLandingHero } from "@/components/location-landing-hero"
+import { SectionContainer, SectionHeader } from "@/components/ui/content-grid"
+import { Mountain, Wheat, Trees } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Camalig Car Rental | Uragon Transport Services | Mayon Base Tours",
@@ -25,230 +15,219 @@ export const metadata: Metadata = {
   keywords: "Camalig car rental, Mayon Volcano base, agricultural tours, volcano trekking, Bicol car rental",
 }
 
-const attractions = [
-  {
-    name: "Mayon Volcano Base",
-    description: "Gateway to Mayon Volcano trekking and exploration",
-    image: "/placeholder.jpg",
-    distance: "20 km from Legazpi",
-    duration: "2-3 hours",
-    features: ["Volcano access", "Trekking base", "Nature trails", "Adventure activities"]
+const locationData = {
+  hero: {
+    location: "Camalig",
+    tagline: "Where agriculture meets adventure",
+    description:
+      "Gateway to Mayon Volcano with rich agricultural heritage, Camalig offers a unique blend of adventure and rural charm. Perfect for those seeking authentic Bicolano experiences, volcano exploration, and a glimpse into the region's farming traditions.",
+    badge: "Adventure & Agro",
+    primaryAction: {
+      label: "Book your adventure",
+      href: "/contact"
+    },
+    secondaryAction: {
+      label: "View vehicles",
+      href: "/fleet"
+    }
   },
-  {
-    name: "Agricultural Areas",
-    description: "Rich farming communities and agricultural landscapes",
-    image: "/placeholder.jpg",
-    distance: "15-25 km from Legazpi",
-    duration: "1-2 hours",
-    features: ["Farm tours", "Agricultural heritage", "Rural landscapes", "Local produce"]
-  },
-  {
-    name: "Rural Communities",
-    description: "Traditional Bicolano villages and communities",
-    image: "/placeholder.jpg",
-    distance: "18-30 km from Legazpi",
-    duration: "Half day",
-    features: ["Cultural immersion", "Local traditions", "Community visits", "Authentic experiences"]
-  }
-]
-
-const services = [
-  {
-    name: "Volcano Trekking",
-    description: "Transport to Mayon Volcano base for trekking",
-    duration: "4 hours",
-    price: "From ₱2,000",
-    includes: ["Professional driver", "Vehicle", "Trekking base access", "Safety equipment"],
-    icon: Mountain
-  },
-  {
-    name: "Agricultural Tour",
-    description: "Explore farming communities and agricultural areas",
-    duration: "3 hours",
-    price: "From ₱1,500",
-    includes: ["Professional driver", "Vehicle", "Farm visits", "Local guide"],
-    icon: Wheat
-  },
-  {
-    name: "Rural Community Tour",
-    description: "Visit traditional Bicolano villages",
-    duration: "4 hours",
-    price: "From ₱1,800",
-    includes: ["Professional driver", "Vehicle", "Community visits", "Cultural insights"],
-    icon: Trees
-  }
-]
+  overview: [
+    "Camalig is Albay's gateway to Mayon Volcano's trekking routes and a thriving agricultural hub known for pili nuts, abaca, and coconut plantations. This quiet municipality offers visitors a chance to experience both the thrill of volcano exploration and the tranquility of rural Bicol life.",
+    "Our transportation services connect you to Mayon's base camps for trekking adventures, agricultural farms for agro-tourism experiences, and traditional communities where Bicolano culture thrives."
+  ],
+  attractions: [
+    {
+      title: "Mayon Volcano Base Camp",
+      description: "The primary access point for Mayon Volcano trekking and adventure activities. This base camp serves as the starting point for guided climbs, ATV rides on lava trails, and nature walks through the volcano's lush lower slopes. Our drivers coordinate with local guides to ensure safe and memorable experiences.",
+      distance: "20 km from Legazpi",
+      duration: "2-3 hours minimum",
+      highlights: ["Volcano trekking access", "ATV lava trail rides", "Guided nature walks", "Adventure activity coordination"]
+    },
+    {
+      title: "Pili Nut & Agricultural Farms",
+      description: "Camalig is famous for pili nut production—Bicol's signature crop. Visit working farms to see pili harvesting, processing, and taste fresh pili products. Many farms also grow abaca (Manila hemp), coconut, and other tropical crops, offering authentic agro-tourism experiences.",
+      distance: "15-25 km from Legazpi",
+      duration: "1-2 hours",
+      highlights: ["Pili nut farms", "Farm-to-table experiences", "Agricultural heritage", "Fresh local produce"]
+    },
+    {
+      title: "Traditional Bicolano Villages",
+      description: "Experience authentic rural Bicol life in traditional farming communities. Visit local homes, see traditional crafts, taste homemade Bicolano dishes, and learn about the agricultural lifestyle that has sustained these communities for generations.",
+      distance: "18-30 km from Legazpi",
+      duration: "Half day",
+      highlights: ["Cultural immersion", "Traditional crafts", "Authentic cuisine", "Community interactions"]
+    }
+  ],
+  services: [
+    {
+      name: "Volcano Adventure Transfer",
+      icon: Mountain,
+      description: "Transport to Mayon Volcano base camp for trekking, ATV rides, and adventure activities with local guide coordination",
+      duration: "4-6 hours",
+      price: "From ₱2,000",
+      includes: ["Professional driver", "Base camp access", "Guide coordination", "Safety equipment space"]
+    },
+    {
+      name: "Agricultural Tour",
+      icon: Wheat,
+      description: "Explore working farms, pili nut plantations, and agricultural heritage sites with farm visits and tastings",
+      duration: "3-4 hours",
+      price: "From ₱1,500",
+      includes: ["Professional driver", "Farm visits", "Tasting experiences", "Local guide arrangements"]
+    },
+    {
+      name: "Rural Community Tour",
+      icon: Trees,
+      description: "Visit traditional Bicolano villages for cultural immersion, craft demonstrations, and authentic home-cooked meals",
+      duration: "4-5 hours",
+      price: "From ₱1,800",
+      includes: ["Professional driver", "Community visits", "Cultural insights", "Meal arrangements"]
+    }
+  ],
+  adventureTips: [
+    "Mayon trekking requires permits—book 3-5 days ahead through local tourism offices",
+    "Wear closed-toe shoes and bring sunscreen for volcano base camp visits",
+    "Early morning departures (5-7 AM) offer the best weather for volcano activities",
+    "ATV rides on lava trails are available for non-hikers seeking adventure",
+    "Bring extra water and snacks—limited facilities near base camp areas"
+  ],
+  agroTourismHighlights: [
+    "Pili nut harvesting season: August to November (best time for farm tours)",
+    "Learn traditional pili processing methods from local farmers",
+    "Purchase fresh pili nuts, candies, and oil directly from producers",
+    "Abaca (Manila hemp) plantations offer insights into fiber production",
+    "Coconut farms demonstrate toddy tapping and vinegar production",
+    "Many farms offer farm-to-table lunches with fresh Bicolano dishes"
+  ]
+}
 
 export default function CamaligPage() {
   return (
     <div className="min-h-screen">
       <Header />
       <main>
+        <LocationLandingHero
+          location={locationData.hero.location}
+          tagline={locationData.hero.tagline}
+          description={locationData.hero.description}
+          badge={locationData.hero.badge}
+          primaryAction={locationData.hero.primaryAction}
+          secondaryAction={locationData.hero.secondaryAction}
+        />
 
-        {/* Hero Section */}
-        <section className="relative py-16 bg-gradient-to-br from-primary/10 via-primary/15 to-primary/20">
-          <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                  Camalig
-                </h1>
-                <p className="text-xl text-muted-foreground mb-8">
-                  Gateway to Mayon Volcano with rich agricultural heritage. Camalig offers 
-                  a unique blend of adventure and rural charm, perfect for those seeking 
-                  authentic Bicolano experiences and volcano exploration.
+        <SectionContainer background="default" padding="xl">
+          <div className="max-w-3xl mx-auto space-y-6">
+            {locationData.overview.map((paragraph, index) => (
+              <p key={index} className="text-lg text-muted-foreground leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </SectionContainer>
+
+        <SectionContainer background="muted/30" padding="xl">
+          <SectionHeader
+            title="Rural & adventure attractions"
+            description="Discover the agricultural heritage and adventure opportunities of Camalig"
+            centered={false}
+            maxWidth="3xl"
+          />
+          <div className="grid gap-8 md:grid-cols-3">
+            {locationData.attractions.map((attraction, index) => (
+              <div key={index} className="space-y-3">
+                <h3 className="text-xl font-semibold text-foreground">{attraction.title}</h3>
+                <p className="text-base text-muted-foreground leading-relaxed">
+                  {attraction.description}
                 </p>
-                <div className="flex flex-wrap gap-4">
-                  <Button size="lg" className="bg-primary hover:bg-primary/90">
-                    Book Now
-                  </Button>
-                  <Button size="lg" variant="outline">
-                    <Phone className="h-4 w-4 mr-2" />
-                    Call Us
-                  </Button>
+                <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                  <span>{attraction.distance}</span>
+                  <span>•</span>
+                  <span>{attraction.duration}</span>
+                </div>
+                <div className="pt-2">
+                  <p className="text-sm font-medium text-foreground mb-2">Highlights:</p>
+                  <ul className="space-y-1">
+                    {attraction.highlights.map((highlight, highlightIndex) => (
+                      <li key={highlightIndex} className="text-sm text-muted-foreground leading-relaxed">
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
-              <div className="relative">
-                <div className="aspect-video bg-muted rounded-lg overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                    <Mountain className="h-16 w-16 text-primary/50" />
+            ))}
+          </div>
+        </SectionContainer>
+
+        <SectionContainer background="default" padding="xl">
+          <SectionHeader
+            title="Our Camalig tour services"
+            description="Adventure and cultural transportation experiences"
+            centered={false}
+            maxWidth="3xl"
+          />
+          <div className="grid gap-8 md:grid-cols-3">
+            {locationData.services.map((service, index) => (
+              <div key={index} className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-3 bg-primary/10 rounded-lg">
+                    <service.icon className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-sm uppercase tracking-wide text-muted-foreground">{service.duration}</p>
+                    <p className="text-xl font-semibold text-foreground">{service.price}</p>
                   </div>
                 </div>
+                <h3 className="text-lg font-semibold text-foreground">{service.name}</h3>
+                <p className="text-base text-muted-foreground leading-relaxed">
+                  {service.description}
+                </p>
+                <div className="pt-2 border-t border-border/60">
+                  <p className="text-sm font-medium text-foreground mb-2">Includes:</p>
+                  <ul className="space-y-1">
+                    {service.includes.map((item, itemIndex) => (
+                      <li key={itemIndex} className="text-sm text-muted-foreground leading-relaxed">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
-        </section>
+        </SectionContainer>
 
-        {/* Key Attractions */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-foreground mb-4">Rural & Adventure Attractions</h2>
-              <p className="text-lg text-muted-foreground">
-                Discover the agricultural heritage and adventure opportunities of Camalig
-              </p>
-            </div>
+        <SectionContainer background="muted/30" padding="xl">
+          <SectionHeader
+            title="Volcano adventure tips"
+            description="Prepare for your Mayon base camp experience"
+            centered={false}
+            maxWidth="3xl"
+          />
+          <ul className="grid gap-4 md:grid-cols-2 max-w-4xl">
+            {locationData.adventureTips.map((tip, index) => (
+              <li key={index} className="text-base text-muted-foreground leading-relaxed">
+                {tip}
+              </li>
+            ))}
+          </ul>
+        </SectionContainer>
 
-            <div className="grid md:grid-cols-3 gap-8">
-              {attractions.map((attraction, index) => (
-                <Card key={index} className="group hover:shadow-lg transition-all duration-300">
-                  <div className="aspect-video bg-muted rounded-t-lg overflow-hidden">
-                    <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                      <Mountain className="h-12 w-12 text-primary/50" />
-                    </div>
-                  </div>
-                  <CardHeader>
-                    <CardTitle className="text-xl">{attraction.name}</CardTitle>
-                    <CardDescription>{attraction.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-3">
-                      <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                        <Navigation className="h-4 w-4" />
-                        <span>{attraction.distance}</span>
-                      </div>
-                      <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                        <Clock className="h-4 w-4" />
-                        <span>{attraction.duration}</span>
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-sm mb-2">Features:</h4>
-                        <div className="flex flex-wrap gap-1">
-                          {attraction.features.map((feature, featureIndex) => (
-                            <Badge key={featureIndex} variant="secondary" className="text-xs">
-                              {feature}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Services */}
-        <section className="py-16 bg-muted/50">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-foreground mb-4">Our Services in Camalig</h2>
-              <p className="text-lg text-muted-foreground">
-                Adventure and cultural transportation experiences
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {services.map((service, index) => (
-                <Card key={index} className="text-center">
-                  <CardHeader>
-                    <div className="mx-auto mb-4 p-4 bg-primary/10 rounded-full w-fit">
-                      <service.icon className="h-8 w-8 text-primary" />
-                    </div>
-                    <CardTitle className="text-xl">{service.name}</CardTitle>
-                    <CardDescription>{service.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="text-2xl font-bold text-primary">{service.price}</div>
-                      <div className="flex items-center justify-center space-x-2 text-sm text-muted-foreground">
-                        <Clock className="h-4 w-4" />
-                        <span>{service.duration}</span>
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-sm mb-2">Includes:</h4>
-                        <ul className="space-y-1 text-sm text-muted-foreground">
-                          {service.includes.map((item, itemIndex) => (
-                            <li key={itemIndex} className="flex items-center space-x-2">
-                              <span className="text-primary">•</span>
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Contact Information */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-foreground mb-4">Ready to Explore Camalig?</h2>
-              <p className="text-lg text-muted-foreground">
-                Contact us to book your rural and adventure experience
-              </p>
-            </div>
-
-            <div className="max-w-2xl mx-auto text-center">
-              <div className="flex items-center justify-center space-x-2 mb-6">
-                <Phone className="h-5 w-5 text-primary" />
-                <a 
-                  href="tel:+639159234867" 
-                  className="text-2xl font-bold text-primary hover:text-primary/80 transition-colors"
-                >
-                  +63 915 923 4867
-                </a>
-              </div>
-              <p className="text-muted-foreground mb-8">
-                Call us to plan your Camalig adventure and cultural tour
-              </p>
-              <div className="flex flex-wrap gap-4 justify-center">
-                <Button size="lg" className="bg-primary hover:bg-primary/90">
-                  Book Now
-                </Button>
-                <Button size="lg" variant="outline">
-                  View Fleet
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
+        <SectionContainer background="default" padding="xl">
+          <SectionHeader
+            title="Agro-tourism highlights"
+            description="Experience Camalig's agricultural heritage"
+            centered={false}
+            maxWidth="3xl"
+          />
+          <ul className="grid gap-4 md:grid-cols-2 max-w-4xl">
+            {locationData.agroTourismHighlights.map((highlight, index) => (
+              <li key={index} className="text-base text-muted-foreground leading-relaxed">
+                {highlight}
+              </li>
+            ))}
+          </ul>
+        </SectionContainer>
 
         <BookingCTABanner />
       </main>

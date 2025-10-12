@@ -1,22 +1,12 @@
+import Link from "next/link"
 import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { BookingCTABanner } from "@/components/booking-cta-banner"
 import { StickyBookButton } from "@/components/sticky-book-button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { 
-  MapPin, 
-  Clock, 
-  Phone, 
-  Car, 
-  Ship, 
-  Waves, 
-  Mountain,
-  Star,
-  Navigation
-} from "lucide-react"
+import { LocationLandingHero } from "@/components/location-landing-hero"
+import { SectionContainer, SectionHeader } from "@/components/ui/content-grid"
+import { Ship, Waves, Anchor } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Tabaco Car Rental | Uragon Transport Services | Port & Island Tours",
@@ -25,230 +15,245 @@ export const metadata: Metadata = {
   keywords: "Tabaco car rental, Tabaco Port, San Miguel Island, beach tours, Bicol car rental",
 }
 
-const attractions = [
-  {
-    name: "Tabaco Port",
-    description: "Gateway to nearby islands and provinces",
-    image: "/placeholder.jpg",
-    distance: "25 km from Legazpi",
-    duration: "30 minutes",
-    features: ["Port access", "Island hopping", "Ferry terminal", "Maritime hub"]
+const locationData = {
+  hero: {
+    location: "Tabaco City",
+    tagline: "Your coastal escape to island adventures",
+    description:
+      "A coastal city known for its port and beautiful beaches, Tabaco serves as a gateway to nearby islands and offers access to pristine beaches, island-hopping adventures, and maritime heritage. Let us take you from the port to paradise.",
+    badge: "Coastal Gateway",
+    primaryAction: {
+      label: "Book coastal transfer",
+      href: "/contact"
+    },
+    secondaryAction: {
+      label: "View our vehicles",
+      href: "/fleet"
+    }
   },
-  {
-    name: "San Miguel Island",
-    description: "Beautiful island with pristine beaches",
-    image: "/placeholder.jpg",
-    distance: "30 km from Legazpi",
-    duration: "Full day",
-    features: ["Beach activities", "Island hopping", "Snorkeling", "Relaxation"]
+  overview: [
+    "Tabaco City is the maritime gateway to Bicol's most pristine islands and coastal treasures. With its bustling port connecting travelers to San Miguel Island and beyond, Tabaco offers the perfect blend of island adventure and coastal relaxation.",
+    "Our transportation services ensure you arrive at the port on time for your island adventures, or deliver you comfortably to beachfront resorts where you can unwind and enjoy the coastal beauty of Albay."
+  ],
+  destinations: [
+    {
+      title: "Tabaco Port",
+      description: "The main maritime hub of Albay, connecting travelers to nearby islands and provinces. Whether you're catching a ferry to San Miguel Island, Masbate, or other destinations, we ensure punctual port transfers with luggage assistance and real-time ferry schedule coordination.",
+      distance: "25 km from Legazpi",
+      duration: "30 minutes drive",
+      highlights: ["Ferry terminal access", "Island-hopping gateway", "Luggage assistance", "Schedule coordination"]
+    },
+    {
+      title: "San Miguel Island",
+      description: "A pristine island paradise accessible from Tabaco Port, featuring white sand beaches, crystal-clear waters, and untouched natural beauty. Perfect for day trips, snorkeling, beach camping, and escaping the mainland hustle.",
+      distance: "Ferry from Tabaco Port",
+      duration: "Full day trip",
+      highlights: ["White sand beaches", "Snorkeling spots", "Beach camping", "Island picnics"]
+    },
+    {
+      title: "Tabaco Beach Resorts",
+      description: "A collection of coastal resorts and beachfront accommodations offering stunning ocean views, water activities, and authentic seaside dining. Ideal for family weekends, romantic getaways, and group retreats.",
+      distance: "20-30 km from Legazpi",
+      duration: "Half to full day",
+      highlights: ["Beachfront facilities", "Water sports", "Fresh seafood dining", "Sunset views"]
+    },
+    {
+      title: "Misibis Bay Access",
+      description: "Transportation to the exclusive Misibis Bay luxury resort, known for world-class amenities, private beaches, and upscale accommodations. We coordinate seamless transfers with resort check-in times.",
+      distance: "35 km from Legazpi",
+      duration: "45 minutes",
+      highlights: ["Luxury resort access", "Private beach transfers", "Resort coordination", "VIP service"]
+    }
+  ],
+  services: [
+    {
+      name: "Port Transfer Service",
+      icon: Ship,
+      description: "Reliable transportation to and from Tabaco Port with ferry schedule coordination and luggage handling",
+      duration: "30 minutes",
+      price: "From ₱1,000",
+      includes: ["Professional driver", "Ferry schedule tracking", "Luggage assistance", "Port drop-off coordination"]
+    },
+    {
+      name: "Island Tour Package",
+      icon: Waves,
+      description: "Full-day island adventure including port transfer, wait time, and return service for San Miguel Island trips",
+      duration: "8-10 hours",
+      price: "From ₱2,500",
+      includes: ["Round-trip port transfer", "Driver wait time", "Flexible return schedule", "Cooler for beach supplies"]
+    },
+    {
+      name: "Beach Resort Transfer",
+      icon: Anchor,
+      description: "Comfortable transport to coastal resorts with flexible schedules for day trips or overnight stays",
+      duration: "Flexible",
+      price: "From ₱1,800",
+      includes: ["Professional driver", "Resort coordination", "Flexible timing", "Beach equipment space"]
+    }
+  ],
+  portInfo: {
+    ferryRoutes: [
+      "San Miguel Island (daily departures)",
+      "Masbate Province (multiple daily routes)",
+      "Catanduanes connections (seasonal)",
+      "Inter-island cargo and passenger ferries"
+    ],
+    travelTips: [
+      "Book port transfers 24 hours ahead to coordinate with ferry schedules",
+      "Arrive at least 30 minutes before ferry departure for ticketing",
+      "Pack light for island trips—we provide storage for extra luggage",
+      "Check weather conditions before island trips, especially during monsoon season"
+    ]
   },
-  {
-    name: "Beach Resorts",
-    description: "Coastal resorts and beachfront accommodations",
-    image: "/placeholder.jpg",
-    distance: "20-30 km from Legazpi",
-    duration: "Half day",
-    features: ["Beach access", "Resort facilities", "Water activities", "Dining"]
-  }
-]
-
-const services = [
-  {
-    name: "Port Transfer",
-    description: "Reliable transportation to Tabaco Port",
-    duration: "30 minutes",
-    price: "From ₱1,000",
-    includes: ["Professional driver", "Vehicle", "Port access", "Wait time"],
-    icon: Ship
-  },
-  {
-    name: "Island Tour",
-    description: "Full day tour to San Miguel Island",
-    duration: "8 hours",
-    price: "From ₱2,500",
-    includes: ["Professional driver", "Vehicle", "Island access", "Beach activities"],
-    icon: Mountain
-  },
-  {
-    name: "Beach Resort Tour",
-    description: "Visit coastal resorts and beaches",
-    duration: "4 hours",
-    price: "From ₱1,800",
-    includes: ["Professional driver", "Vehicle", "Resort access", "Beach activities"],
-    icon: Waves
-  }
-]
+  beachActivities: [
+    "Island hopping to multiple small islands around Tabaco Bay",
+    "Snorkeling and diving at coral-rich spots near San Miguel Island",
+    "Beach volleyball and water sports at resort areas",
+    "Fresh seafood dining at beachfront eateries",
+    "Sunset watching along the Tabaco coastal strip",
+    "Beach camping and bonfire setups (with permits)"
+  ]
+}
 
 export default function TabacoPage() {
   return (
     <div className="min-h-screen">
       <Header />
       <main>
+        <LocationLandingHero
+          location={locationData.hero.location}
+          tagline={locationData.hero.tagline}
+          description={locationData.hero.description}
+          badge={locationData.hero.badge}
+          primaryAction={locationData.hero.primaryAction}
+          secondaryAction={locationData.hero.secondaryAction}
+        />
 
-        {/* Hero Section */}
-        <section className="relative py-16 bg-gradient-to-br from-primary/10 via-primary/15 to-primary/20">
-          <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                  Tabaco
-                </h1>
-                <p className="text-xl text-muted-foreground mb-8">
-                  A coastal city known for its port and beautiful beaches. Tabaco serves as 
-                  a gateway to nearby islands and offers access to pristine beaches and 
-                  island hopping adventures.
+        <SectionContainer background="default" padding="xl">
+          <div className="max-w-3xl mx-auto space-y-6">
+            {locationData.overview.map((paragraph, index) => (
+              <p key={index} className="text-lg text-muted-foreground leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </SectionContainer>
+
+        <SectionContainer background="muted/30" padding="xl">
+          <SectionHeader
+            title="Coastal attractions & island gateways"
+            description="Discover the maritime beauty and island adventures from Tabaco"
+            centered={false}
+            maxWidth="3xl"
+          />
+          <div className="grid gap-8 md:grid-cols-2">
+            {locationData.destinations.map((destination, index) => (
+              <div key={index} className="space-y-3">
+                <h3 className="text-xl font-semibold text-foreground">{destination.title}</h3>
+                <p className="text-base text-muted-foreground leading-relaxed">
+                  {destination.description}
                 </p>
-                <div className="flex flex-wrap gap-4">
-                  <Button size="lg" className="bg-primary hover:bg-primary/90">
-                    Book Now
-                  </Button>
-                  <Button size="lg" variant="outline">
-                    <Phone className="h-4 w-4 mr-2" />
-                    Call Us
-                  </Button>
+                <div className="flex items-center gap-6 text-sm text-muted-foreground">
+                  <span>{destination.distance}</span>
+                  <span>•</span>
+                  <span>{destination.duration}</span>
                 </div>
+                <ul className="space-y-2 pt-2">
+                  {destination.highlights.map((highlight, highlightIndex) => (
+                    <li key={highlightIndex} className="text-sm text-muted-foreground leading-relaxed">
+                      {highlight}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <div className="relative">
-                <div className="aspect-video bg-muted rounded-lg overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                    <Ship className="h-16 w-16 text-primary/50" />
+            ))}
+          </div>
+        </SectionContainer>
+
+        <SectionContainer background="default" padding="xl">
+          <SectionHeader
+            title="Our Tabaco transport services"
+            description="Seamless transfers for port, island, and beach adventures"
+            centered={false}
+            maxWidth="3xl"
+          />
+          <div className="grid gap-8 md:grid-cols-3">
+            {locationData.services.map((service, index) => (
+              <div key={index} className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-3 bg-primary/10 rounded-lg">
+                    <service.icon className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-sm uppercase tracking-wide text-muted-foreground">{service.duration}</p>
+                    <p className="text-xl font-semibold text-foreground">{service.price}</p>
                   </div>
                 </div>
+                <h3 className="text-lg font-semibold text-foreground">{service.name}</h3>
+                <p className="text-base text-muted-foreground leading-relaxed">
+                  {service.description}
+                </p>
+                <div className="pt-2 border-t border-border/60">
+                  <p className="text-sm font-medium text-foreground mb-2">Includes:</p>
+                  <ul className="space-y-1">
+                    {service.includes.map((item, itemIndex) => (
+                      <li key={itemIndex} className="text-sm text-muted-foreground leading-relaxed">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
+            ))}
+          </div>
+        </SectionContainer>
+
+        <SectionContainer background="muted/30" padding="xl">
+          <SectionHeader
+            title="Ferry routes & port information"
+            description="Navigate your island adventures with confidence"
+            centered={false}
+            maxWidth="3xl"
+          />
+          <div className="grid gap-8 md:grid-cols-2">
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-foreground">Ferry Routes from Tabaco Port</h3>
+              <ul className="space-y-3">
+                {locationData.portInfo.ferryRoutes.map((route, index) => (
+                  <li key={index} className="text-base text-muted-foreground leading-relaxed">
+                    {route}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-foreground">Port Transfer Tips</h3>
+              <ul className="space-y-3">
+                {locationData.portInfo.travelTips.map((tip, index) => (
+                  <li key={index} className="text-base text-muted-foreground leading-relaxed">
+                    {tip}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-        </section>
+        </SectionContainer>
 
-        {/* Key Attractions */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-foreground mb-4">Coastal Attractions</h2>
-              <p className="text-lg text-muted-foreground">
-                Discover the coastal beauty and island adventures of Tabaco
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {attractions.map((attraction, index) => (
-                <Card key={index} className="group hover:shadow-lg transition-all duration-300">
-                  <div className="aspect-video bg-muted rounded-t-lg overflow-hidden">
-                    <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                      <Waves className="h-12 w-12 text-primary/50" />
-                    </div>
-                  </div>
-                  <CardHeader>
-                    <CardTitle className="text-xl">{attraction.name}</CardTitle>
-                    <CardDescription>{attraction.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-3">
-                      <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                        <Navigation className="h-4 w-4" />
-                        <span>{attraction.distance}</span>
-                      </div>
-                      <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                        <Clock className="h-4 w-4" />
-                        <span>{attraction.duration}</span>
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-sm mb-2">Features:</h4>
-                        <div className="flex flex-wrap gap-1">
-                          {attraction.features.map((feature, featureIndex) => (
-                            <Badge key={featureIndex} variant="secondary" className="text-xs">
-                              {feature}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Services */}
-        <section className="py-16 bg-muted/50">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-foreground mb-4">Our Services in Tabaco</h2>
-              <p className="text-lg text-muted-foreground">
-                Coastal and island transportation experiences
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {services.map((service, index) => (
-                <Card key={index} className="text-center">
-                  <CardHeader>
-                    <div className="mx-auto mb-4 p-4 bg-primary/10 rounded-full w-fit">
-                      <service.icon className="h-8 w-8 text-primary" />
-                    </div>
-                    <CardTitle className="text-xl">{service.name}</CardTitle>
-                    <CardDescription>{service.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="text-2xl font-bold text-primary">{service.price}</div>
-                      <div className="flex items-center justify-center space-x-2 text-sm text-muted-foreground">
-                        <Clock className="h-4 w-4" />
-                        <span>{service.duration}</span>
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-sm mb-2">Includes:</h4>
-                        <ul className="space-y-1 text-sm text-muted-foreground">
-                          {service.includes.map((item, itemIndex) => (
-                            <li key={itemIndex} className="flex items-center space-x-2">
-                              <span className="text-primary">•</span>
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Contact Information */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-foreground mb-4">Ready to Explore Tabaco?</h2>
-              <p className="text-lg text-muted-foreground">
-                Contact us to book your coastal adventure
-              </p>
-            </div>
-
-            <div className="max-w-2xl mx-auto text-center">
-              <div className="flex items-center justify-center space-x-2 mb-6">
-                <Phone className="h-5 w-5 text-primary" />
-                <a 
-                  href="tel:+639159234867" 
-                  className="text-2xl font-bold text-primary hover:text-primary/80 transition-colors"
-                >
-                  +63 915 923 4867
-                </a>
-              </div>
-              <p className="text-muted-foreground mb-8">
-                Call us to plan your Tabaco coastal and island tour
-              </p>
-              <div className="flex flex-wrap gap-4 justify-center">
-                <Button size="lg" className="bg-primary hover:bg-primary/90">
-                  Book Now
-                </Button>
-                <Button size="lg" variant="outline">
-                  View Fleet
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
+        <SectionContainer background="default" padding="xl">
+          <SectionHeader
+            title="Beach & island activities"
+            description="Make the most of your coastal adventure"
+            centered={false}
+            maxWidth="3xl"
+          />
+          <ul className="grid gap-4 md:grid-cols-2 max-w-4xl">
+            {locationData.beachActivities.map((activity, index) => (
+              <li key={index} className="text-base text-muted-foreground leading-relaxed">
+                {activity}
+              </li>
+            ))}
+          </ul>
+        </SectionContainer>
 
         <BookingCTABanner />
       </main>
