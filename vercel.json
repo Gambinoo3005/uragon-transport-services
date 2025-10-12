@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "regions": ["sfo1"],
+  "buildCommand": "pnpm build",
+  "outputDirectory": ".next",
+  "installCommand": "pnpm install",
+  "framework": "nextjs",
+  "functions": {
+    "app/**/*.tsx": {
+      "regions": ["sfo1"]
+    }
+  }
+}

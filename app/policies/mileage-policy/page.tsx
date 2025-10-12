@@ -7,6 +7,7 @@ import { PageHero } from "@/components/ui/hero-components"
 import { SectionContainer, SectionHeader, StandardGrid } from "@/components/ui/content-grid"
 import { ContentCard } from "@/components/ui/content-card"
 import { Badge } from "@/components/ui/badge"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { 
   Gauge, 
   CheckCircle, 
