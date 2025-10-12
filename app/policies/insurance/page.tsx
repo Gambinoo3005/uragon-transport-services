@@ -3,7 +3,9 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { BookingCTABanner } from "@/components/booking-cta-banner"
 import { StickyBookButton } from "@/components/sticky-book-button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { PageHero } from "@/components/ui/hero-components"
+import { SectionContainer, SectionHeader, StandardGrid } from "@/components/ui/content-grid"
+import { ContentCard } from "@/components/ui/content-card"
 import { Badge } from "@/components/ui/badge"
 import { 
   Shield, 
@@ -116,21 +118,12 @@ export default function InsurancePage() {
       <main>
 
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-primary/10 to-primary/5 py-16">
-          <div className="container mx-auto px-4 text-center">
-            <div className="flex items-center justify-center space-x-2 mb-4">
-              <Shield className="h-8 w-8 text-primary" />
-              <Badge className="bg-green-600">Comprehensive Coverage</Badge>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Insurance Coverage
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Comprehensive insurance coverage is included with all our rentals. 
-              Additional coverage options are available for enhanced protection and peace of mind.
-            </p>
-          </div>
-        </section>
+        <PageHero
+          title="Insurance Coverage"
+          highlight="Insurance"
+          description="Comprehensive insurance coverage is included with all our rentals. Additional coverage options are available for enhanced protection and peace of mind."
+          badge="Comprehensive Coverage"
+        />
 
         {/* Insurance Coverage */}
         <section className="py-16">
@@ -142,38 +135,18 @@ export default function InsurancePage() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
+            <StandardGrid variant="2col" gap="lg">
               {insuranceCoverage.map((coverage, index) => (
-                <Card key={index} className={coverage.included ? "border-green-200 bg-green-50/50" : ""}>
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-3">
-                        <div className="p-2 bg-primary/10 rounded-full">
-                          <coverage.icon className="h-6 w-6 text-primary" />
-                        </div>
-                        <div>
-                          <CardTitle className="text-xl">{coverage.title}</CardTitle>
-                          <CardDescription>{coverage.description}</CardDescription>
-                        </div>
-                      </div>
-                      {coverage.included && (
-                        <Badge className="bg-green-600">Included</Badge>
-                      )}
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2">
-                      {coverage.details.map((detail, detailIndex) => (
-                        <li key={detailIndex} className="flex items-start space-x-2">
-                          <span className="text-primary mt-1">•</span>
-                          <span className="text-muted-foreground">{detail}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
+                <ContentCard
+                  key={index}
+                  type="icon"
+                  icon={coverage.icon}
+                  title={coverage.title}
+                  description={`${coverage.description}: ${coverage.details.join(' • ')}`}
+                  variant="default"
+                />
               ))}
-            </div>
+            </StandardGrid>
           </div>
         </section>
 

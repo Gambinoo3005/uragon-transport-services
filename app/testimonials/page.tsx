@@ -2,9 +2,11 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { BookingCTABanner } from "@/components/booking-cta-banner"
 import { StickyBookButton } from "@/components/sticky-book-button"
+import { SectionContainer, SectionHeader, StandardGrid } from "@/components/ui/content-grid"
+import { TestimonialGridBlock, StatsGridBlock } from "@/components/ui/content-blocks"
 import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Star } from "lucide-react"
+import { Star, Users, Star as StarIcon, Award, Clock } from "lucide-react"
 
 export default function TestimonialsPage() {
   const testimonials = [
@@ -64,6 +66,33 @@ export default function TestimonialsPage() {
     }
   ]
 
+  const stats = [
+    {
+      icon: Users,
+      number: "100%",
+      label: "Satisfied",
+      description: "Customer satisfaction"
+    },
+    {
+      icon: StarIcon,
+      number: "5★",
+      label: "Average Rating",
+      description: "Based on reviews"
+    },
+    {
+      icon: Award,
+      number: "500+",
+      label: "Happy Customers",
+      description: "Served successfully"
+    },
+    {
+      icon: Clock,
+      number: "24/7",
+      label: "Support",
+      description: "Always available"
+    }
+  ]
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -79,24 +108,11 @@ export default function TestimonialsPage() {
               <p className="text-xl text-muted-foreground mb-8 text-pretty leading-relaxed">
                 Don't just take our word for it. Here's what our satisfied customers have to say about their experiences with Uragon Transport Services.
               </p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                <div>
-                  <div className="text-2xl font-bold text-primary">100%</div>
-                  <div className="text-sm text-muted-foreground">Satisfied</div>
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-primary">5★</div>
-                  <div className="text-sm text-muted-foreground">Average Rating</div>
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-primary">500+</div>
-                  <div className="text-sm text-muted-foreground">Happy Customers</div>
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-primary">24/7</div>
-                  <div className="text-sm text-muted-foreground">Support</div>
-                </div>
-              </div>
+              <StatsGridBlock 
+                stats={stats}
+                variant="compact"
+                columns={4}
+              />
             </div>
           </div>
         </section>

@@ -3,7 +3,9 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { BookingCTABanner } from "@/components/booking-cta-banner"
 import { StickyBookButton } from "@/components/sticky-book-button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { PageHero } from "@/components/ui/hero-components"
+import { SectionContainer, SectionHeader, StandardGrid } from "@/components/ui/content-grid"
+import { ContentCard } from "@/components/ui/content-card"
 import { Badge } from "@/components/ui/badge"
 import { 
   Gauge, 
@@ -90,21 +92,12 @@ export default function MileagePolicyPage() {
       <main>
 
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-primary/10 to-primary/5 py-16">
-          <div className="container mx-auto px-4 text-center">
-            <div className="flex items-center justify-center space-x-2 mb-4">
-              <Gauge className="h-8 w-8 text-primary" />
-              <Badge className="bg-green-600">Unlimited Mileage</Badge>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Mileage Policy
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Enjoy unlimited mileage with our self-drive rentals. Drive as much as you want 
-              within Luzon without worrying about distance charges or restrictions.
-            </p>
-          </div>
-        </section>
+        <PageHero
+          title="Mileage Policy"
+          highlight="Mileage"
+          description="Enjoy unlimited mileage with our self-drive rentals. Drive as much as you want within Luzon without worrying about distance charges or restrictions."
+          badge="Unlimited Mileage"
+        />
 
         {/* Policy Details */}
         <section className="py-16">
@@ -116,33 +109,18 @@ export default function MileagePolicyPage() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
+            <StandardGrid variant="2col" gap="lg">
               {mileagePolicyPoints.map((point, index) => (
-                <Card key={index}>
-                  <CardHeader>
-                    <div className="flex items-center space-x-3">
-                      <div className="p-2 bg-primary/10 rounded-full">
-                        <point.icon className="h-6 w-6 text-primary" />
-                      </div>
-                      <div>
-                        <CardTitle className="text-xl">{point.title}</CardTitle>
-                        <CardDescription>{point.description}</CardDescription>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2">
-                      {point.details.map((detail, detailIndex) => (
-                        <li key={detailIndex} className="flex items-start space-x-2">
-                          <span className="text-primary mt-1">•</span>
-                          <span className="text-muted-foreground">{detail}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
+                <ContentCard
+                  key={index}
+                  type="icon"
+                  icon={point.icon}
+                  title={point.title}
+                  description={`${point.description}: ${point.details.join(' • ')}`}
+                  variant="default"
+                />
               ))}
-            </div>
+            </StandardGrid>
           </div>
         </section>
 

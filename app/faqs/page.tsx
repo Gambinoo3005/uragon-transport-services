@@ -3,6 +3,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { BookingCTABanner } from "@/components/booking-cta-banner"
 import { StickyBookButton } from "@/components/sticky-book-button"
+import { PageHero } from "@/components/ui/hero-components"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import {
   Accordion,
@@ -284,18 +285,11 @@ export default function FAQsPage() {
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="py-16 bg-gradient-to-br from-background to-muted">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
-                Frequently Asked <span className="text-primary">Questions</span>
-              </h1>
-              <p className="text-xl text-muted-foreground mb-8 text-pretty leading-relaxed">
-                Welcome! Below are the most common questions about booking, requirements, rates, policies, destinations, and support for Uragon Transport Services.
-              </p>
-            </div>
-          </div>
-        </section>
+        <PageHero
+          title="Frequently Asked Questions"
+          highlight="Questions"
+          description="Welcome! Below are the most common questions about booking, requirements, rates, policies, destinations, and support for Uragon Transport Services."
+        />
 
         {/* FAQ Categories */}
         <section className="py-20">

@@ -3,7 +3,9 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { BookingCTABanner } from "@/components/booking-cta-banner"
 import { StickyBookButton } from "@/components/sticky-book-button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { PageHero } from "@/components/ui/hero-components"
+import { SectionContainer, SectionHeader, StandardGrid } from "@/components/ui/content-grid"
+import { ContentCard } from "@/components/ui/content-card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { 
@@ -94,202 +96,84 @@ export default function LegazpiCityPage() {
       <main>
 
         {/* Hero Section */}
-        <section className="relative py-16 bg-gradient-to-r from-primary/10 to-primary/5">
-          <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className="flex items-center space-x-2 mb-4">
-                  <Badge className="bg-primary text-primary-foreground">
-                    <Star className="h-3 w-3 mr-1" />
-                    Main Office
-                  </Badge>
-                </div>
-                <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                  Legazpi City
-                </h1>
-                <p className="text-xl text-muted-foreground mb-8">
-                  The capital city of Albay and our main service hub. Experience the perfect 
-                  blend of urban convenience and natural beauty, with easy access to Mayon 
-                  Volcano and other Bicol attractions.
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  <Button size="lg" className="bg-primary hover:bg-primary/90">
-                    Book Now
-                  </Button>
-                  <Button size="lg" variant="outline">
-                    <Phone className="h-4 w-4 mr-2" />
-                    Call Us
-                  </Button>
-                </div>
-              </div>
-              <div className="relative">
-                <div className="aspect-video bg-muted rounded-lg overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                    <Building className="h-16 w-16 text-primary/50" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <PageHero
+          title="Legazpi City"
+          highlight="Legazpi"
+          description="The capital city of Albay and our main service hub. Experience the perfect blend of urban convenience and natural beauty, with easy access to Mayon Volcano and other Bicol attractions."
+          badge="Main Office"
+        />
 
         {/* Key Attractions */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-foreground mb-4">City Highlights</h2>
-              <p className="text-lg text-muted-foreground">
-                Explore the best of Legazpi City with our reliable transportation
-              </p>
-            </div>
+        <SectionContainer background="default" padding="xl">
+          <SectionHeader
+            title="City Highlights"
+            description="Explore the best of Legazpi City with our reliable transportation"
+            maxWidth="4xl"
+          />
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {attractions.map((attraction, index) => (
-                <Card key={index} className="group hover:shadow-lg transition-all duration-300">
-                  <div className="aspect-video bg-muted rounded-t-lg overflow-hidden">
-                    <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                      <Building className="h-12 w-12 text-primary/50" />
-                    </div>
-                  </div>
-                  <CardHeader>
-                    <CardTitle className="text-xl">{attraction.name}</CardTitle>
-                    <CardDescription>{attraction.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-3">
-                      <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                        <Navigation className="h-4 w-4" />
-                        <span>{attraction.distance}</span>
-                      </div>
-                      <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                        <Clock className="h-4 w-4" />
-                        <span>{attraction.duration}</span>
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-sm mb-2">Features:</h4>
-                        <div className="flex flex-wrap gap-1">
-                          {attraction.features.map((feature, featureIndex) => (
-                            <Badge key={featureIndex} variant="secondary" className="text-xs">
-                              {feature}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+          <StandardGrid variant="4col" gap="lg">
+            {attractions.map((attraction, index) => (
+              <ContentCard
+                key={index}
+                type="image"
+                image={attraction.image}
+                imageAlt={`${attraction.name} in Legazpi City`}
+                title={attraction.name}
+                description={attraction.description}
+                variant="default"
+              />
+            ))}
+          </StandardGrid>
+        </SectionContainer>
 
         {/* Services */}
-        <section className="py-16 bg-muted/50">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-foreground mb-4">Our Services in Legazpi City</h2>
-              <p className="text-lg text-muted-foreground">
-                Comprehensive transportation solutions for the city
-              </p>
-            </div>
+        <SectionContainer background="muted/50" padding="xl">
+          <SectionHeader
+            title="Our Services in Legazpi City"
+            description="Comprehensive transportation solutions for the city"
+            maxWidth="4xl"
+          />
 
-            <div className="grid md:grid-cols-3 gap-8">
-              {services.map((service, index) => (
-                <Card key={index} className="text-center">
-                  <CardHeader>
-                    <div className="mx-auto mb-4 p-4 bg-primary/10 rounded-full w-fit">
-                      <service.icon className="h-8 w-8 text-primary" />
-                    </div>
-                    <CardTitle className="text-xl">{service.name}</CardTitle>
-                    <CardDescription>{service.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="text-2xl font-bold text-primary">{service.price}</div>
-                      <div className="flex items-center justify-center space-x-2 text-sm text-muted-foreground">
-                        <Clock className="h-4 w-4" />
-                        <span>{service.duration}</span>
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-sm mb-2">Includes:</h4>
-                        <ul className="space-y-1 text-sm text-muted-foreground">
-                          {service.includes.map((item, itemIndex) => (
-                            <li key={itemIndex} className="flex items-center space-x-2">
-                              <span className="text-primary">•</span>
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+          <StandardGrid variant="3col" gap="lg">
+            {services.map((service, index) => (
+              <ContentCard
+                key={index}
+                type="icon"
+                icon={service.icon}
+                title={service.name}
+                description={service.description}
+                variant="centered"
+              />
+            ))}
+          </StandardGrid>
+        </SectionContainer>
 
         {/* Contact Information */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-foreground mb-4">Our Legazpi City Office</h2>
-              <p className="text-lg text-muted-foreground">
-                Visit our main office or contact us for your transportation needs
-              </p>
-            </div>
+        <SectionContainer background="default" padding="xl">
+          <SectionHeader
+            title="Our Legazpi City Office"
+            description="Visit our main office or contact us for your transportation needs"
+            maxWidth="4xl"
+          />
 
-            <div className="max-w-4xl mx-auto">
-              <div className="grid md:grid-cols-2 gap-8">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Office Location</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="flex items-center space-x-2">
-                        <MapPin className="h-5 w-5 text-primary" />
-                        <span>123 Rizal Street, Legazpi City, Albay</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Clock className="h-5 w-5 text-primary" />
-                        <span>6:00 AM - 8:00 PM (Daily)</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Phone className="h-5 w-5 text-primary" />
-                        <a href="tel:+639159234867" className="text-primary hover:underline">
-                          +63 915 923 4867
-                        </a>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+          <div className="max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-8">
+              <ContentCard
+                type="feature"
+                title="Office Location"
+                description="123 Rizal Street, Legazpi City, Albay"
+                variant="default"
+              />
 
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Quick Contact</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <p className="text-muted-foreground">
-                        Ready to book your Legazpi City transportation? Contact us now for the best rates and service.
-                      </p>
-                      <div className="flex flex-wrap gap-4">
-                        <Button className="bg-primary hover:bg-primary/90">
-                          Book Now
-                        </Button>
-                        <Button variant="outline">
-                          <Phone className="h-4 w-4 mr-2" />
-                          Call Us
-                        </Button>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
+              <ContentCard
+                type="feature"
+                title="Quick Contact"
+                description="Ready to book your Legazpi City transportation? Contact us now for the best rates and service."
+                variant="default"
+              />
             </div>
           </div>
-        </section>
+        </SectionContainer>
 
         <BookingCTABanner />
       </main>

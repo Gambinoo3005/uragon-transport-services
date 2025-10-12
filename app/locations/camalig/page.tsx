@@ -86,7 +86,7 @@ export default function CamaligPage() {
       <main>
 
         {/* Hero Section */}
-        <section className="relative py-16 bg-gradient-to-r from-primary/10 to-primary/5">
+        <section className="relative py-16 bg-gradient-to-br from-primary/10 via-primary/15 to-primary/20">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>

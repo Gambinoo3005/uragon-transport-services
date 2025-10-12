@@ -3,7 +3,9 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { BookingCTABanner } from "@/components/booking-cta-banner"
 import { StickyBookButton } from "@/components/sticky-book-button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { PageHero } from "@/components/ui/hero-components"
+import { SectionContainer, SectionHeader, StandardGrid } from "@/components/ui/content-grid"
+import { ContentCard } from "@/components/ui/content-card"
 import { Badge } from "@/components/ui/badge"
 import { 
   FileText, 
@@ -104,159 +106,92 @@ export default function PoliciesPage() {
       <main>
 
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-primary/10 to-primary/5 py-16">
-          <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Rental Policies
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Our transparent and fair policies ensure a smooth rental experience. 
-              Please review our terms and conditions before booking your vehicle.
-            </p>
-          </div>
-        </section>
+        <PageHero
+          title="Rental Policies"
+          highlight="Policies"
+          description="Our transparent and fair policies ensure a smooth rental experience. Please review our terms and conditions before booking your vehicle."
+        />
 
         {/* Policy Cards */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-foreground mb-4">Our Policies</h2>
-              <p className="text-lg text-muted-foreground">
-                Click on any policy to read the complete details
-              </p>
-            </div>
+        <SectionContainer background="default" padding="xl">
+          <SectionHeader
+            title="Our Policies"
+            description="Click on any policy to read the complete details"
+            maxWidth="4xl"
+          />
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {policies.map((policy, index) => (
-                <Link key={index} href={`/policies/${policy.slug}`}>
-                  <Card className="group hover:shadow-lg transition-all duration-300 cursor-pointer h-full">
-                    <CardHeader className="text-center">
-                      <div className="mx-auto mb-4 p-4 bg-primary/10 rounded-full w-fit">
-                        <policy.icon className="h-8 w-8 text-primary" />
-                      </div>
-                      <div className="flex items-center justify-center space-x-2 mb-2">
-                        <CardTitle className="text-lg group-hover:text-primary transition-colors">
-                          {policy.name}
-                        </CardTitle>
-                        {policy.important && (
-                          <Badge variant="destructive" className="text-xs">
-                            Important
-                          </Badge>
-                        )}
-                      </div>
-                      <CardDescription>{policy.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="text-center">
-                        <p className="text-sm text-muted-foreground mb-4">
-                          {policy.summary}
-                        </p>
-                        <div className="flex items-center justify-center space-x-2 text-primary text-sm font-medium">
-                          <span>Read More</span>
-                          <FileText className="h-4 w-4" />
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
+          <StandardGrid variant="4col" gap="md">
+            {policies.map((policy, index) => (
+              <Link key={index} href={`/policies/${policy.slug}`}>
+                <ContentCard
+                  type="icon"
+                  icon={policy.icon}
+                  title={policy.name}
+                  description={policy.description}
+                  variant="centered"
+                  href={`/policies/${policy.slug}`}
+                  buttonText="Read More"
+                />
+              </Link>
+            ))}
+          </StandardGrid>
+        </SectionContainer>
 
         {/* General Terms */}
-        <section className="py-16 bg-muted/50">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-foreground mb-4">General Terms & Conditions</h2>
-              <p className="text-lg text-muted-foreground">
-                Important information about your rental agreement
-              </p>
-            </div>
+        <SectionContainer background="muted/50" padding="xl">
+          <SectionHeader
+            title="General Terms & Conditions"
+            description="Important information about your rental agreement"
+            maxWidth="4xl"
+          />
 
-            <div className="grid md:grid-cols-2 gap-8">
-              {generalTerms.map((term, index) => (
-                <Card key={index}>
-                  <CardHeader>
-                    <CardTitle className="text-xl">{term.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-3">
-                      {term.items.map((item, itemIndex) => (
-                        <li key={itemIndex} className="flex items-start space-x-2">
-                          <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                          <span className="text-muted-foreground">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+          <StandardGrid variant="2col" gap="lg">
+            {generalTerms.map((term, index) => (
+              <ContentCard
+                key={index}
+                type="feature"
+                title={term.title}
+                description={term.items.join(' • ')}
+                variant="default"
+              />
+            ))}
+          </StandardGrid>
+        </SectionContainer>
 
         {/* Important Notes */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <Card className="border-orange-200 bg-orange-50/50">
-                <CardHeader>
-                  <div className="flex items-center space-x-2">
-                    <AlertCircle className="h-5 w-5 text-orange-600" />
-                    <CardTitle className="text-orange-800">Important Notes</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3 text-orange-700">
-                    <li className="flex items-start space-x-2">
-                      <span className="text-orange-600">•</span>
-                      <span>All policies are subject to change without notice</span>
-                    </li>
-                    <li className="flex items-start space-x-2">
-                      <span className="text-orange-600">•</span>
-                      <span>Customers are responsible for reading and understanding all policies</span>
-                    </li>
-                    <li className="flex items-start space-x-2">
-                      <span className="text-orange-600">•</span>
-                      <span>Violation of policies may result in additional charges or rental termination</span>
-                    </li>
-                    <li className="flex items-start space-x-2">
-                      <span className="text-orange-600">•</span>
-                      <span>Contact us if you have any questions about our policies</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
+        <SectionContainer background="default" padding="xl">
+          <div className="max-w-4xl mx-auto">
+            <ContentCard
+              type="feature"
+              title="Important Notes"
+              description="All policies are subject to change without notice. Customers are responsible for reading and understanding all policies. Violation of policies may result in additional charges or rental termination. Contact us if you have any questions about our policies."
+              variant="default"
+            />
           </div>
-        </section>
+        </SectionContainer>
 
         {/* Contact Information */}
-        <section className="py-16 bg-muted/50">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-foreground mb-4">Questions About Our Policies?</h2>
-              <p className="text-lg text-muted-foreground">
-                Our customer service team is here to help clarify any policy questions
-              </p>
-            </div>
+        <SectionContainer background="muted/50" padding="xl">
+          <SectionHeader
+            title="Questions About Our Policies?"
+            description="Our customer service team is here to help clarify any policy questions"
+            maxWidth="2xl"
+          />
 
-            <div className="max-w-2xl mx-auto text-center">
-              <div className="flex items-center justify-center space-x-2 mb-6">
-                <a 
-                  href="tel:+639159234867" 
-                  className="text-2xl font-bold text-primary hover:text-primary/80 transition-colors"
-                >
-                  +63 915 923 4867
-                </a>
-              </div>
-              <p className="text-muted-foreground">
-                Call us for clarification on any policy or to discuss your specific rental needs
-              </p>
+          <div className="max-w-2xl mx-auto text-center">
+            <div className="flex items-center justify-center space-x-2 mb-6">
+              <a 
+                href="tel:+639159234867" 
+                className="text-2xl font-bold text-primary hover:text-primary/80 transition-colors"
+              >
+                +63 915 923 4867
+              </a>
             </div>
+            <p className="text-muted-foreground">
+              Call us for clarification on any policy or to discuss your specific rental needs
+            </p>
           </div>
-        </section>
+        </SectionContainer>
 
         <BookingCTABanner />
       </main>

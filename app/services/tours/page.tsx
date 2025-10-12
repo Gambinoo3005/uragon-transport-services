@@ -6,7 +6,8 @@ import { ServiceDetailHero } from "@/components/service-detail-hero"
 import { ServiceFeatures } from "@/components/service-features"
 import { ServicePricing } from "@/components/service-pricing"
 import { ServiceFAQ } from "@/components/service-faq"
-import { Card, CardContent } from "@/components/ui/card"
+import { SectionContainer, SectionHeader } from "@/components/ui/content-grid"
+import { ContentCard } from "@/components/ui/content-card"
 
 export const metadata = {
   title: "Tour Packages - Bicol Sightseeing Tours | Uragon Transport Services",
@@ -150,73 +151,51 @@ export default function ToursPage() {
         <ServiceFeatures service={serviceData} />
         
         {/* Additional Content Section for SEO */}
-        <section className="py-16 bg-background">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto space-y-12">
-              
-              {/* Introduction */}
-              <Card>
-                <CardContent className="p-8">
-                  <h2 className="text-3xl font-bold text-foreground mb-6">About Tour Packages</h2>
-                  <div className="space-y-4 text-muted-foreground leading-relaxed">
-                    {serviceData.content.introduction.map((paragraph, index) => (
-                      <p key={index} className="text-pretty">{paragraph}</p>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+        <SectionContainer background="default" padding="xl">
+          <div className="max-w-4xl mx-auto space-y-12">
+            
+            {/* Introduction */}
+            <ContentCard
+              type="feature"
+              title="About Tour Packages"
+              description={serviceData.content.introduction.join(' ')}
+              variant="default"
+            />
 
-              {/* Benefits */}
-              <Card>
-                <CardContent className="p-8">
-                  <h2 className="text-3xl font-bold text-foreground mb-6">Why Choose Our Tour Packages?</h2>
-                  <div className="space-y-4 text-muted-foreground leading-relaxed">
-                    {serviceData.content.benefits.map((paragraph, index) => (
-                      <p key={index} className="text-pretty">{paragraph}</p>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+            {/* Benefits */}
+            <ContentCard
+              type="feature"
+              title="Why Choose Our Tour Packages?"
+              description={serviceData.content.benefits.join(' ')}
+              variant="default"
+            />
 
-              {/* How It Works */}
-              <Card>
-                <CardContent className="p-8">
-                  <h2 className="text-3xl font-bold text-foreground mb-6">How Tour Packages Work</h2>
-                  <div className="space-y-4 text-muted-foreground leading-relaxed">
-                    {serviceData.content.process.map((paragraph, index) => (
-                      <p key={index} className="text-pretty">{paragraph}</p>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+            {/* How It Works */}
+            <ContentCard
+              type="feature"
+              title="How Tour Packages Work"
+              description={serviceData.content.process.join(' ')}
+              variant="default"
+            />
 
-              {/* Service Areas */}
-              <Card>
-                <CardContent className="p-8">
-                  <h2 className="text-3xl font-bold text-foreground mb-6">Tour Destinations</h2>
-                  <div className="space-y-4 text-muted-foreground leading-relaxed">
-                    {serviceData.content.areas.map((paragraph, index) => (
-                      <p key={index} className="text-pretty">{paragraph}</p>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+            {/* Service Areas */}
+            <ContentCard
+              type="feature"
+              title="Tour Destinations"
+              description={serviceData.content.areas.join(' ')}
+              variant="default"
+            />
 
-              {/* Tips & Recommendations */}
-              <Card>
-                <CardContent className="p-8">
-                  <h2 className="text-3xl font-bold text-foreground mb-6">Tips & Recommendations</h2>
-                  <div className="space-y-4 text-muted-foreground leading-relaxed">
-                    {serviceData.content.tips.map((paragraph, index) => (
-                      <p key={index} className="text-pretty">{paragraph}</p>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+            {/* Tips & Recommendations */}
+            <ContentCard
+              type="feature"
+              title="Tips & Recommendations"
+              description={serviceData.content.tips.join(' ')}
+              variant="default"
+            />
 
-            </div>
           </div>
-        </section>
+        </SectionContainer>
 
         <ServicePricing service={serviceData} />
         <ServiceFAQ service={serviceData} />

@@ -3,6 +3,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { BookingCTABanner } from "@/components/booking-cta-banner"
 import { StickyBookButton } from "@/components/sticky-book-button"
+import { PageHero } from "@/components/ui/hero-components"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -83,19 +84,11 @@ export default function HowItWorksPage() {
       <main>
 
         {/* Hero Section */}
-        <section className="py-16 bg-gradient-to-br from-background to-muted">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
-                How It <span className="text-primary">Works</span>
-            </h1>
-              <p className="text-xl text-muted-foreground mb-8 text-pretty leading-relaxed">
-                Renting with Uragon Transport Services is quick, straightforward, and secure. 
-                Here's exactly what to expect—from inquiry to drive-off and return.
-              </p>
-            </div>
-          </div>
-        </section>
+        <PageHero
+          title="How It Works"
+          highlight="Works"
+          description="Renting with Uragon Transport Services is quick, straightforward, and secure. Here's exactly what to expect—from inquiry to drive-off and return."
+        />
 
         {/* Interactive 6-Step Process */}
         <SixStepProcess steps={uragonSteps} />
