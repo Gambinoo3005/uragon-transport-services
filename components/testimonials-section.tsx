@@ -1,9 +1,7 @@
 "use client"
 
-import { useState } from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react"
+import { SectionContainer, SectionHeader } from "@/components/ui/content-grid"
+import { TestimonialCarouselBlock } from "@/components/ui/content-blocks"
 
 const testimonials = [
   {
@@ -41,82 +39,21 @@ const testimonials = [
 ]
 
 export function TestimonialsSection() {
-  const [currentIndex, setCurrentIndex] = useState(0)
-
-  const nextTestimonial = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-  }
-
-  const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
-  }
-
   return (
-    <section className="py-16 bg-muted/30">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4 text-balance">What Our Customers Say</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Real experiences from travelers who chose Uragon Tours for their Bicol adventures.
-          </p>
-        </div>
+    <SectionContainer background="muted/30">
+      <SectionHeader
+        title="What Our Customers Say"
+        description="Real experiences from travelers who chose Uragon Tours for their Bicol adventures."
+        maxWidth="2xl"
+      />
 
-        <div className="max-w-4xl mx-auto">
-          <div className="relative">
-            <Card className="overflow-hidden">
-              <CardContent className="p-8 lg:p-12">
-                <div className="flex items-start space-x-4">
-                  <Quote className="h-8 w-8 text-primary flex-shrink-0 mt-1" />
-                  <div className="flex-grow">
-                    <p className="text-lg text-foreground mb-6 leading-relaxed text-pretty">
-                      "{testimonials[currentIndex].text}"
-                    </p>
-
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="font-semibold text-foreground">{testimonials[currentIndex].name}</div>
-                        <div className="text-sm text-muted-foreground">{testimonials[currentIndex].location}</div>
-                        <div className="text-sm text-primary font-medium mt-1">
-                          {testimonials[currentIndex].service}
-                        </div>
-                      </div>
-
-                      <div className="flex items-center space-x-1">
-                        {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                          <Star key={i} className="h-4 w-4 fill-primary text-primary" />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Navigation */}
-            <div className="flex justify-center items-center space-x-4 mt-8">
-              <Button variant="outline" size="sm" onClick={prevTestimonial} className="rounded-full bg-transparent">
-                <ChevronLeft className="h-4 w-4" />
-              </Button>
-
-              <div className="flex space-x-2">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentIndex(index)}
-                    className={`w-2 h-2 rounded-full transition-colors ${
-                      index === currentIndex ? "bg-primary" : "bg-muted-foreground/30"
-                    }`}
-                  />
-                ))}
-              </div>
-
-              <Button variant="outline" size="sm" onClick={nextTestimonial} className="rounded-full bg-transparent">
-                <ChevronRight className="h-4 w-4" />
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+      <TestimonialCarouselBlock 
+        testimonials={testimonials}
+        variant="default"
+        showNavigation={true}
+        showDots={true}
+        autoPlay={false}
+      />
+    </SectionContainer>
   )
 }

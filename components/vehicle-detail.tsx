@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Users, Settings, Fuel, Star, Check, X, ChevronLeft, ChevronRight, Phone, MessageCircle } from "lucide-react"
+import { FeatureListBlock, InclusionExclusionBlock, StatsGridBlock } from "@/components/ui/content-blocks"
 
 interface Vehicle {
   id: string
@@ -151,20 +152,30 @@ export function VehicleDetail({ vehicle }: VehicleDetailProps) {
             </div>
 
             {/* Quick Specs */}
-            <div className="grid grid-cols-3 gap-4">
-              <div className="text-center p-3 bg-muted/30 rounded-lg">
-                <Users className="h-5 w-5 mx-auto mb-2 text-primary" />
-                <div className="font-medium">{vehicle.seats} Seats</div>
-              </div>
-              <div className="text-center p-3 bg-muted/30 rounded-lg">
-                <Settings className="h-5 w-5 mx-auto mb-2 text-primary" />
-                <div className="font-medium">{vehicle.transmission}</div>
-              </div>
-              <div className="text-center p-3 bg-muted/30 rounded-lg">
-                <Fuel className="h-5 w-5 mx-auto mb-2 text-primary" />
-                <div className="font-medium">{vehicle.fuel}</div>
-              </div>
-            </div>
+            <StatsGridBlock
+              stats={[
+                {
+                  icon: Users,
+                  number: vehicle.seats.toString(),
+                  label: "Seats",
+                  description: "Passenger capacity"
+                },
+                {
+                  icon: Settings,
+                  number: vehicle.transmission,
+                  label: "Transmission",
+                  description: "Drive type"
+                },
+                {
+                  icon: Fuel,
+                  number: vehicle.fuel,
+                  label: "Fuel Type",
+                  description: "Engine fuel"
+                }
+              ]}
+              variant="compact"
+              columns={3}
+            />
 
             {/* Pricing */}
             <Card>
@@ -236,51 +247,24 @@ export function VehicleDetail({ vehicle }: VehicleDetailProps) {
           </TabsList>
 
           <TabsContent value="features" className="mt-6">
-            <Card>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold mb-4">Vehicle Features</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {vehicle.features.map((feature, index) => (
-                    <div key={index} className="flex items-center space-x-2">
-                      <Check className="h-4 w-4 text-primary" />
-                      <span>{feature}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+            <FeatureListBlock
+              features={vehicle.features.map(feature => ({
+                title: feature,
+                description: ""
+              }))}
+              variant="default"
+              columns={2}
+              showIcons={true}
+            />
           </TabsContent>
 
           <TabsContent value="inclusions" className="mt-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-4 text-green-600">What's Included</h3>
-                  <div className="space-y-3">
-                    {vehicle.inclusions.map((inclusion, index) => (
-                      <div key={index} className="flex items-center space-x-2">
-                        <Check className="h-4 w-4 text-green-600" />
-                        <span>{inclusion}</span>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-4 text-red-600">Not Included</h3>
-                  <div className="space-y-3">
-                    {vehicle.exclusions.map((exclusion, index) => (
-                      <div key={index} className="flex items-center space-x-2">
-                        <X className="h-4 w-4 text-red-600" />
-                        <span>{exclusion}</span>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+            <InclusionExclusionBlock
+              inclusions={vehicle.inclusions}
+              exclusions={vehicle.exclusions}
+              variant="default"
+              showIcons={true}
+            />
           </TabsContent>
 
           <TabsContent value="specifications" className="mt-6">

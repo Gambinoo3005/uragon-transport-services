@@ -1,8 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Phone } from "lucide-react"
+import { StickyBookButton as UnifiedStickyBookButton } from "@/components/ui/utility-components"
 
 export function StickyBookButton() {
   const [isVisible, setIsVisible] = useState(false)
@@ -23,11 +22,12 @@ export function StickyBookButton() {
   if (!isVisible) return null
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 md:hidden">
-      <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg rounded-full px-6">
-        <Phone className="h-4 w-4 mr-2" />
-        Book Now
-      </Button>
-    </div>
+    <UnifiedStickyBookButton
+      text="Book Now"
+      href="/contact"
+      variant="floating"
+      position="bottom-right"
+      className="md:hidden"
+    />
   )
 }

@@ -1,5 +1,6 @@
 import { CheckCircle, Shield, Clock, MapPin, Wrench, FileCheck, Zap } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
+import { ContentCard } from "@/components/ui/content-card"
+import { SectionContainer, SectionHeader, StandardGrid } from "@/components/ui/content-grid"
 
 export function KeyUSPs() {
   const usps = [
@@ -36,37 +37,25 @@ export function KeyUSPs() {
   ]
 
   return (
-    <section className="py-16 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Why Choose <span className="text-primary">Uragon Transport</span>?
-            </h2>
-            <p className="text-xl text-muted-foreground">
-              Experience the difference with our comprehensive car rental services
-            </p>
-          </div>
+    <SectionContainer background="default">
+      <SectionHeader
+        title="Why Choose Uragon Transport?"
+        description="Experience the difference with our comprehensive car rental services"
+        highlight="Uragon Transport"
+      />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {usps.map((usp, index) => (
-              <Card key={index} className="h-full hover:shadow-lg transition-shadow">
-                <CardContent className="p-6 text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
-                    <usp.icon className="h-8 w-8 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-foreground mb-3">
-                    {usp.title}
-                  </h3>
-                  <p className="text-muted-foreground">
-                    {usp.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
+      <StandardGrid variant="3col" gap="lg">
+        {usps.map((usp, index) => (
+          <ContentCard
+            key={index}
+            type="benefit"
+            icon={usp.icon}
+            title={usp.title}
+            description={usp.description}
+            variant="default"
+          />
+        ))}
+      </StandardGrid>
+    </SectionContainer>
   )
 }

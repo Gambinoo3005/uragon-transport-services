@@ -1,7 +1,4 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Calendar, Clock, User } from "lucide-react"
-import Link from "next/link"
+import { BlogSection } from "@/components/ui/blog-components"
 
 const blogPosts = [
   {
@@ -44,21 +41,21 @@ const blogPosts = [
   {
     id: 4,
     slug: "bicol-express-food-trail",
-    title: "The Ultimate Bicol Express Food Trail: Where to Find the Best",
+    title: "Bicol Express Food Trail: Best Local Eateries",
     excerpt:
-      "Taste authentic Bicol Express across the region. Our foodie guide to the best restaurants and local eateries.",
+      "Embark on a culinary journey through Bicol's best local eateries. From authentic Bicol Express to hidden gems.",
     category: "Food & Culture",
-    author: "Chef Roberto",
+    author: "Carlos Mendoza",
     date: "2024-01-08",
     readTime: "5 min read",
     image: "/bicol-express-food-trail.jpg",
   },
   {
     id: 5,
-    slug: "budget-travel-guide-albay",
-    title: "Budget Travel Guide to Albay: Maximum Fun, Minimum Cost",
+    slug: "budget-travel-albay",
+    title: "Budget Travel Guide to Albay Province",
     excerpt:
-      "Experience Albay without breaking the bank. Our complete budget travel guide with money-saving tips and free attractions.",
+      "Explore Albay on a budget with our comprehensive guide. Discover affordable accommodations, food, and activities.",
     category: "Travel Guides",
     author: "Lisa Garcia",
     date: "2024-01-05",
@@ -67,104 +64,37 @@ const blogPosts = [
   },
   {
     id: 6,
-    slug: "choosing-right-rental-car-bicol",
-    title: "Choosing the Right Rental Car for Your Bicol Adventure",
-    excerpt: "SUV, sedan, or van? Learn which rental car type is perfect for your Bicol itinerary and group size.",
+    slug: "choosing-rental-car-bicol",
+    title: "How to Choose the Right Rental Car for Bicol Travel",
+    excerpt:
+      "Make the right choice for your Bicol adventure. Our guide helps you select the perfect vehicle for your needs.",
     category: "Car Rental Tips",
-    author: "Mike Torres",
+    author: "Miguel Torres",
     date: "2024-01-03",
-    readTime: "4 min read",
+    readTime: "6 min read",
     image: "/choosing-rental-car-bicol.jpg",
   },
 ]
 
+const categories = [
+  { id: "all", name: "All Posts", count: 24 },
+  { id: "travel-guides", name: "Travel Guides", count: 8 },
+  { id: "car-rental-tips", name: "Car Rental Tips", count: 6 },
+  { id: "local-attractions", name: "Local Attractions", count: 5 },
+  { id: "food-culture", name: "Food & Culture", count: 5 },
+]
+
 export function BlogGrid() {
-  const featuredPost = blogPosts.find((post) => post.featured)
-  const regularPosts = blogPosts.filter((post) => !post.featured)
-
   return (
-    <section className="py-16">
-      <div className="container mx-auto px-4">
-        {/* Featured Post */}
-        {featuredPost && (
-          <div className="mb-16">
-            <h2 className="text-2xl font-bold text-foreground mb-8">Featured Article</h2>
-            <Link href={`/blog/${featuredPost.slug}`}>
-              <Card className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
-                <div className="md:flex">
-                  <div className="md:w-1/2">
-                    <img
-                      src={featuredPost.image || "/placeholder.svg"}
-                      alt={featuredPost.title}
-                      className="w-full h-64 md:h-full object-cover"
-                    />
-                  </div>
-                  <div className="md:w-1/2 p-8">
-                    <Badge className="mb-4">{featuredPost.category}</Badge>
-                    <h3 className="text-2xl font-bold text-foreground mb-4 text-balance">{featuredPost.title}</h3>
-                    <p className="text-muted-foreground mb-6 text-pretty">{featuredPost.excerpt}</p>
-                    <div className="flex items-center gap-6 text-sm text-muted-foreground">
-                      <div className="flex items-center gap-2">
-                        <User className="h-4 w-4" />
-                        {featuredPost.author}
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Calendar className="h-4 w-4" />
-                        {new Date(featuredPost.date).toLocaleDateString()}
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Clock className="h-4 w-4" />
-                        {featuredPost.readTime}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            </Link>
-          </div>
-        )}
-
-        {/* Regular Posts Grid */}
-        <div>
-          <h2 className="text-2xl font-bold text-foreground mb-8">Latest Articles</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {regularPosts.map((post) => (
-              <Link key={post.id} href={`/blog/${post.slug}`}>
-                <Card className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer h-full">
-                  <div className="aspect-video overflow-hidden">
-                    <img
-                      src={post.image || "/placeholder.svg"}
-                      alt={post.title}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <CardHeader className="pb-3">
-                    <Badge className="w-fit mb-2">{post.category}</Badge>
-                    <h3 className="text-lg font-semibold text-foreground text-balance leading-tight">{post.title}</h3>
-                  </CardHeader>
-                  <CardContent className="pt-0">
-                    <p className="text-muted-foreground text-sm mb-4 text-pretty">{post.excerpt}</p>
-                    <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                      <div className="flex items-center gap-1">
-                        <User className="h-3 w-3" />
-                        {post.author}
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Calendar className="h-3 w-3" />
-                        {new Date(post.date).toLocaleDateString()}
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Clock className="h-3 w-3" />
-                        {post.readTime}
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
+    <BlogSection
+      title="Latest Articles"
+      description="Stay updated with our latest travel guides, tips, and local insights"
+      posts={blogPosts}
+      categories={categories}
+      showCategories={true}
+      showRelated={false}
+      maxPosts={6}
+      background="default"
+    />
   )
 }

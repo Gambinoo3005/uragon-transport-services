@@ -1,13 +1,6 @@
-"use client"
-
-import { ChevronDown } from "lucide-react"
-import { useState } from "react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import { FAQSection } from "@/components/ui/faq-component"
 
 export function FAQsPreview() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
-
   const faqs = [
     {
       question: "How do I book a car?",
@@ -27,62 +20,17 @@ export function FAQsPreview() {
     }
   ]
 
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index)
-  }
-
   return (
-    <section className="py-16 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              FAQs <span className="text-primary">(Quick Answers)</span>
-            </h2>
-            <p className="text-xl text-muted-foreground">
-              Quick answers to common questions about our car rental services
-            </p>
-          </div>
-
-          <div className="space-y-4 mb-12">
-            {faqs.map((faq, index) => (
-              <div key={index} className="bg-muted/30 rounded-2xl overflow-hidden">
-                <button
-                  onClick={() => toggleFAQ(index)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-muted/50 transition-colors"
-                >
-                  <h3 className="text-xl font-semibold text-foreground pr-4">
-                    {faq.question}
-                  </h3>
-                  <ChevronDown 
-                    className={`h-5 w-5 text-muted-foreground transition-transform ${
-                      openIndex === index ? 'rotate-180' : ''
-                    }`} 
-                  />
-                </button>
-                {openIndex === index && (
-                  <div className="px-6 pb-6">
-                    <p className="text-muted-foreground leading-relaxed">
-                      {faq.answer}
-                    </p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center">
-            <Link href="/faqs">
-              <Button 
-                size="lg" 
-                className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-primary/25 transition-all duration-300 hover:scale-105"
-              >
-                View All FAQs
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </div>
-    </section>
+    <FAQSection
+      title="FAQs (Quick Answers)"
+      description="Quick answers to common questions about our car rental services"
+      faqs={faqs}
+      variant="default"
+      background="default"
+      maxWidth="4xl"
+      showViewAll={true}
+      viewAllHref="/faqs"
+      viewAllText="View All FAQs"
+    />
   )
 }

@@ -1,6 +1,4 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import Link from "next/link"
+import { FAQSection } from "@/components/ui/faq-component"
 
 const faqs = [
   {
@@ -27,44 +25,17 @@ const faqs = [
 
 export function ServicesFAQ() {
   return (
-    <section className="py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              <span className="text-primary">FAQs</span>
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Frequently asked questions about our services
-            </p>
-          </div>
-          
-          <Card className="mb-8">
-            <CardContent className="p-6">
-              <Accordion type="single" collapsible className="w-full">
-                {faqs.map((faq, index) => (
-                  <AccordionItem key={index} value={`item-${index}`}>
-                    <AccordionTrigger className="text-left font-medium hover:no-underline">
-                      {faq.question}
-                    </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground leading-relaxed text-pretty">
-                      {faq.answer}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </CardContent>
-          </Card>
-
-          <div className="text-center">
-            <Link href="/faqs">
-              <button className="text-primary hover:text-primary/80 font-semibold text-lg transition-colors">
-                View All FAQs →
-              </button>
-            </Link>
-          </div>
-        </div>
-      </div>
-    </section>
+    <FAQSection
+      title="FAQs"
+      description="Frequently asked questions about our services"
+      faqs={faqs}
+      variant="card"
+      background="default"
+      maxWidth="4xl"
+      showViewAll={true}
+      viewAllHref="/faqs"
+      viewAllText="View All FAQs"
+      className="py-20"
+    />
   )
 }

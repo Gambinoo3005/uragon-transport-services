@@ -1,3 +1,5 @@
+import { ContentCard } from "@/components/ui/content-card"
+import { SectionContainer, SectionHeader, StandardGrid } from "@/components/ui/content-grid"
 import { Shield, Eye, Heart, CheckCircle, Clock, DollarSign } from "lucide-react"
 
 const values = [
@@ -38,29 +40,26 @@ const values = [
 
 export function AboutValues() {
   return (
-    <section className="py-20">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">What We Stand For</h2>
-            <p className="text-xl text-muted-foreground text-pretty max-w-3xl mx-auto">
-              These principles guide every decision we make and every interaction we have with our customers.
-            </p>
-          </div>
+    <SectionContainer background="default" padding="xl">
+      <SectionHeader
+        title="What We Stand For"
+        description="These principles guide every decision we make and every interaction we have with our customers."
+        maxWidth="3xl"
+      />
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {values.map((value, index) => (
-              <div key={index} className="text-center p-6 bg-background rounded-2xl border border-border shadow-sm hover:shadow-md transition-shadow">
-                <div className="bg-primary/10 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <value.icon className="h-10 w-10 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground mb-4">{value.title}</h3>
-                <p className="text-base text-muted-foreground text-pretty">{value.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
+      <StandardGrid variant="3col" gap="lg">
+        {values.map((value, index) => (
+          <ContentCard
+            key={index}
+            type="benefit"
+            icon={value.icon}
+            title={value.title}
+            description={value.description}
+            variant="default"
+            className="text-center p-6 bg-background rounded-2xl border border-border shadow-sm hover:shadow-md transition-shadow"
+          />
+        ))}
+      </StandardGrid>
+    </SectionContainer>
   )
 }

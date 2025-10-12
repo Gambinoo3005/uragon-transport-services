@@ -55,28 +55,28 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
-                  href="/services/airport-transfer"
+                  href="/services/self-drive"
                   className="text-background/80 hover:text-background transition-colors"
                 >
+                  Self Drive
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/services/with-driver"
+                  className="text-background/80 hover:text-background transition-colors"
+                >
+                  With Driver
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/airport-transfer" className="text-background/80 hover:text-background transition-colors">
                   Airport Transfer
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/services/daily-rental"
-                  className="text-background/80 hover:text-background transition-colors"
-                >
-                  Daily Rentals
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/chauffeur" className="text-background/80 hover:text-background transition-colors">
-                  Chauffeur Service
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services/tour-packages"
+                  href="/services/tours"
                   className="text-background/80 hover:text-background transition-colors"
                 >
                   Tour Packages
@@ -98,13 +98,13 @@ export function Footer() {
                 </div>
               </div>
               <div className="flex items-center space-x-2">
-                <Phone className="h-4 w-4 text-primary" />
+                <Phone className="h-4 w-4 text-primary flex-shrink-0" />
                 <a href="tel:+639159234867" className="text-background/80 hover:text-background transition-colors">
                   +63 915 923 4867
                 </a>
               </div>
               <div className="flex items-center space-x-2">
-                <Mail className="h-4 w-4 text-primary" />
+                <Mail className="h-4 w-4 text-primary flex-shrink-0" />
                 <a
                   href="mailto:info@uragontransport.com"
                   className="text-background/80 hover:text-background transition-colors"

@@ -1,4 +1,6 @@
-import { Card, CardContent } from "@/components/ui/card"
+import { PricingTable } from "@/components/ui/pricing-component"
+import { SectionContainer, SectionHeader } from "@/components/ui/content-grid"
+import { InclusionExclusionBlock } from "@/components/ui/content-blocks"
 import { getAllVehicles } from "@/lib/vehicles"
 
 interface BrandData {
@@ -46,80 +48,60 @@ export function BrandPricing({ brand }: BrandPricingProps) {
     transmission: [...new Set(category.vehicles.map((v: any) => v.transmission))].join(' / ')
   }))
 
+  const inclusions = [
+    "Comprehensive vehicle insurance",
+    "24/7 roadside assistance",
+    "Unlimited mileage within declared province",
+    `Well-maintained ${brand.name} vehicles`,
+    "Basic vehicle documentation",
+    "Emergency contact support"
+  ]
+
+  const exclusions = [
+    "Fuel costs",
+    "Toll fees",
+    "Parking fees",
+    "Traffic violations and fines",
+    "Driver services",
+    "Additional accessories"
+  ]
+
+  const columns = [
+    { key: 'category', label: 'Vehicle Category', align: 'left' as const },
+    { key: 'vehicles', label: 'Available Models', align: 'left' as const },
+    { key: 'seats', label: 'Seating', align: 'left' as const },
+    { key: 'transmission', label: 'Transmission', align: 'left' as const },
+    { key: 'priceRange', label: 'Daily Rate', align: 'right' as const }
+  ]
+
   return (
-    <section className="py-16 bg-muted/30">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4 text-balance">
-              {brand.name} Vehicle Pricing
-            </h2>
-            <p className="text-lg text-muted-foreground text-pretty">
-              Competitive rates for all {brand.name} vehicles in our fleet. All prices include comprehensive insurance and unlimited mileage within the declared province.
-            </p>
-          </div>
+    <SectionContainer background="muted/30">
+      <SectionHeader
+        title={`${brand.name} Vehicle Pricing`}
+        description={`Competitive rates for all ${brand.name} vehicles in our fleet. All prices include comprehensive insurance and unlimited mileage within the declared province.`}
+        maxWidth="4xl"
+      />
 
-          <Card>
-            <CardContent className="p-6">
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="border-b">
-                      <th className="text-left py-3 px-4 font-semibold">Vehicle Category</th>
-                      <th className="text-left py-3 px-4 font-semibold">Available Models</th>
-                      <th className="text-left py-3 px-4 font-semibold">Seating</th>
-                      <th className="text-left py-3 px-4 font-semibold">Transmission</th>
-                      <th className="text-right py-3 px-4 font-semibold">Daily Rate</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {pricingRows.map((row, index) => (
-                      <tr key={index} className="border-b hover:bg-muted/30 transition-colors">
-                        <td className="py-3 px-4 font-medium">{row.category}</td>
-                        <td className="py-3 px-4 text-muted-foreground text-sm">{row.vehicles}</td>
-                        <td className="py-3 px-4 text-muted-foreground">{row.seats}</td>
-                        <td className="py-3 px-4 text-muted-foreground">{row.transmission}</td>
-                        <td className="py-3 px-4 text-right font-semibold text-primary">{row.priceRange}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              
-              <div className="mt-6 p-4 bg-muted/30 rounded-lg">
-                <h3 className="font-semibold text-foreground mb-2">What's Included:</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-muted-foreground">
-                  <div>• Comprehensive vehicle insurance</div>
-                  <div>• 24/7 roadside assistance</div>
-                  <div>• Unlimited mileage within declared province</div>
-                  <div>• Well-maintained {brand.name} vehicles</div>
-                  <div>• Basic vehicle documentation</div>
-                  <div>• Emergency contact support</div>
-                </div>
-              </div>
+      <PricingTable
+        columns={columns}
+        rows={pricingRows}
+        variant="vehicle"
+        background="default"
+        maxWidth="4xl"
+        showDisclaimer={true}
+        disclaimer="Prices may vary during peak seasons and holidays. Contact us for the most current rates and special offers. Weekly and monthly rentals available with special pricing."
+        showCTA={false}
+        className="py-0"
+      />
 
-              <div className="mt-4 p-4 bg-red-50 dark:bg-red-950/20 rounded-lg">
-                <h3 className="font-semibold text-red-700 dark:text-red-400 mb-2">Not Included:</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-red-600 dark:text-red-400">
-                  <div>• Fuel costs</div>
-                  <div>• Toll fees</div>
-                  <div>• Parking fees</div>
-                  <div>• Traffic violations and fines</div>
-                  <div>• Driver services</div>
-                  <div>• Additional accessories</div>
-                </div>
-              </div>
-
-              <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg">
-                <p className="text-sm text-blue-700 dark:text-blue-400">
-                  <strong>Note:</strong> Prices may vary during peak seasons and holidays. Contact us for the most current rates and special offers. 
-                  Weekly and monthly rentals available with special pricing.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+      <div className="mt-6">
+        <InclusionExclusionBlock 
+          inclusions={inclusions}
+          exclusions={exclusions}
+          variant="compact"
+          showIcons={false}
+        />
       </div>
-    </section>
+    </SectionContainer>
   )
 }

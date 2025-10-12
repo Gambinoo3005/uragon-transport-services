@@ -1,4 +1,5 @@
-import { Card, CardContent } from "@/components/ui/card"
+import { ContentCard } from "@/components/ui/content-card"
+import { SectionContainer, SectionHeader, StandardGrid } from "@/components/ui/content-grid"
 import { Shield, Wrench, Clock, Star } from "lucide-react"
 
 const benefits = [
@@ -26,35 +27,25 @@ const benefits = [
 
 export function BrandBenefits() {
   return (
-    <section className="py-16 bg-muted/30">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4 text-balance">
-            Why Choose Our Vehicle Brands?
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            We partner with the most trusted automotive brands to provide you with reliable, safe, and comfortable
-            vehicles for your Bicol adventure.
-          </p>
-        </div>
+    <SectionContainer background="muted/30">
+      <SectionHeader
+        title="Why Choose Our Vehicle Brands?"
+        description="We partner with the most trusted automotive brands to provide you with reliable, safe, and comfortable vehicles for your Bicol adventure."
+        maxWidth="2xl"
+      />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {benefits.map((benefit, index) => {
-            const IconComponent = benefit.icon
-            return (
-              <Card key={index} className="text-center hover:shadow-md transition-shadow">
-                <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <IconComponent className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">{benefit.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed text-pretty">{benefit.description}</p>
-                </CardContent>
-              </Card>
-            )
-          })}
-        </div>
-      </div>
-    </section>
+      <StandardGrid variant="4col" gap="md">
+        {benefits.map((benefit, index) => (
+          <ContentCard
+            key={index}
+            type="benefit"
+            icon={benefit.icon}
+            title={benefit.title}
+            description={benefit.description}
+            variant="compact"
+          />
+        ))}
+      </StandardGrid>
+    </SectionContainer>
   )
 }

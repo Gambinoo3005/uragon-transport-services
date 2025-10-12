@@ -1,4 +1,5 @@
-import { Card, CardContent } from "@/components/ui/card"
+import { ContentCard } from "@/components/ui/content-card"
+import { SectionContainer, SectionHeader, StandardGrid } from "@/components/ui/content-grid"
 import { CheckCircle, FileText, CreditCard, Camera, Globe, Receipt } from "lucide-react"
 
 const requirements = [
@@ -36,44 +37,26 @@ const requirements = [
 
 export function RequirementsSection() {
   return (
-    <section className="py-16 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Requirements <span className="text-primary">(Self-Drive)</span>
-            </h2>
-            <p className="text-xl text-muted-foreground mb-6">
-              Bring these on the day of release (or send ahead for fast processing):
-            </p>
-          </div>
+    <SectionContainer background="default">
+      <SectionHeader
+        title="Requirements (Self-Drive)"
+        description="Bring these on the day of release (or send ahead for fast processing):"
+        highlight="(Self-Drive)"
+      />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {requirements.map((requirement, index) => {
-              const IconComponent = requirement.icon
-              return (
-                <Card key={index} className="h-full hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6 flex flex-col h-full">
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                        <IconComponent className="h-6 w-6 text-primary" />
-                      </div>
-                      <h3 className="text-xl font-semibold text-foreground">
-                        {requirement.title}
-                      </h3>
-                    </div>
-                    
-                    <p className="text-muted-foreground flex-grow">
-                      {requirement.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              )
-            })}
-          </div>
-        </div>
-      </div>
-    </section>
+      <StandardGrid variant="3col" gap="md">
+        {requirements.map((requirement, index) => (
+          <ContentCard
+            key={index}
+            type="icon"
+            icon={requirement.icon}
+            title={requirement.title}
+            description={requirement.description}
+            variant="horizontal"
+          />
+        ))}
+      </StandardGrid>
+    </SectionContainer>
   )
 }
 

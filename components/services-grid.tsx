@@ -1,5 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { ContentCard } from "@/components/ui/content-card"
+import { SectionContainer, SectionHeader, FeaturedGrid } from "@/components/ui/content-grid"
 import { 
   Car, 
   UserCheck, 
@@ -9,7 +9,6 @@ import {
   Plane, 
   Briefcase
 } from "lucide-react"
-import Link from "next/link"
 
 const services = [
   {
@@ -64,54 +63,31 @@ const services = [
 ]
 
 export function ServicesGrid() {
-  return (
-    <section className="py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4 text-balance">
-              What We <span className="text-primary">Offer</span>
-            </h2>
-          </div>
+  const regularItems = services.map((service, index) => {
+    const isLastItem = index === services.length - 1
+    return (
+      <ContentCard
+        key={service.id}
+        type="icon"
+        icon={service.icon}
+        title={service.title}
+        description={service.description}
+        href={service.href}
+        buttonText="Learn More"
+        variant="horizontal"
+        className={isLastItem ? 'lg:col-start-2' : ''}
+      />
+    )
+  })
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, index) => {
-              const IconComponent = service.icon
-              const isLastItem = index === services.length - 1
-              return (
-                <Card 
-                  key={service.id} 
-                  className={`h-full hover:shadow-lg transition-shadow group ${
-                    isLastItem ? 'lg:col-start-2' : ''
-                  }`}
-                >
-                  <CardHeader>
-                    <div className="flex items-center gap-4 mb-2">
-                      <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                        <IconComponent className="h-6 w-6 text-primary" />
-                      </div>
-                    </div>
-                    <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                      {service.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex flex-col h-full">
-                    <p className="text-muted-foreground mb-6 flex-grow text-pretty">
-                      {service.description}
-                    </p>
-                    
-                    <Link href={service.href}>
-                      <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                        Learn More
-                      </Button>
-                    </Link>
-                  </CardContent>
-                </Card>
-              )
-            })}
-          </div>
-        </div>
-      </div>
-    </section>
+  return (
+    <SectionContainer background="default" padding="xl">
+      <SectionHeader
+        title="What We Offer"
+        highlight="Offer"
+      />
+
+      <FeaturedGrid regularItems={regularItems} gap="md" />
+    </SectionContainer>
   )
 }
